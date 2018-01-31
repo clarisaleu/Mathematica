@@ -1,0 +1,741 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     26731,        733]
+NotebookOptionsPosition[     23827,        683]
+NotebookOutlinePosition[     24313,        701]
+CellTagsIndexPosition[     24270,        698]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[StyleBox["Linear Algebra",
+ FontWeight->"Bold"]], "Title",
+ CellChangeTimes->{{3.7259706071640024`*^9, 3.7259706239147377`*^9}, {
+  3.726346440814909*^9, 3.7263464467751694`*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontColor->RGBColor[
+  0.5019607843137255, 0., 
+   0.],ExpressionUUID->"79d9e7f0-528c-449b-ac86-bc85811df50b"],
+
+Cell["\<\
+
+Clarisa Leu-Rodriguez
+Problem Set #1\
+\>", "Subtitle",
+ CellChangeTimes->{{3.725970631950468*^9, 3.7259706529437504`*^9}, 
+   3.726237425274949*^9, 3.7263433767023954`*^9, {3.726346449616736*^9, 
+   3.726346463701749*^9}, {3.7263467828910007`*^9, 3.726346791209957*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontSize->20,ExpressionUUID->"409fd5f6-5f25-4875-9774-3ddfab15d79c"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Problem 1",
+ FontWeight->"Bold"]], "Section",
+ CellChangeTimes->{{3.7259706667187805`*^9, 3.725970668464391*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"f5e7e697-6c27-49af-b565-f855b8559d7f"],
+
+Cell[TextData[{
+ StyleBox["Find a matrix ",
+  FontSize->15,
+  FontSlant->"Italic"],
+ StyleBox["K ",
+  FontSize->15,
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ StyleBox["so that ",
+  FontSize->15,
+  FontSlant->"Italic"],
+ StyleBox["AKB = Z ",
+  FontSize->15,
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ StyleBox["for the defined matrices below",
+  FontSize->15,
+  FontSlant->"Italic"],
+ StyleBox[".",
+  FontSize->15,
+  FontWeight->"Bold",
+  FontSlant->"Italic"]
+}], "Text",
+ CellChangeTimes->{{3.7259708030957146`*^9, 3.7259708190461454`*^9}, {
+  3.725970914987957*^9, 3.7259709219223027`*^9}, {3.72599113794269*^9, 
+  3.725991455150243*^9}, {3.7259915596430078`*^9, 3.7259915820729723`*^9}, {
+  3.725991641298337*^9, 3.7259916477050896`*^9}, {3.7262370915346746`*^9, 
+  3.7262371248795004`*^9}, {3.72623719728957*^9, 3.7262371989111767`*^9}, {
+  3.7262372478032413`*^9, 3.726237249169665*^9}, {3.7262373521264467`*^9, 
+  3.7262374633147373`*^9}, {3.7262377038749905`*^9, 3.7262377134289637`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"adba4704-783f-4b7c-80eb-d37092994ed9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "Given", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"A", "=", 
+    RowBox[{"(", GridBox[{
+       {"1", "4"},
+       {
+        RowBox[{"-", "2"}], "3"},
+       {"1", 
+        RowBox[{"-", "2"}]}
+      }], ")"}]}], ";", " ", 
+   RowBox[{"B", "=", 
+    RowBox[{"(", GridBox[{
+       {"2", "0", "0"},
+       {"0", "1", 
+        RowBox[{"-", "1"}]}
+      }], ")"}]}], ";", " ", 
+   RowBox[{"Z", "=", 
+    RowBox[{"(", GridBox[{
+       {"8", "6", 
+        RowBox[{"-", "6"}]},
+       {"6", 
+        RowBox[{"-", "1"}], "1"},
+       {
+        RowBox[{"-", "4"}], "0", "0"}
+      }], ")"}]}], ";"}], " "}]], "Input",
+ CellChangeTimes->{{3.7259708030957146`*^9, 3.7259708190461454`*^9}, {
+   3.725970914987957*^9, 3.7259709219223027`*^9}, {3.72599113794269*^9, 
+   3.725991455150243*^9}, {3.7259915596430078`*^9, 3.7259915820729723`*^9}, {
+   3.725991641298337*^9, 3.7259916477050896`*^9}, {3.7262370915346746`*^9, 
+   3.7262371248795004`*^9}, {3.72623719728957*^9, 3.7262371989111767`*^9}, {
+   3.7262372478032413`*^9, 3.726237249169665*^9}, {3.7262373521264467`*^9, 
+   3.7262374633147373`*^9}, {3.7262377038749905`*^9, 3.726237719631974*^9}, {
+   3.7263359675863295`*^9, 3.726335968795476*^9}, 3.726336867858389*^9, {
+   3.7263463853673515`*^9, 3.726346389303322*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",ExpressionUUID->"7169ad24-bc00-4ec2-9f5e-a7586dda26d0"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["\n",
+  FontWeight->"Bold"],
+ "If ",
+ StyleBox["AKB = Z, ",
+  FontWeight->"Bold"],
+ "we can multiply ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SuperscriptBox["A", "T"],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "84a2f523-e606-47f9-b04c-781a4ec56db8"],
+ "and ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["B", "T"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"06252449-77b9-4e96-994a-9988218de16e"],
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ "on both sides of the equation, yielding:\n",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["A", "T"], 
+      SuperscriptBox["AKBB", "T"]}], "=", 
+     RowBox[{
+      SuperscriptBox["A", "T"], 
+      SuperscriptBox["ZB", "T"]}]}],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "905d3a22-fefc-4160-8f6f-979b21764cb6"],
+ ". ",
+ StyleBox["\n",
+  FontWeight->"Bold"],
+ "As ",
+ StyleBox["A",
+  FontWeight->"Bold"],
+ " is a ",
+ StyleBox["(3x2)",
+  FontWeight->"Bold"],
+ " matrix and ",
+ StyleBox["B ",
+  FontWeight->"Bold"],
+ "is a ",
+ StyleBox["(2x3) ",
+  FontWeight->"Bold"],
+ "matrix, they can both be multiplied by their transpose ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SuperscriptBox["A", "T"],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "5a4df709-61c2-4472-9147-1bef85cea5e9"],
+ StyleBox["(2x3)",
+  FontWeight->"Bold"],
+ " and",
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["B", "T"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"8276af91-9e1e-4b46-b137-203b991abd04"],
+ StyleBox["(3x2) ",
+  FontWeight->"Bold"],
+ "to yield a square matrix. "
+}], "ItemParagraph",
+ CellChangeTimes->{{3.7259708030957146`*^9, 3.7259708190461454`*^9}, {
+  3.725970914987957*^9, 3.7259709219223027`*^9}, {3.72599113794269*^9, 
+  3.725991455150243*^9}, {3.7259915596430078`*^9, 3.7259915820729723`*^9}, {
+  3.725991641298337*^9, 3.7259916477050896`*^9}, {3.7262370915346746`*^9, 
+  3.7262371248795004`*^9}, {3.72623719728957*^9, 3.7262371989111767`*^9}, {
+  3.7262372478032413`*^9, 3.726237249169665*^9}, {3.7262373521264467`*^9, 
+  3.7262374633147373`*^9}, {3.7262377038749905`*^9, 3.72623770897252*^9}, {
+  3.7262378839233637`*^9, 3.7262379416010084`*^9}, {3.7263367622051153`*^9, 
+  3.726336767436733*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"b58545d7-00d7-468a-b0fa-3fa6b633c6e9"],
+
+Cell[TextData[{
+ "Taking the inverse of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    SuperscriptBox["A", "T"]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"401ebfd7-cfe3-4ba8-be3c-8dcdd1147d40"],
+ StyleBox["A) ",
+  FontWeight->"Bold"],
+ "and",
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    SuperscriptBox["B", "T"]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"72c900a0-6bc0-4ad0-a54c-af2b2e1ddee0"],
+ StyleBox["B) ",
+  FontWeight->"Bold"],
+ "and multiplying that on both sides of the equation. Matrix ",
+ StyleBox["K ",
+  FontWeight->"Bold"],
+ "can then be solved for directly.\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["A", "T"], "A"}], ")"}], 
+     RowBox[{"-", "1"}]], " ", 
+    SuperscriptBox["A", "T"], 
+    SuperscriptBox["AKBB", "T"], " ", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["BB", "T"], ")"}], 
+     RowBox[{"-", "1"}]]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"5b190052-0f27-47f5-940a-07a1e64ddec0"],
+ StyleBox["=",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{
+      SuperscriptBox["A", "T"], "A"}], ")"}], 
+    RowBox[{"-", "1"}]], " ", 
+   SuperscriptBox["A", "T"]}]],
+  FontFamily->"Tahoma",
+  FontWeight->"Bold",ExpressionUUID->"9a0c193c-6493-485d-b0dc-ae979e148d21"],
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["ZB", "T"], " ", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     SuperscriptBox["BB", "T"], ")"}], 
+    RowBox[{"-", "1"}]]}]],
+  FontFamily->"Tahoma",
+  FontWeight->"Bold",ExpressionUUID->"bbbc2f05-f55d-4dd3-9621-3c24e4db459c"],
+ "\n\nCanceling terms: ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["A", "T"], "A"}], ")"}], 
+     RowBox[{"-", "1"}]],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "a206d369-20e6-4f1f-ae69-e27d478d6d34"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    SuperscriptBox["A", "T"]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"873a95ac-173d-4db1-9efa-4088d8ae0b5c"],
+ StyleBox["A) ",
+  FontWeight->"Bold"],
+ "cancel out to 1.\n",
+ StyleBox["K=",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{
+      SuperscriptBox["A", "T"], "A"}], ")"}], 
+    RowBox[{"-", "1"}]], " ", 
+   SuperscriptBox["A", "T"]}]],
+  FontFamily->"Tahoma",
+  FontWeight->"Bold",ExpressionUUID->"a2fc3822-3fd4-4f0f-b1f5-ba8e030216a4"],
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["ZB", "T"], " ", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     SuperscriptBox["BB", "T"], ")"}], 
+    RowBox[{"-", "1"}]]}]],
+  FontFamily->"Tahoma",
+  FontWeight->"Bold",ExpressionUUID->"747d444e-f02e-4429-89fd-2e31f41e5680"]
+}], "ItemParagraph",
+ CellChangeTimes->{{3.7259708030957146`*^9, 3.7259708190461454`*^9}, {
+  3.725970914987957*^9, 3.7259709219223027`*^9}, {3.72599113794269*^9, 
+  3.725991455150243*^9}, {3.7259915596430078`*^9, 3.7259915820729723`*^9}, {
+  3.725991641298337*^9, 3.7259916477050896`*^9}, {3.7262370915346746`*^9, 
+  3.7262371248795004`*^9}, {3.72623719728957*^9, 3.7262371989111767`*^9}, {
+  3.7262372478032413`*^9, 3.726237249169665*^9}, {3.7262373521264467`*^9, 
+  3.726237401960379*^9}, {3.7262375121619625`*^9, 3.7262375592584405`*^9}, {
+  3.726237955213097*^9, 3.7262379940733147`*^9}, {3.7262380449613056`*^9, 
+  3.7262381046686935`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"5104a7e2-d634-4956-983e-5511c86c7f9e"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Matrix", " ", "K", " ", "from", " ", "deriviation", " ", "above"}], 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"(", "\"\<Matrix K =\>\"", ")"}], 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"K", "=", 
+     RowBox[{
+      RowBox[{"Inverse", "[", 
+       RowBox[{
+        RowBox[{"Transpose", "[", "A", "]"}], ".", "A"}], "]"}], ".", 
+      RowBox[{"Transpose", "[", "A", "]"}], ".", "Z", ".", 
+      RowBox[{"Transpose", "[", "B", "]"}], ".", 
+      RowBox[{"Inverse", "[", 
+       RowBox[{"B", ".", 
+        RowBox[{"Transpose", "[", "B", "]"}]}], "]"}]}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.7259916035082216`*^9, 3.725991686597042*^9}, {
+  3.726237568623377*^9, 3.7262375963615656`*^9}, {3.726238125433117*^9, 
+  3.726238175450164*^9}, {3.726238276058943*^9, 3.7262382946340647`*^9}, {
+  3.72623845916335*^9, 3.7262384791833973`*^9}, {3.726335922988867*^9, 
+  3.726336040168882*^9}, {3.726336831345507*^9, 3.726336842615346*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"c2dada31-6185-477c-8176-c7d1020357b5"],
+
+Cell["To check our results, we can simply use the == operation.", \
+"ItemParagraph",
+ CellChangeTimes->{{3.725991698659574*^9, 3.725991705057003*^9}, {
+  3.7262372932778997`*^9, 3.7262373242869625`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"fee093d2-e6c2-411a-8f1d-ff325b18fe3a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "Check", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"A", ".", "K", ".", "B"}], "\[Equal]", "Z"}]}]], "Input",
+ CellChangeTimes->{{3.725991709766835*^9, 3.725991716472561*^9}, {
+  3.726336821200689*^9, 3.7263368276964154`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"0f990041-6416-438c-be9c-482a7a8d2835"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Problem 2",
+ FontWeight->"Bold"]], "Section",
+ CellChangeTimes->{{3.725970889152566*^9, 3.7259708908771477`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"b9ed3224-be77-4eaa-ab22-dbe73da33e75"],
+
+Cell[TextData[{
+ "Considering the linear transformation",
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ StyleBox["T(x,y)=(2x+y,x-y) ",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ "and given the vertices of a box ",
+ StyleBox["(0,0),(1,0),(1,1),",
+  FontWeight->"Bold"],
+ " and ",
+ StyleBox["(0,1)",
+  FontWeight->"Bold"],
+ ";",
+ StyleBox[" ",
+  FontSlant->"Italic"],
+ "We can analyze what ",
+ StyleBox["T ",
+  FontWeight->"Bold"],
+ "does to the corners of the box by inputting the given coordinate points \
+into ",
+ StyleBox["T ",
+  FontWeight->"Bold"],
+ "and graphing the points. The same result can be also be obtained by matrix \
+multiplication."
+}], "Text",
+ CellChangeTimes->{{3.7259709617772512`*^9, 3.7259710308412447`*^9}, {
+  3.726343438691231*^9, 3.7263436486464148`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"95cf8828-614a-47ec-85bc-097fcac3a60d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"The", " ", "matrix", " ", "representation", " ", "of", " ", "T"}],
+    "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"matT", ":=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", 
+         RowBox[{"-", "1"}]}], "}"}]}], "}"}]}], " ", ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"\"\<T:\>\"", 
+    RowBox[{"MatrixForm", "[", "matT", "]"}]}]}]}]], "Input",
+ CellChangeTimes->{
+  3.725993212219652*^9, {3.726343396385417*^9, 3.726343421703974*^9}, {
+   3.7263436528329763`*^9, 3.726343665948286*^9}, {3.7263439624713755`*^9, 
+   3.7263439712524405`*^9}, {3.726344073894006*^9, 3.726344080249992*^9}, {
+   3.726344336595173*^9, 3.7263443645784216`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"ce99026b-3573-4c3c-a991-0dced37c74b9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"The", " ", "vertices", " ", "of", " ", "the", " ", "box"}], ",", 
+    " ", 
+    RowBox[{"connecting", " ", "the", " ", "last", " ", "points", " ", 
+     RowBox[{"(", 
+      RowBox[{"0", ",", "1"}], ")"}], " ", "to", " ", "the", " ", "starting", 
+     " ", "point", " ", 
+     RowBox[{"(", 
+      RowBox[{"0", ",", "0"}], ")"}]}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"pts", ":=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", " ", 
+   RowBox[{"\"\<Vertices of square:\>\"", 
+    RowBox[{"MatrixForm", "[", "pts", "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.725991798723422*^9, 3.725991818536093*^9}, {
+  3.725992859330429*^9, 3.725992963440053*^9}, {3.725993051689794*^9, 
+  3.725993208364109*^9}, {3.7263436808719587`*^9, 3.726343708855053*^9}, {
+  3.726343781320686*^9, 3.7263438175828447`*^9}, {3.7263440496487684`*^9, 
+  3.7263440595692472`*^9}, {3.7263441678683605`*^9, 3.7263442288428183`*^9}, {
+  3.726344284111208*^9, 3.726344331869364*^9}, {3.726344424502985*^9, 
+  3.7263444255058017`*^9}, {3.726344494584509*^9, 3.726344496779084*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"64aa7f9b-9769-4583-b858-3e9bba7d0b67"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Matrix", " ", "Multiplication"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"transMatT", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"matT", ".", 
+        RowBox[{"pts", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "5"}], "}"}]}], "]"}]}], " ", ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"\"\<Transformation of corner points:\>\"", 
+    RowBox[{"MatrixForm", "[", "transMatT", "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.725993358493606*^9, 3.725993417329818*^9}, {
+  3.726343717329831*^9, 3.726343748126919*^9}, {3.7263438368607597`*^9, 
+  3.726343842995388*^9}, {3.7263439770064316`*^9, 3.726343994327674*^9}, {
+  3.7263441504593744`*^9, 3.726344150818492*^9}, {3.726344288445841*^9, 
+  3.7263443001320868`*^9}, {3.7263443709174905`*^9, 3.726344406652918*^9}, {
+  3.72634447297443*^9, 3.726344473536651*^9}, {3.726344504865449*^9, 
+  3.726344505018507*^9}, {3.72634628583504*^9, 3.7263463008474765`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"241cd4af-0561-4c84-bbba-5cd4c2a49bb4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Graphing", " ", "the", " ", "points", " ", "and", " ", "than", " ", "the",
+     " ", "transformed", " ", "points"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"\"\<The box:\>\"", "\[IndentingNewLine]", 
+   RowBox[{"original", "=", 
+    RowBox[{"ListLinePlot", "[", 
+     RowBox[{"{", "pts", "}"}], "]"}]}], "\[IndentingNewLine]", 
+   "\"\<The transformation of the box:\>\"", "\[IndentingNewLine]", 
+   RowBox[{"transformed", "=", 
+    RowBox[{"ListLinePlot", "[", 
+     RowBox[{"{", "transMatT", "}"}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.725992911148715*^9, 3.72599291219398*^9}, {
+  3.725993280204523*^9, 3.7259933176582766`*^9}, {3.7259934460961404`*^9, 
+  3.7259934514086685`*^9}, {3.726344099046988*^9, 3.7263441064293313`*^9}, {
+  3.7263442418850403`*^9, 3.726344252986834*^9}, {3.7263444386084166`*^9, 
+  3.7263444880521317`*^9}, {3.7263445191916075`*^9, 3.7263445357144938`*^9}, {
+  3.7263463059340706`*^9, 3.726346330293557*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"0df68223-b9ba-4e02-bdb4-17340d1a3af2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Problem 3",
+ FontWeight->"Bold"]], "Section",
+ CellChangeTimes->{{3.725970904501316*^9, 3.7259709059028997`*^9}, {
+  3.725971224917407*^9, 3.7259712249534807`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"8ef00e93-6987-4333-a56e-636a7f8468b0"],
+
+Cell[TextData[{
+ "A matrix ",
+ StyleBox["A ",
+  FontWeight->"Bold"],
+ "is called symmetric if it is equal to its transpose ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    StyleBox[
+     SuperscriptBox["A", "T"],
+     FontWeight->"Bold"], ")"}], TraditionalForm]],ExpressionUUID->
+  "5596d92e-d5a1-4060-ab02-416cbd416d17"],
+ " and is called ",
+ StyleBox["skew symmetric ",
+  FontSlant->"Italic"],
+ "if its transpose is equal to the opposite of the matrix. For a general ",
+ StyleBox["(3x3) ",
+  FontWeight->"Bold"],
+ "matrix ",
+ StyleBox["A",
+  FontWeight->"Bold"],
+ ", it can be written as the sum of a symmetric and a skew symmetric matrix."
+}], "Text",
+ CellChangeTimes->{{3.72597130712918*^9, 3.725971391614794*^9}, 
+   3.725971602759894*^9, {3.7263360977448306`*^9, 3.726336187764735*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"202e36a1-1d8f-421a-910e-cb325228b36d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Create", " ", "a", " ", "random", " ", 
+    RowBox[{"(", 
+     RowBox[{"3", "x3"}], ")"}], " ", "matrix"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+  "\"\<Creating a random (3x3) matrix with values between -googol to +googol:\
+\nA:\>\"", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"A", " ", "=", " ", 
+     RowBox[{"RandomReal", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"10", "^", "100"}]}], ",", 
+         RowBox[{"10", "^", "100"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", "3"}], "}"}]}], "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.725993824579986*^9, 3.725993828876937*^9}, {
+  3.7259938679083223`*^9, 3.7259939946900377`*^9}, {3.7263361911454864`*^9, 
+  3.726336221059046*^9}, {3.7263363853407154`*^9, 3.7263364726215067`*^9}, {
+  3.7263463366129656`*^9, 3.7263463579122057`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"915a4a8f-7ed3-4d35-b057-ecd05d72812c"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["R", "1"], TraditionalForm]],ExpressionUUID->
+  "5068fa03-0038-4e65-9f0a-323a65a2b4ea"],
+ "=",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox["1", "2"], 
+    RowBox[{"(", 
+     RowBox[{"A", "+", 
+      SuperscriptBox["A", "T"]}], ")"}], " ", "is", " ", 
+    RowBox[{"symmetric", "."}]}], TraditionalForm]],ExpressionUUID->
+  "45aaa045-4876-49fe-a4e8-211296c45a3f"]
+}], "Text",
+ CellChangeTimes->{{3.725971435371743*^9, 3.7259714652231464`*^9}, {
+  3.726336549927742*^9, 3.726336586978114*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"778eeecc-5b2a-4533-9687-e899a89c2255"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   SubscriptBox["R", "1"], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+  "\"\<Performing the operation: \n\!\(\*SubscriptBox[\(R\), \(1\)]\):\>\"", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"ResultA", "=", 
+     RowBox[{
+      RowBox[{"1", "/", "2"}], "*", 
+      RowBox[{"(", 
+       RowBox[{"A", "+", 
+        RowBox[{"Transpose", "[", "A", "]"}]}], ")"}]}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.7259733065449233`*^9, 3.7259734818757133`*^9}, {
+  3.7259735583017263`*^9, 3.725973559022623*^9}, {3.7263365670995092`*^9, 
+  3.7263366022344017`*^9}, {3.7263463611719837`*^9, 3.726346366704378*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"171067ac-8039-473e-8fce-74ad734172f6"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["R", "2"], TraditionalForm]],ExpressionUUID->
+  "0316173e-3152-4ed8-87f6-b24f65eaca56"],
+ "=",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    FractionBox["1", "2"], 
+    RowBox[{"(", 
+     RowBox[{"A", "-", 
+      SuperscriptBox["A", "T"]}], ")"}], " ", "is", " ", "skew", " ", 
+    RowBox[{"symmetric", "."}]}], TraditionalForm]],ExpressionUUID->
+  "ad33f402-b6bc-48d4-9fb7-3ef4cf4c3782"]
+}], "Text",
+ CellChangeTimes->{{3.7259714768705387`*^9, 3.725971493607293*^9}, {
+  3.726336614223997*^9, 3.7263366166611795`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"0acae5b0-2a45-4bac-ae82-bffdfe407da8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   SubscriptBox["R", "2"], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+  "\"\<Performing the operation:\n\!\(\*SubscriptBox[\(R\), \(2\)]\):\>\"", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"ResultB", "=", 
+     RowBox[{
+      RowBox[{"1", "/", "2"}], "*", 
+      RowBox[{"(", 
+       RowBox[{"A", "-", 
+        RowBox[{"Transpose", "[", "A", "]"}]}], ")"}]}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.725973477769954*^9, 3.7259735022414103`*^9}, {
+  3.7259735622535815`*^9, 3.725973562963417*^9}, {3.726336620261988*^9, 
+  3.726336634474536*^9}, {3.7263463687219963`*^9, 3.7263463740515957`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"d9785894-96c8-4dcb-a41e-4274ddb8ae36"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"A", " ", "=", " ", 
+    RowBox[{
+     RowBox[{
+      FractionBox["1", "2"], 
+      RowBox[{"(", 
+       RowBox[{"A", " ", "+", " ", 
+        SuperscriptBox["A", "T"]}], ")"}]}], " ", "+", " ", 
+     RowBox[{
+      FractionBox["1", "2"], 
+      RowBox[{"(", 
+       RowBox[{"A", " ", "-", " ", 
+        SuperscriptBox["A", "T"]}], ")"}]}]}]}], TraditionalForm]],
+  ExpressionUUID->"7fdfe07f-6642-46cf-97e6-a8729311520d"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.725971503133675*^9, 3.725971591463997*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"9518daf2-9785-417c-b231-ab5d48cb4791"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "Check", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+  "\"\<Checking that \!\(\*SubscriptBox[\(R\), \
+\(1\)]\)+\!\(\*SubscriptBox[\(R\), \(2\)]\)=A\>\"", "\[IndentingNewLine]", 
+   RowBox[{"A", "\[Equal]", 
+    RowBox[{"ResultA", "+", "ResultB"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.725973509918767*^9, 3.725973517081416*^9}, {
+  3.726336663899741*^9, 3.726336704329989*^9}, {3.726346377134615*^9, 
+  3.7263463809781923`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"dd505005-b8a6-49a6-8ef1-b6cc50e8b157"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1520, 805},
+WindowMargins->{{-8, Automatic}, {Automatic, 0}},
+TaggingRules->{"$testsRun" -> False},
+Magnification:>0.9 Inherited,
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->FrontEnd`FileName[{"Report"}, "StandardReport.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 352, 8, 84, "Title",ExpressionUUID->"79d9e7f0-528c-449b-ac86-bc85811df50b"],
+Cell[935, 32, 398, 10, 70, "Subtitle",ExpressionUUID->"409fd5f6-5f25-4875-9774-3ddfab15d79c"],
+Cell[CellGroupData[{
+Cell[1358, 46, 215, 3, 60, "Section",ExpressionUUID->"f5e7e697-6c27-49af-b565-f855b8559d7f"],
+Cell[1576, 51, 1096, 31, 29, "Text",ExpressionUUID->"adba4704-783f-4b7c-80eb-d37092994ed9"],
+Cell[2675, 84, 1415, 37, 92, "Input",ExpressionUUID->"7169ad24-bc00-4ec2-9f5e-a7586dda26d0"],
+Cell[CellGroupData[{
+Cell[4115, 125, 2400, 77, 76, "ItemParagraph",ExpressionUUID->"b58545d7-00d7-468a-b0fa-3fa6b633c6e9"],
+Cell[6518, 204, 3561, 110, 134, "ItemParagraph",ExpressionUUID->"5104a7e2-d634-4956-983e-5511c86c7f9e"]
+}, Open  ]],
+Cell[10094, 317, 1089, 24, 56, "Input",ExpressionUUID->"c2dada31-6185-477c-8176-c7d1020357b5"],
+Cell[11186, 343, 281, 4, 22, "ItemParagraph",ExpressionUUID->"fee093d2-e6c2-411a-8f1d-ff325b18fe3a"],
+Cell[11470, 349, 355, 7, 55, "Input",ExpressionUUID->"0f990041-6416-438c-be9c-482a7a8d2835"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11862, 361, 215, 3, 60, "Section",ExpressionUUID->"b9ed3224-be77-4eaa-ab22-dbe73da33e75"],
+Cell[12080, 366, 856, 28, 49, "Text",ExpressionUUID->"95cf8828-614a-47ec-85bc-097fcac3a60d"],
+Cell[12939, 396, 904, 23, 75, "Input",ExpressionUUID->"ce99026b-3573-4c3c-a991-0dced37c74b9"],
+Cell[13846, 421, 1586, 37, 75, "Input",ExpressionUUID->"64aa7f9b-9769-4583-b858-3e9bba7d0b67"],
+Cell[15435, 460, 1153, 24, 75, "Input",ExpressionUUID->"241cd4af-0561-4c84-bbba-5cd4c2a49bb4"],
+Cell[16591, 486, 1083, 20, 111, "Input",ExpressionUUID->"0df68223-b9ba-4e02-bdb4-17340d1a3af2"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17711, 511, 266, 4, 60, "Section",ExpressionUUID->"8ef00e93-6987-4333-a56e-636a7f8468b0"],
+Cell[17980, 517, 873, 25, 53, "Text",ExpressionUUID->"202e36a1-1d8f-421a-910e-cb325228b36d"],
+Cell[18856, 544, 1012, 25, 75, "Input",ExpressionUUID->"915a4a8f-7ed3-4d35-b057-ecd05d72812c"],
+Cell[19871, 571, 636, 18, 39, "Text",ExpressionUUID->"778eeecc-5b2a-4533-9687-e899a89c2255"],
+Cell[20510, 591, 725, 16, 74, "Input",ExpressionUUID->"171067ac-8039-473e-8fce-74ad734172f6"],
+Cell[21238, 609, 651, 18, 39, "Text",ExpressionUUID->"0acae5b0-2a45-4bac-ae82-bffdfe407da8"],
+Cell[21892, 629, 720, 16, 74, "Input",ExpressionUUID->"d9785894-96c8-4dcb-a41e-4274ddb8ae36"],
+Cell[22615, 647, 635, 19, 39, "Text",ExpressionUUID->"9518daf2-9785-417c-b231-ab5d48cb4791"],
+Cell[23253, 668, 546, 11, 74, "Input",ExpressionUUID->"dd505005-b8a6-49a6-8ef1-b6cc50e8b157"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
