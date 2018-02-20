@@ -1,0 +1,1838 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     70263,       1830]
+NotebookOptionsPosition[     63159,       1704]
+NotebookOutlinePosition[     63647,       1722]
+CellTagsIndexPosition[     63604,       1719]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[StyleBox["Linear Algebra",
+ FontWeight->"Bold"]], "Title",
+ CellChangeTimes->{{3.7259706071640024`*^9, 3.7259706239147377`*^9}, {
+  3.726346440814909*^9, 3.7263464467751694`*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontColor->RGBColor[
+  0.5019607843137255, 0., 
+   0.],ExpressionUUID->"1c8560c0-5a63-49ed-9732-2ddde33c3518"],
+
+Cell[TextData[{
+ StyleBox["Spans, Vector Spaces, and Linear Independence",
+  FontSlant->"Italic"],
+ "\n"
+}], "Subtitle",
+ CellChangeTimes->{{3.7277838914515*^9, 3.727783911727465*^9}, {
+  3.727783972604213*^9, 3.7277839758519692`*^9}, {3.7280656646783895`*^9, 
+  3.7280656655329356`*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontSize->22,
+ FontColor->RGBColor[
+  0., 0., 0.],ExpressionUUID->"8a599d3f-9dac-4da4-a9f2-1f88a1365c41"],
+
+Cell["\<\
+
+| Clarisa Leu-Rodriguez | Winter 2018 |\
+\>", "Subsubtitle",
+ CellChangeTimes->{{3.727783946135536*^9, 3.72778395644663*^9}, {
+   3.727783995134487*^9, 3.7277840137441635`*^9}, {3.728068807374402*^9, 
+   3.728068923507363*^9}, 3.7280700667760963`*^9, {3.728083308848649*^9, 
+   3.7280833229962907`*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontColor->GrayLevel[
+  0],ExpressionUUID->"914bbe7f-2dbf-4117-9b68-344d176c0899"],
+
+Cell[TextData[{
+ StyleBox["*Note: Some code has been toggled. To view complete code for each \
+output, select hidden cell & go to ",
+  FontWeight->"Bold"],
+ StyleBox["Cell -> Cell Properties -> Open\n",
+  FontWeight->"Bold",
+  FontSlant->"Italic"]
+}], "Text",
+ CellChangeTimes->{{3.728068883819746*^9, 3.7280688956000805`*^9}, {
+   3.728069484629819*^9, 3.7280694867253633`*^9}, 3.7280700631023264`*^9},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontColor->GrayLevel[
+  0],ExpressionUUID->"17cf01ea-063b-4f0a-827e-8df88e3bd6d3"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Problem 1",
+ FontWeight->"Bold"]], "Section",
+ CellChangeTimes->{{3.7259706667187805`*^9, 3.725970668464391*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"aaeffc5f-21bb-4c7d-b5ff-60e36decda2f"],
+
+Cell[TextData[{
+ "Show that ",
+ StyleBox["Span(V)=Span(W) ",
+  FontWeight->"Bold"],
+ "for the given sets that live in the same vector space ",
+ StyleBox["S",
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.727784031238884*^9, 3.727784043567789*^9}, {
+   3.7277840866880393`*^9, 3.727784098014592*^9}, {3.7277841392115126`*^9, 
+   3.7277841438948917`*^9}, 3.727784208400541*^9, 3.7277844609990215`*^9, {
+   3.7277961630341887`*^9, 3.72779617709859*^9}, {3.7277987368718815`*^9, 
+   3.7277987391188803`*^9}, {3.727798882551998*^9, 3.727798907985482*^9}, {
+   3.7280674640535965`*^9, 3.7280674657911644`*^9}, 3.728067586049048*^9},
+ FontFamily->"Tahoma",ExpressionUUID->"a15ba982-c9f2-4837-b1d0-62586dd91a3a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "Given", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"V", ":=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", "2", ",", "0", ",", "1", ",", "3"}], "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"7", ",", "4", ",", "6", ",", 
+         RowBox[{"-", "3"}], ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "5"}], ",", "3", ",", "1", ",", "2", ",", "4"}], 
+        "}"}]}], "}"}]}], ";", " ", 
+    RowBox[{"W", ":=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "6"}], ",", "5", ",", "1", ",", "3", ",", "7"}], "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"6", ",", "6", ",", "6", ",", 
+         RowBox[{"-", "2"}], ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "7", ",", "7", ",", 
+         RowBox[{"-", "1"}], ",", "5"}], "}"}]}], "}"}]}], ";", " ", 
+    RowBox[{"checkV", ":=", "V"}], ";", 
+    RowBox[{"checkW", ":=", "W"}], ";"}], "\[IndentingNewLine]", 
+   "\"\<For the given sets V & W:\>\"", "\[IndentingNewLine]", 
+   RowBox[{"StringForm", "[", 
+    RowBox[{"\"\<V:`` , W:``\>\"", ",", 
+     RowBox[{"MatrixForm", "[", "V", "]"}], ",", 
+     RowBox[{"MatrixForm", "[", "W", "]"}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellOpen->False,
+ CellChangeTimes->{{3.727739824589404*^9, 3.727739919570812*^9}, {
+   3.727739959476231*^9, 3.7277399853018627`*^9}, {3.7277400747510695`*^9, 
+   3.7277400862980995`*^9}, {3.7277427539931436`*^9, 3.727742772535446*^9}, {
+   3.7277438508931885`*^9, 3.7277438626056023`*^9}, {3.7277449017560854`*^9, 
+   3.7277449019345093`*^9}, {3.727747069813912*^9, 3.7277471521583867`*^9}, 
+   3.7277539918588424`*^9, 3.7277988785649347`*^9, 3.7280660149481335`*^9, 
+   3.728066264047171*^9},
+ FontFamily->"Tahoma",ExpressionUUID->"9d3e8de2-9dcd-439f-8682-31d330f123e5"],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsection",
+ CellChangeTimes->{{3.7277844708604355`*^9, 3.7277844719208255`*^9}, {
+  3.7280674744461865`*^9, 3.7280674766159678`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"d1e70b22-3cd4-4411-afb6-51e751fb6c70"],
+
+Cell[CellGroupData[{
+
+Cell["Theorem", "Subsubsection",
+ CellChangeTimes->{{3.727784242589363*^9, 3.727784245319865*^9}, {
+  3.728067478413742*^9, 3.7280674829229155`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"65391b5f-2c8c-495f-a067-0b2fed25b7f2"],
+
+Cell[TextData[{
+ "\tAccording to the class text, ",
+ StyleBox["Elementary Linear Algebra 11th Edition",
+  FontSlant->"Italic"],
+ " by Howard Anton and Chris Rorres, for a given vector space, ",
+ StyleBox["S, ",
+  FontWeight->"Bold"],
+ "if there are two nonempty sets living in ",
+ StyleBox["S",
+  FontWeight->"Bold"],
+ " defined by ",
+ StyleBox["V ",
+  FontWeight->"Bold"],
+ "and ",
+ StyleBox["W",
+  FontWeight->"Bold"],
+ "; it can be shown that the ",
+ StyleBox["Span (V) = Span (W)",
+  FontWeight->"Bold"],
+ " ",
+ StyleBox["if and only if ",
+  FontSlant->"Italic"],
+ "each vector in ",
+ StyleBox["V",
+  FontWeight->"Bold"],
+ " is a linear combination of those in ",
+ StyleBox["W",
+  FontWeight->"Bold"],
+ ", & each vector in ",
+ StyleBox["W",
+  FontWeight->"Bold"],
+ " is a linear combination of the vectors in ",
+ StyleBox["V",
+  FontWeight->"Bold"],
+ ". \t\n\tTo determine if the vectors living in ",
+ StyleBox["V ",
+  FontWeight->"Bold"],
+ "are linear combinations of each vector in ",
+ StyleBox["W",
+  FontWeight->"Bold"],
+ ", we can start by putting our given data in matrix form. As there are three \
+vectors living in  ",
+ StyleBox["V ",
+  FontWeight->"Bold"],
+ "& ",
+ StyleBox["W ",
+  FontWeight->"Bold"],
+ "respectively, we will have 3 constants",
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"c", "=", 
+    RowBox[{"<", 
+     SubscriptBox["c", "1"]}]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"a95cf3ce-a84a-4526-bee5-b628c452401a"],
+ StyleBox[", ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["c", "2"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"301fb526-932c-4bbb-98d3-4441d8f1a377"],
+ StyleBox[", ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["c", "3"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"2d715416-0f71-4223-afde-cd080404912a"],
+ StyleBox[">  ",
+  FontWeight->"Bold"],
+ "and three sets of solutions corresponding to each vector. First and \
+foremost, we can analyze the two sets in matrix form.\t\t\n\t"
+}], "Text",
+ CellChangeTimes->{{3.7277400960229926`*^9, 3.727740136081792*^9}, {
+   3.727740167236101*^9, 3.7277402622592053`*^9}, 3.7277405719072633`*^9, {
+   3.7277427937145596`*^9, 3.727742857991525*^9}, {3.7277451710037966`*^9, 
+   3.7277451736642504`*^9}, {3.727751396252551*^9, 3.727751396745068*^9}, {
+   3.7277538488728113`*^9, 3.727753855956849*^9}, {3.7277538862394915`*^9, 
+   3.7277538877830944`*^9}, 3.7277843099005065`*^9, {3.7277988967678804`*^9, 
+   3.7277989029962697`*^9}, {3.7280674802656703`*^9, 
+   3.7280675351668973`*^9}, {3.728067594585765*^9, 3.728067600032241*^9}, 
+   3.7280694301017637`*^9},
+ FontFamily->"Tahoma",ExpressionUUID->"0f1d9ae9-659a-41a4-90f0-dc7b5eee4cf4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Solving for linear combination constants for V to form the vectors in W\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.72778426117038*^9, 3.727784305392826*^9}, {
+  3.727798985661905*^9, 3.7277990073602357`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"feeeb6ff-bd53-4bca-a5ee-2dc967eaea90"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "Put", " ", "in", " ", "the", " ", "correct", " ", "matrix", " ", "form", 
+     " ", "to", " ", "solve", " ", "for", " ", "constants", " ", "c"}], ",", 
+    " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"V", " ", "&"}], " ", "W", " ", "as", " ", "referred", " ", 
+       "to", " ", "in", " ", "this", " ", "solution", " ", "is", " ", "the", 
+       " ", "matrix", " ", "form", " ", "of", " ", "V"}], " ", "&"}], " ", 
+     "W"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"V", "=", 
+     RowBox[{"Transpose", "[", "V", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"W", "=", 
+     RowBox[{"Transpose", "[", "W", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"constants", ":=", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["c", "1"], ",", 
+       SubscriptBox["c", "2"], ",", 
+       SubscriptBox["c", "3"]}], "}"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.7277402707304487`*^9, 3.727740433757142*^9}, {
+  3.7277405881521835`*^9, 3.7277407977706833`*^9}, {3.72774082900399*^9, 
+  3.7277408739642506`*^9}, {3.7277409595090847`*^9, 3.7277412166557646`*^9}, {
+  3.7277418196593227`*^9, 3.7277418389423676`*^9}, {3.7277428701113358`*^9, 
+  3.7277428840028815`*^9}, {3.7277449049800124`*^9, 3.7277449053223443`*^9}, {
+  3.72774506519459*^9, 3.7277451247528543`*^9}, {3.727747160506098*^9, 
+  3.7277471610758023`*^9}, {3.7277539534955235`*^9, 3.7277539877403183`*^9}, {
+  3.727784566561615*^9, 3.727784568317712*^9}, {3.7277989324284725`*^9, 
+  3.7277989524080667`*^9}, {3.7277991118301134`*^9, 3.7277991152369585`*^9}, {
+  3.7280665222467766`*^9, 3.728066545841613*^9}, {3.728068053229052*^9, 
+  3.728068096122531*^9}, {3.728068345502838*^9, 3.7280683480436077`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"27989f44-afee-45ea-b10a-1516443b49c1"],
+
+Cell[BoxData[
+ RowBox[{"\"\<Matrix form of equation V<c>=W: \n\>\"", " ", 
+  RowBox[{"StringForm", "[", 
+   RowBox[{"\"\<````=``\>\"", ",", 
+    RowBox[{"MatrixForm", "[", "V", "]"}], ",", 
+    RowBox[{"MatrixForm", "[", "constants", "]"}], ",", 
+    RowBox[{"MatrixForm", "[", "W", "]"}]}], "]"}]}]], "Input",
+ CellOpen->False,
+ FontFamily->"Tahoma",ExpressionUUID->"f7bc87e4-2610-4f00-88ae-e7bf0e2bbef7"],
+
+Cell[TextData[{
+ "\t\n\tObserve that this matrix is in the form A",
+ StyleBox["<x>",
+  FontWeight->"Bold"],
+ "=b, in previous notebooks we determined that if A was an invertible matrix, \
+than ",
+ StyleBox["<x>=",
+  FontWeight->"Bold"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["A", 
+    RowBox[{"-", "1"}]], TraditionalForm]],ExpressionUUID->
+  "1078304e-46a6-4c5a-b936-e29f08f9a925"],
+ "b. As ",
+ StyleBox["V ",
+  FontWeight->"Bold"],
+ "is a non-square, non-singular matrix, we are unable to take the inverse of ",
+ StyleBox["V. ",
+  FontWeight->"Bold"],
+ "However, we can multiply both sides by the transpose of ",
+ StyleBox["V",
+  FontWeight->"Bold"],
+ " and manipulate the given equation so that the coefficient matrix attached \
+to the variable matrix is a ",
+ StyleBox["square, non-singular matrix",
+  FontSlant->"Italic"],
+ ". By doing this, we will be able to directly solve for ",
+ StyleBox["<c> ",
+  FontWeight->"Bold"],
+ "by taking the inverse of Transpose[",
+ StyleBox["V",
+  FontWeight->"Bold"],
+ "].",
+ StyleBox["V ",
+  FontWeight->"Bold"],
+ "and multiplying it by Transpose[",
+ StyleBox["V",
+  FontWeight->"Bold"],
+ "].",
+ StyleBox["W.",
+  FontWeight->"Bold"],
+ "\n\t"
+}], "Text",
+ CellChangeTimes->{{3.7277412614634695`*^9, 3.7277413662638283`*^9}, {
+   3.7277414174064317`*^9, 3.727741467516919*^9}, {3.727742956712061*^9, 
+   3.7277430550888577`*^9}, {3.727743142541199*^9, 3.7277431807638445`*^9}, 
+   3.7277432665113106`*^9, {3.7277451628548527`*^9, 3.7277451689944277`*^9}, {
+   3.728067649160469*^9, 3.72806773588488*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"9b6b253e-9e5c-47b6-9b6c-048d1bc701b9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "Code", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"newV", "=", 
+     RowBox[{
+      RowBox[{"Transpose", "[", "V", "]"}], ".", "V"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"newW", "=", 
+     RowBox[{
+      RowBox[{"Transpose", "[", "V", "]"}], ".", "W"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.727741384943512*^9, 3.727741405429387*^9}, {
+   3.727741471177065*^9, 3.7277415820052905`*^9}, {3.7277416247282147`*^9, 
+   3.7277416272658772`*^9}, {3.7277418873313327`*^9, 
+   3.7277418905710907`*^9}, {3.7277420871568155`*^9, 3.7277420911475754`*^9}, 
+   3.727743212965151*^9, {3.72774327380031*^9, 3.7277432931581745`*^9}, {
+   3.727744908989495*^9, 3.7277449093086615`*^9}, {3.7277451640866127`*^9, 
+   3.727745164942507*^9}, {3.727747174640523*^9, 3.727747176339528*^9}, {
+   3.727754015105616*^9, 3.727754015708217*^9}, 3.727784574994517*^9, {
+   3.728066942242996*^9, 3.728066944599202*^9}, {3.7280677570812864`*^9, 
+   3.7280677612794323`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"5069b91a-2dbd-4c01-a95c-43e8a41c1e75"],
+
+Cell[BoxData[{
+ RowBox[{"\"\<Multiply both sides by the transpose of V:\>\"", 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<````=``\>\"", ",", 
+   RowBox[{"MatrixForm", "[", "newV", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "constants", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "newW", "]"}]}], "]"}]}], "Input",
+ CellOpen->False,
+ FontFamily->"Tahoma",ExpressionUUID->"df58caf8-3749-4a65-abe7-81f79d6bf340"],
+
+Cell[TextData[{
+ "\t\n\tAccording to the class text, if the determinant of a square matrix is \
+not zero, than it is invertible. We can do check if Transpose[",
+ StyleBox["V",
+  FontWeight->"Bold"],
+ "].",
+ StyleBox["V ",
+  FontWeight->"Bold"],
+ "is non-singular by finding the determinant. If the determinant is non-zero, \
+we can directly solve for ",
+ StyleBox["<c> ",
+  FontWeight->"Bold"],
+ "by taking the inverse of Transpose[",
+ StyleBox["V",
+  FontWeight->"Bold"],
+ "].",
+ StyleBox["V ",
+  FontWeight->"Bold"],
+ "and multiplying it by Transpose[",
+ StyleBox["V",
+  FontWeight->"Bold"],
+ "].",
+ StyleBox["W.",
+  FontWeight->"Bold"],
+ "\t\n\t"
+}], "Text",
+ CellChangeTimes->{{3.727741644686429*^9, 3.7277417186262856`*^9}, {
+   3.727743406957917*^9, 3.727743436794718*^9}, {3.727745156508438*^9, 
+   3.72774516079307*^9}, {3.728067782048682*^9, 3.728067878343823*^9}, 
+   3.728067974350229*^9, 3.728069521801662*^9},
+ FontFamily->"Tahoma",ExpressionUUID->"e0542e90-d35b-4619-b328-857cc44b0fde"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "Code", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"det", "=", 
+     RowBox[{"Det", "[", "newV", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"cvals", "=", 
+     RowBox[{
+      RowBox[{"Inverse", "[", "newV", "]"}], ".", "newW"}]}], 
+    ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.7277417223170185`*^9, 3.727741752899404*^9}, {
+  3.7277418074677176`*^9, 3.7277418093044586`*^9}, {3.7277418546925945`*^9, 
+  3.7277418623592415`*^9}, {3.7277419065362196`*^9, 3.727742104327821*^9}, {
+  3.727743445867158*^9, 3.7277435040329075`*^9}, {3.727743582088695*^9, 
+  3.7277436251372004`*^9}, {3.72774491203423*^9, 3.7277449123169956`*^9}, {
+  3.7277450282555537`*^9, 3.7277450304153795`*^9}, {3.728066579519165*^9, 
+  3.7280665801377635`*^9}, {3.7280679466735716`*^9, 3.7280680096130295`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"323ffe5f-207a-4e8a-a048-1e160b6f0e84"],
+
+Cell[BoxData[{
+ RowBox[{"StringForm", "[", 
+  RowBox[{
+  "\"\<The determinant of the left hand side matrix is `` which is not zero, \
+therefore it is invertible.\>\"", ",", "det"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<Solving directly for our constants: ``=``\>\"", ",", 
+   RowBox[{"MatrixForm", "[", "constants", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "cvals", "]"}]}], "]"}]}], "Input",
+ CellOpen->False,
+ CellChangeTimes->{{3.7280679589732857`*^9, 3.7280679617085633`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"26ff8ab6-ecb3-4df3-9d86-ee61d8af8c92"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Check", "Subsubsection",
+ CellChangeTimes->{{3.7277843650356207`*^9, 3.7277843928587866`*^9}, {
+  3.7277990181220417`*^9, 3.7277990210332484`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"a41e5a5f-a46a-4193-abc4-67858bba802f"],
+
+Cell[TextData[{
+ "\tThe column values correspond to the linear combination constants for ",
+ StyleBox["V",
+  FontWeight->"Bold"],
+ " to form each vector in ",
+ StyleBox["W",
+  FontWeight->"Bold"],
+ ".",
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ "Respectively, the first column contains the solutions for the first linear \
+combination of ",
+ StyleBox["V ",
+  FontWeight->"Bold"],
+ "for the first vector living in ",
+ StyleBox["W",
+  FontWeight->"Bold"],
+ ". We can have Mathematica check our work using the ",
+ StyleBox["== ",
+  FontWeight->"Bold"],
+ "operation.\n\t"
+}], "Text",
+ CellChangeTimes->{{3.7277436360504684`*^9, 3.7277438323420887`*^9}, {
+  3.727745191799279*^9, 3.7277451958116913`*^9}, {3.7277843744897127`*^9, 
+  3.7277843751186275`*^9}, {3.7280684031734715`*^9, 3.728068405296894*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"f390b901-3526-475a-8e36-451b1ca5726c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "Code", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"check1", ":=", 
+     RowBox[{"checkV", ".", "cvals"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"check1", "\[Equal]", "checkW"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.7280684271029034`*^9, 3.7280684389204125`*^9}, {
+  3.728068622673102*^9, 3.728068660689227*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"7ccb4e4d-ae80-45fb-9897-5979624b57a8"],
+
+Cell[BoxData[{
+ RowBox[{"\"\<Multiplying our linear combination constant matrix by V as \
+defined in the problem:\>\"", 
+  " "}], "\[IndentingNewLine]", "\"\<V<c>=W :\>\"", "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<````=``\>\"", ",", 
+   RowBox[{"MatrixForm", "[", "checkV", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "cvals", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "checkW", "]"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"StringForm", "[", 
+   RowBox[{"\"\<``=``\>\"", ",", 
+    RowBox[{"MatrixForm", "[", "check1", "]"}], ",", 
+    RowBox[{"MatrixForm", "[", "checkW", "]"}]}], "]"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+  "(*", "Check", 
+   "*)"}]}], "\[IndentingNewLine]", "\"\<Check:\>\"", "\[IndentingNewLine]", 
+ RowBox[{"check1", "\[Equal]", "checkW"}]}], "Input",
+ CellOpen->False,
+ CellChangeTimes->{{3.7277438872639103`*^9, 3.727744046230748*^9}, {
+   3.7277448465256705`*^9, 3.727744847690996*^9}, {3.727744915672901*^9, 
+   3.7277449159640536`*^9}, {3.7277471864649677`*^9, 3.72774718749529*^9}, 
+   3.727784595546647*^9, {3.728068442302335*^9, 3.728068525032381*^9}, {
+   3.7280685714217777`*^9, 3.728068611398157*^9}, {3.7280686474670925`*^9, 
+   3.728068679799055*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"7bd87d03-a1be-4e32-a43e-5f0c1e3c914f"],
+
+Cell[TextData[{
+ "\n\tIn conclusion, all of the vectors living in ",
+ StyleBox["W ",
+  FontWeight->"Bold"],
+ "can be rewritten as linear combinations of the vectors living in ",
+ StyleBox["V. ",
+  FontWeight->"Bold"],
+ "To confirm that ",
+ StyleBox["Span(V)=Span(W)",
+  FontWeight->"Bold"],
+ ", we also have to check that the vectors living in ",
+ StyleBox["V ",
+  FontWeight->"Bold"],
+ "can also be rewritten as linear combinations of the vectors living in ",
+ StyleBox["W",
+  FontWeight->"Bold"],
+ ". The same methodology and process will be used.\n\t"
+}], "Text",
+ CellChangeTimes->{{3.7277441027007265`*^9, 3.72774411769319*^9}, {
+   3.727744161540496*^9, 3.7277442362948146`*^9}, {3.727745203765515*^9, 
+   3.727745206529744*^9}, 3.7277843835578847`*^9},
+ FontFamily->"Tahoma",ExpressionUUID->"de2edd0a-99d0-40ab-b91e-d7b2991307f0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Solving for linear combination constants for W to form the vectors in V\
+\>", "Subsubsection",
+ CellChangeTimes->{{3.727746920389426*^9, 3.727746920901909*^9}, {
+  3.7277843970372524`*^9, 3.727784424133417*^9}, {3.7277844879061036`*^9, 
+  3.727784490141385*^9}, {3.7277990426521397`*^9, 3.727799054544147*^9}, {
+  3.728068728219904*^9, 3.7280687315287704`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"2a790d53-73c8-462d-b5ba-88d270c73ecd"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"constants", ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     SubscriptBox["c", "1"], ",", 
+     SubscriptBox["c", "2"], ",", 
+     SubscriptBox["c", "3"]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", "\"\<Matrix form of equation: W<c>=V\>\"", "\
+\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<````=``\>\"", ",", 
+   RowBox[{"MatrixForm", "[", "W", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "constants", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "V", "]"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"newW", "=", 
+   RowBox[{
+    RowBox[{"Transpose", "[", "W", "]"}], ".", "W"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"newV", "=", 
+    RowBox[{
+     RowBox[{"Transpose", "[", "W", "]"}], ".", "V"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", "\"\<Multiply both sides by \
+the transpose of W:\>\"", "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"StringForm", "[", 
+   RowBox[{"\"\<````=``\>\"", ",", 
+    RowBox[{"MatrixForm", "[", "newW", "]"}], ",", 
+    RowBox[{"MatrixForm", "[", "constants", "]"}], ",", 
+    RowBox[{"MatrixForm", "[", "newV", "]"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"det", "=", 
+   RowBox[{"Det", "[", "newW", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{
+  "\"\<The determinant of the left hand side matrix is `` which is greater \
+than zero, therefore it is invertible.\>\"", ",", "det"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"cvals", "=", 
+    RowBox[{
+     RowBox[{"Inverse", "[", "newW", "]"}], ".", "newV"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"StringForm", "[", 
+   RowBox[{"\"\<Solving directly for our constants: ``=``\>\"", ",", 
+    RowBox[{"MatrixForm", "[", "constants", "]"}], ",", 
+    RowBox[{"MatrixForm", "[", "cvals", "]"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", "\"\<Multiplying our linear \
+combination constant matrix by V as defined in the problem:\>\"", "\
+\[IndentingNewLine]", "\"\<W<c>=V :\>\"", "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<````=``\>\"", ",", 
+   RowBox[{"MatrixForm", "[", "checkW", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "cvals", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "checkV", "]"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"StringForm", "[", 
+   RowBox[{"\"\<``=``\>\"", ",", 
+    RowBox[{"MatrixForm", "[", 
+     RowBox[{"checkW", ".", "cvals"}], "]"}], ",", 
+    RowBox[{"MatrixForm", "[", "checkV", "]"}]}], "]"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", "Check", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"\"\<Check:\>\"", " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"checkW", ".", "cvals"}], "\[Equal]", "checkV"}], 
+  "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellOpen->False,
+ CellChangeTimes->{{3.727744305224492*^9, 3.72774444357055*^9}, {
+  3.727744524385264*^9, 3.727744535258727*^9}, {3.7277446126917267`*^9, 
+  3.7277446518270655`*^9}, {3.7277446859015813`*^9, 3.727744686996974*^9}, {
+  3.727744755793557*^9, 3.727744757589912*^9}, {3.727744799319605*^9, 
+  3.7277448211080413`*^9}, {3.72774485175823*^9, 3.7277448742312145`*^9}, {
+  3.7277449190794067`*^9, 3.7277449192579355`*^9}, {3.7277452089204817`*^9, 
+  3.7277452144654016`*^9}, {3.727747002623232*^9, 3.7277470563167615`*^9}, {
+  3.727799161374075*^9, 3.727799181143585*^9}, {3.7280690276806574`*^9, 
+  3.728069150808832*^9}, {3.728069212184514*^9, 3.728069219776289*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"3c2ab792-ed17-47a8-86ac-b31cec825fb2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Conclusion", "Subsubsection",
+ CellChangeTimes->{{3.728069392489699*^9, 3.728069394789817*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"046b07d4-8cd6-49ba-9e60-15fe700f900e"],
+
+Cell[TextData[{
+ "\tIn conclusion, ",
+ StyleBox["Span(V)=Span(W)",
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.7280693976153345`*^9, 3.728069407811454*^9}, 
+   3.7280695443653555`*^9, {3.7280702341994734`*^9, 3.7280702350006113`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"ed1350d2-60ff-4357-a385-168edd98884d"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Problem 2",
+ FontWeight->"Bold"]], "Section",
+ CellChangeTimes->{{3.725970889152566*^9, 3.7259708908771477`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"756d14f3-68a1-44ed-a452-d40c6cc38e24"],
+
+Cell[TextData[{
+ "\tGiven a set of polynomials, determine if they span ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["P", "2"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"59d7ea87-77e9-4f6c-a3ba-7e5b0d69cbef"],
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ "(the vector space of all polynomials degree two or less). "
+}], "Text",
+ CellChangeTimes->{{3.727735931510765*^9, 3.727735970351522*^9}, {
+   3.7277361148141956`*^9, 3.727736137294799*^9}, {3.727784515111186*^9, 
+   3.7277845191702695`*^9}, {3.728069557313817*^9, 3.728069567393595*^9}, 
+   3.7280698417263002`*^9, 3.728076358499242*^9, {3.7280768855136724`*^9, 
+   3.728076890291385*^9}, {3.728083423762499*^9, 3.7280834276678677`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"c495583c-412a-4c4d-a773-9ec7edc8bd9d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "Given", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SubscriptBox["p", "1"], "=", 
+     RowBox[{"1", "-", "x", "+", 
+      RowBox[{"2", 
+       SuperscriptBox["x", "2"]}]}]}], ";", " ", 
+    RowBox[{
+     SubscriptBox["p", "2"], "=", 
+     RowBox[{"3", "+", "x"}]}], ";", 
+    RowBox[{
+     SubscriptBox["p", "3"], "=", 
+     RowBox[{"5", "-", "x", "+", 
+      RowBox[{"4", 
+       SuperscriptBox["x", "2"]}]}]}], ";", " ", 
+    RowBox[{
+     SubscriptBox["p", "4"], "=", 
+     RowBox[{
+      RowBox[{"-", "2"}], "-", 
+      RowBox[{"2", "x"}], "+", 
+      RowBox[{"2", 
+       SuperscriptBox["x", "2"]}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"coeff", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", ",", "0", ",", "4", ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", "1", ",", 
+         RowBox[{"-", "1"}], ",", 
+         RowBox[{"-", "2"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3", ",", "5", ",", 
+         RowBox[{"-", "2"}]}], "}"}]}], "}"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.7275563971959524`*^9, 3.727556461832575*^9}, {
+  3.727735822481235*^9, 3.7277358264951515`*^9}, {3.7277358764106264`*^9, 
+  3.7277359242883034`*^9}, {3.7277359736595583`*^9, 3.7277360104580393`*^9}, {
+  3.7277361419666853`*^9, 3.727736153263672*^9}, {3.727736241200949*^9, 
+  3.727736265079789*^9}, {3.728069769773917*^9, 3.7280697710613337`*^9}, {
+  3.7280698181385555`*^9, 3.7280698375722504`*^9}, {3.7280711388444867`*^9, 
+  3.7280711496402054`*^9}, {3.7280723183344145`*^9, 3.72807235817439*^9}, {
+  3.728072389589973*^9, 3.7280723965675497`*^9}, {3.7280841090347958`*^9, 
+  3.7280841189429255`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"b445df44-6df5-449a-b56d-b9020d7eef0d"],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsection",
+ CellChangeTimes->{{3.728069850954857*^9, 3.72806985209488*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"12a0a3fa-6ce4-43c0-ac72-a5d5dd227c30"],
+
+Cell[CellGroupData[{
+
+Cell["Definition of Spanning", "Subsubsection",
+ CellChangeTimes->{{3.728070588144946*^9, 3.7280705910516567`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"1ca28d47-ae6b-4b58-b2ba-c44c54ea4e14"],
+
+Cell[TextData[{
+ "\tIf ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"S", "=", 
+    RowBox[{"{", 
+     SubscriptBox["v", "1"]}]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"5eebe1ae-9e0d-4c96-b86b-0755560ef7cc"],
+ StyleBox[", ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "2"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"7bce5574-fccc-4ba0-b430-100eea82e6bd"],
+ StyleBox[", ..., ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "n"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"7d32f223-ce9c-46fb-860c-243aff731802"],
+ StyleBox["} ",
+  FontWeight->"Bold"],
+ "is a set of vectors in a vector space ",
+ StyleBox["V",
+  FontWeight->"Bold"],
+ ", then, the subspace ",
+ StyleBox["W ",
+  FontWeight->"Bold"],
+ "of ",
+ StyleBox["V ",
+  FontWeight->"Bold"],
+ "consisting of all linear combinations of the vectors in ",
+ StyleBox["S ",
+  FontWeight->"Bold"],
+ "is called the space spanned by ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "1"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"b50b6901-e41a-4fa2-837d-499f1be728c6"],
+ StyleBox[", ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "2"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"a7af42b0-928c-4df5-bac6-92064e8123e3"],
+ StyleBox[", ..., ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "n"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"97439093-2bbc-4348-bcc7-c424632d2282"],
+ StyleBox[",",
+  FontWeight->"Bold"],
+ " & the vectors,",
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "1"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"6dd3e989-b250-4868-95b6-aa6366e6c6f8"],
+ StyleBox[", ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "2"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"d8c27622-6ca5-4137-8e2a-dae2c649b371"],
+ StyleBox[", ..., ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "n"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"c75df899-e237-4592-94ef-2010b4bc27b8"],
+ ",",
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ "span",
+ StyleBox[" W",
+  FontWeight->"Bold"],
+ ". The subspace ",
+ StyleBox["W ",
+  FontWeight->"Bold"],
+ "is the space spanned by the vectors in the set",
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"S", "=", 
+    RowBox[{"{", 
+     SubscriptBox["v", "1"]}]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"8a6b3fea-f1d0-439c-9400-3bd0f0f830d4"],
+ StyleBox[", ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "2"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"ef8f4b84-ea11-442a-b9fb-e292523f276e"],
+ StyleBox[", ..., ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "n"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"6d451039-ac76-4171-9c3d-75b5817049c0"],
+ StyleBox["} ",
+  FontWeight->"Bold"],
+ "& is denoted as ",
+ StyleBox["W = span(S)",
+  FontWeight->"Bold"],
+ " or ",
+ StyleBox["W = span",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"{", 
+    SubscriptBox["v", "1"]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"629b7659-bbc6-4c0b-96e8-012b27f07cc9"],
+ StyleBox[", ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "2"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"b1b6a61f-3058-4550-9ac8-d5e841fad632"],
+ StyleBox[", ..., ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["v", "n"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"f5085124-a630-41b4-9617-a4f1969a3128"],
+ StyleBox["}",
+  FontWeight->"Bold"],
+ ".\n\t",
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ "A set of vectors span a space if their linear combinations fill the given \
+space. In other words, it is the the intersection of all subspaces containing \
+the set of vectors."
+}], "Text",
+ CellChangeTimes->{{3.728069869266556*^9, 3.7280698734095774`*^9}, {
+  3.7280702894494033`*^9, 3.7280704909363537`*^9}, {3.728070531818095*^9, 
+  3.7280706022544875`*^9}, {3.728084195590086*^9, 3.728084324492727*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"1d69d8e3-e93b-4a33-933f-7eb9db45aace"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Finding Linear Combination Constants", "Subsubsection",
+ CellChangeTimes->{{3.72807064174052*^9, 3.728070648891507*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"36c9c91b-0c27-474d-931e-273f2569fee3"],
+
+Cell[TextData[{
+ "\tTo check if the given polynomials span ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SubscriptBox["P", "2"],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "49370ed8-96c9-4339-9959-7ed774c5d431"],
+ ", we first need to verify that the arbitrary polynomial ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["ax", "2"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"f001b5e9-3736-41e7-a8d3-bb3604b5ad05"],
+ StyleBox["+bx+c ",
+  FontWeight->"Bold"],
+ "in ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SubscriptBox["P", "2"],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "f1ad42cc-8b8d-4aea-b299-040ee9be6ef2"],
+ " can be expressed as a linear combination of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"<", 
+     SubscriptBox["p", "1"]}], ",", " ", 
+    SubscriptBox["p", "2"], ",", " ", 
+    SubscriptBox["p", "3"]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"c2fccb3e-42d4-4192-a094-43b31211b0a7"],
+ StyleBox[",",
+  FontWeight->"Bold"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    RowBox[{
+     SubscriptBox["p", "4"], ">"}],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "32ad7af8-f9a6-4754-b89a-e77d2421527d"],
+ " or not. \nThat is: if",
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["ax", "2"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"9960a99e-d7d8-4f5f-9a85-bf7bf3e21072"],
+ StyleBox["+bx+c= <k><p> ",
+  FontWeight->"Bold"],
+ "or not; where ",
+ StyleBox["<k>=< ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["k", "1"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"0db9645a-0cb5-4180-9237-c14d57faffe2"],
+ StyleBox[", ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["k", "2"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"c5fc4f28-e92b-4021-b093-29416047b855"],
+ StyleBox[", ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["k", "3"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"24ed2c0b-7612-4676-aa9e-2c794b889e18"],
+ StyleBox[", ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["k", "4"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"efc1b719-7176-4e1a-a65d-f6f3faade948"],
+ StyleBox[" >",
+  FontWeight->"Bold"],
+ " &",
+ StyleBox[" <p>=< ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["p", "1"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"667c51c6-e2a6-44b5-8f61-d3a37c3dda19"],
+ StyleBox[", ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["p", "2"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"d907d264-9d67-4ef5-85d2-4a32054600be"],
+ StyleBox[", ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["p", "3"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"d15e3b83-d4ba-4832-863d-4407af42451a"],
+ StyleBox[", ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["p", "4"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"5ffb4567-269d-4f75-ad6d-c981ac36852d"],
+ StyleBox[" >. ",
+  FontWeight->"Bold"]
+}], "Text",
+ CellChangeTimes->{{3.728070666506363*^9, 3.728070796510932*^9}, {
+   3.7280708570038843`*^9, 3.7280709934306984`*^9}, 3.728071622244345*^9, 
+   3.7280763549648776`*^9, {3.728076903753152*^9, 3.72807691557464*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"a8aac4d6-13e2-4859-8ad3-b0470b2ad592"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Set", "-", "up"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"kvals", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["k", "1"], ",", 
+       SubscriptBox["k", "2"], ",", 
+       SubscriptBox["k", "3"], ",", 
+       SubscriptBox["k", "4"]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"p", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["p", "1"], ",", 
+       SubscriptBox["p", "2"], ",", 
+       SubscriptBox["p", "3"], ",", 
+       SubscriptBox["p", "4"]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eqns", "=", 
+     RowBox[{"kvals", ".", "p"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.7280708029119596`*^9, 3.728070840135972*^9}, {
+  3.7280710169432364`*^9, 3.7280710296099367`*^9}, {3.728071080327837*^9, 
+  3.7280711242316265`*^9}, {3.728071158613099*^9, 3.728071253171604*^9}, {
+  3.7280713548650985`*^9, 3.728071364373396*^9}, {3.7280714520666494`*^9, 
+  3.7280714644656744`*^9}, {3.7280716275694838`*^9, 3.728071639591461*^9}, {
+  3.7280718491012707`*^9, 3.7280718540714912`*^9}, {3.7280720738661394`*^9, 
+  3.728072087068261*^9}, {3.728073994493519*^9, 3.7280740174626245`*^9}, {
+  3.728074487239027*^9, 3.7280744878807344`*^9}, {3.7280801619204817`*^9, 
+  3.72808016616278*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"ca19d8e9-1e31-4444-9879-193699ad8f44"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "=", 
+    RowBox[{"{", 
+     RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], ";"}], 
+  " "}], "\[IndentingNewLine]", "\"\<By observation, after multiplying \
+<k><p>, we will have three equations & 4 unknowns [<k> = unknowns; a,b, & c \
+are constants; <x> = \!\(\*SuperscriptBox[\(x\), \(2\)]\),x,constants]:\>\"", \
+"\[IndentingNewLine]", "\"\< <k>.<p> = \!\(\*SuperscriptBox[\(ax\), \(2\)]\) \
++ bx + c :\>\"", "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"StringForm", "[", 
+   RowBox[{"\"\<``= \!\(\*SuperscriptBox[\(ax\), \(2\)]\)+bx+c\>\"", ",", 
+    RowBox[{"MatrixForm", "[", "eqns", "]"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", "\"\<Matrix form of \
+Equation: \nEquating coefficients & grouping together like things [<x>] \
+(Coefficient Matrix):\>\"", "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<````=``\>\"", ",", 
+   RowBox[{"MatrixForm", "[", "coeff", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "kvals", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "f", "]"}]}], 
+  "]"}], "\[IndentingNewLine]", "\"\<Multiply both sides by the transpose of \
+the left-hand side matrix :\>\"", "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<``````=````\>\"", ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"Transpose", "[", "coeff", "]"}], "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "coeff", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "kvals", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"Transpose", "[", "coeff", "]"}], "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "f", "]"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<````=``\>\"", ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{
+     RowBox[{"Transpose", "[", "coeff", "]"}], ".", "coeff"}], "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "kvals", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{
+     RowBox[{"Transpose", "[", "coeff", "]"}], ".", "f"}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]", "\"\<Check if determinant of left-hand side \
+matrix is not zero: \>\"", "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{
+  "\"\<The determinant of the left-hand matrix is ``, so there is no solution \
+for <k> for the given set of polynomials.\>\"", ",", 
+   RowBox[{"Det", "[", 
+    RowBox[{
+     RowBox[{"Transpose", "[", "coeff", "]"}], ".", "coeff"}], "]"}]}], 
+  "]"}]}], "Input",
+ CellOpen->False,
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBWIQzXPxWc3uY68d713WawTRR9YVt4PoP+99poNoJnOe
+hWDxfytXgehn9fo7QfS/vKi9IHrCy8snQPSHWu5TYJol7hxYnoP/PIgWyJt5
+G0Sf17oDpp/NrngGooX2qr8Hi4tzfwHRactZ2PcA6Tlcd7lB9I3mt0oget/n
+V2oguvDedT0QffeUljGI7ojNANPXpkyyANG70pXtQfSLhU/9QTTX85ZwEH1y
+uk4KiC5YfSUTROcKiuaB6CnuJ6tBdB1TdzOI1pnpNh9Eq+30Xw2ijXm+bgTR
+Th+WHwLR8Xun3QDR6+ZeeQii/wl+AtPTVszdexBIs3Sz7APRABNgzMg=
+  "],
+ FontFamily->"Tahoma",ExpressionUUID->"330aef3c-af68-4e6b-a661-b0bcef8d3209"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Conclusion", "Subsubsection",
+ CellChangeTimes->{{3.7277364472780027`*^9, 3.7277364818379145`*^9}, {
+  3.727745449831233*^9, 3.7277454630205803`*^9}, {3.7280741407234864`*^9, 
+  3.728074161822613*^9}},
+ FontFamily->"Tahoma",
+ FontWeight->"Plain",ExpressionUUID->"06ead669-5dae-495b-9915-d490f0340a30"],
+
+Cell[TextData[{
+ "\tIn conclusion, the given set of polynomials do not span ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SubscriptBox["P", "2"],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "9afcb8bd-2874-437d-a7c9-f91a68449653"],
+ ", because there is no linear combination of ",
+ StyleBox["<p> ",
+  FontWeight->"Bold"],
+ "that can express  ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["ax", "2"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"27411192-ef71-4889-b7fe-447761baa07d"],
+ StyleBox["+bx+c",
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.72807416468426*^9, 3.7280742486496067`*^9}, 
+   3.7280769353422213`*^9},
+ FontFamily->"Tahoma",ExpressionUUID->"bc934121-c6fa-4e86-a1ff-6fc34dc7fc0e"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Problem 3",
+ FontWeight->"Bold"]], "Section",
+ CellChangeTimes->{{3.725970904501316*^9, 3.7259709059028997`*^9}, {
+  3.725971224917407*^9, 3.7259712249534807`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"8ef00e93-6987-4333-a56e-636a7f8468b0"],
+
+Cell[TextData[{
+ "\tDetermine whether or not the images of the set of vectors ",
+ StyleBox["S ",
+  FontWeight->"Bold"],
+ "under the two matrix transformation defined by ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["A", "1"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"c77d4194-24b7-4d57-9f55-477cc6b4b63f"],
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ "and",
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["A", "2"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"e72b185d-201c-4bd9-9011-f234ddf7435e"],
+ ", are linearly independent or linearly dependent.",
+ StyleBox[" ",
+  FontWeight->"Bold"]
+}], "Text",
+ CellChangeTimes->{{3.7280755164807453`*^9, 3.728075576495371*^9}, {
+  3.728076945581414*^9, 3.728076995477171*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"cf903b17-7a6e-4dd9-81b8-e476663a00cf"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "Given", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"S", ":=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", 
+        RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "1"}], "}"}]}], "}"}]}], ";", " ", 
+   RowBox[{
+    SubscriptBox["A", "1"], ":=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1", ",", "2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0", ",", 
+        RowBox[{"-", "3"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "2", ",", "0"}], "}"}]}], "}"}]}], ";", " ", 
+   RowBox[{
+    SubscriptBox["A", "2"], ":=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1", ",", 
+        RowBox[{"-", "3"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "2", ",", "0"}], "}"}]}], "}"}]}], ";", " ", 
+   RowBox[{"zero", ":=", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.7277365076955795`*^9, 3.727736528463217*^9}, {
+  3.7277370396912637`*^9, 3.727737105820363*^9}, {3.7277454683965645`*^9, 
+  3.7277454696618767`*^9}, {3.7277458749723735`*^9, 3.727745914650417*^9}, {
+  3.7277460072866197`*^9, 3.7277460110945816`*^9}, {3.7277460501862297`*^9, 
+  3.7277460952939615`*^9}, {3.7280753451015363`*^9, 3.7280754135205345`*^9}, {
+  3.728076002073422*^9, 3.728076005343091*^9}, {3.728076045544055*^9, 
+  3.7280760539393554`*^9}, {3.7280768323532715`*^9, 3.7280768361483254`*^9}, {
+  3.728079070474623*^9, 3.7280790854324155`*^9}, {3.7280791196875305`*^9, 
+  3.728079124960557*^9}, {3.72808448790145*^9, 3.728084494600193*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"18ffcb1e-51a3-43ad-9eba-e26fc633c152"],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsection",
+ CellChangeTimes->{{3.728075663433625*^9, 3.728075664842373*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"b9766ceb-f950-4760-b01a-df5ba6b99e4b"],
+
+Cell[CellGroupData[{
+
+Cell["Definition of an Image", "Subsubsection",
+ CellChangeTimes->{{3.7280756759950795`*^9, 3.7280756796066446`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"c26ac729-028b-43fe-b617-9f30f191f267"],
+
+Cell[TextData[{
+ "\tAs defined in this problem,",
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["T", "A"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"eea9e8c2-40b4-4f15-998e-d2ca94ac8791"],
+ StyleBox[": ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["R", "3"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"25a2cef7-82c5-4d54-a48f-2d080a15d9c5"],
+ StyleBox["-> ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["R", "3"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"ccefa2fb-da7f-46a5-be2a-7c2cb2c8bdde"],
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ "by multiplication by ",
+ StyleBox["A",
+  FontWeight->"Bold"],
+ ". The image is the set of all objects in ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["R", "3"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"2ca6e816-b296-4641-a5f1-b4bf6339a0ce"],
+ " that is obtained by multiplying ",
+ StyleBox["A",
+  FontWeight->"Bold"],
+ " in ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SuperscriptBox["R", "3"],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "3c7ab482-efdb-404f-a57e-272bbae9926d"],
+ ". It is the same thing as column space, which is the span of the columns of \
+",
+ StyleBox["A",
+  FontWeight->"Bold"],
+ " or the set of all linear combinations of the columns in ",
+ StyleBox["A.",
+  FontWeight->"Bold"]
+}], "Text",
+ CellChangeTimes->{{3.7280756828302183`*^9, 3.728075810903899*^9}, {
+   3.7280758500049334`*^9, 3.728075877197274*^9}, {3.7280759349739504`*^9, 
+   3.7280759539523954`*^9}, 3.7280760710448627`*^9, 3.7280762872788005`*^9},
+ FontFamily->"Tahoma",ExpressionUUID->"212afcd0-0017-4ec9-84bd-678fc798000c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Find the Column Space of S", "Subsubsection",
+ CellChangeTimes->{{3.7280760867997665`*^9, 3.7280760896544027`*^9}, {
+  3.72807741365377*^9, 3.728077416382059*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"61075124-9580-408f-b82f-83748385d86c"],
+
+Cell[TextData[{
+ "\tTo find the image of ",
+ StyleBox["S",
+  FontWeight->"Bold"],
+ ", we will row reduce ",
+ StyleBox["S ",
+  FontWeight->"Bold"],
+ "to determine the pivot columns to determine which columns make up the \
+column space of ",
+ StyleBox["S.",
+  FontWeight->"Bold"]
+}], "Text",
+ CellChangeTimes->{{3.7277366587392635`*^9, 3.7277366679893928`*^9}, {
+  3.728077023005397*^9, 3.728077101221746*^9}, {3.728077628444312*^9, 
+  3.728077643621657*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"b295a3a8-b6a0-414c-b75f-d7368c2c2ab2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Set", "-", "up"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"imageS", "=", 
+    RowBox[{"RowReduce", "[", "S", "]"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.7280777480233545`*^9, 3.728077751661029*^9}, {
+  3.728080157385395*^9, 3.728080157659149*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"49403215-8e8c-4b75-8d93-a102cc74c5d6"],
+
+Cell[BoxData[{
+ RowBox[{"\"\<S: \>\"", " ", 
+  RowBox[{"MatrixForm", "[", "S", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"\"\<Row Reduce S: \>\"", " ", 
+  RowBox[{
+  "MatrixForm", "[", "imageS", 
+   "]"}]}], "\[IndentingNewLine]", "\"\<Defining the pivots of each column, \
+the column space of \
+\!\(\*StyleBox[\"S\",FontWeight->\"Bold\"]\)\!\(\*StyleBox[\" \",FontWeight->\
+\"Bold\"]\)will be in \!\(\*FormBox[StyleBox[SuperscriptBox[\"R\", \
+\"3\"],FontWeight->\"Bold\"],TraditionalForm]\) & is defined as:\>\"", "\
+\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"calcS", "=", 
+   RowBox[{"Transpose", "[", "S", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<col(S) = span{`` , `` ,  ``}\>\"", ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"calcS", "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"calcS", "[", 
+     RowBox[{"[", "2", "]"}], "]"}], "]"}], ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"calcS", "[", 
+     RowBox[{"[", "3", "]"}], "]"}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]", "\"\<The basis for S can be expressed as the \
+following equation, where a, b, & c are constants:\>\"", \
+"\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<a`` + b`` + c``\>\"", ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"calcS", "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"calcS", "[", 
+     RowBox[{"[", "2", "]"}], "]"}], "]"}], ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"calcS", "[", 
+     RowBox[{"[", "3", "]"}], "]"}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]", "\"\<Finding the span(Where a, b, & c are \
+constants)\nPutting S in the correct form: \>\"", "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<```` = ``\>\"", ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"Transpose", "[", "S", "]"}], "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "constants", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "f", "]"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{
+  "\"\<The determinant of the left-hand side matrix is ``, which is not zero, \
+so it is invertible and there is a solution for <c>.\>\"", ",", 
+   RowBox[{"Det", "[", 
+    RowBox[{"Transpose", "[", "S", "]"}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"sav", "=", 
+   RowBox[{"Inverse", "[", 
+    RowBox[{"Transpose", "[", "S", "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", "\"\<Solving directly:\>\"", "\
+\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{
+  "\"\<``=``; where a,b, & c are constants and can be all real numbers\>\"", 
+   ",", 
+   RowBox[{"MatrixForm", "[", "constants", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"sav", ".", "f"}], "]"}]}], "]"}]}], "Input",
+ CellOpen->False,
+ CellChangeTimes->{{3.7277366752307377`*^9, 3.72773668240279*^9}, {
+   3.727745508540081*^9, 3.727745573566474*^9}, {3.7280760954357705`*^9, 
+   3.728076101445764*^9}, {3.7280762760128345`*^9, 3.7280762776472197`*^9}, {
+   3.7280773960640154`*^9, 3.7280774450222025`*^9}, {3.7280777213193226`*^9, 
+   3.728077731833295*^9}, {3.728077800694457*^9, 3.7280778487382593`*^9}, {
+   3.7280778997178607`*^9, 3.7280779900892496`*^9}, {3.728078066002595*^9, 
+   3.728078235158537*^9}, {3.72807837877459*^9, 3.7280784003118706`*^9}, {
+   3.72807843223075*^9, 3.7280784340215077`*^9}, {3.728078475340416*^9, 
+   3.728078476295963*^9}, {3.7280785130898533`*^9, 3.7280785229340525`*^9}, 
+   3.7280789887001257`*^9, {3.728079137095871*^9, 3.7280791440804224`*^9}, {
+   3.728079182351265*^9, 3.728079383804104*^9}, {3.7280794286684093`*^9, 
+   3.7280794616792564`*^9}, {3.728079560452955*^9, 3.7280798644361563`*^9}, {
+   3.7280800177660046`*^9, 3.728080024582134*^9}, {3.7280845531831503`*^9, 
+   3.728084603657941*^9}, {3.7280847631099195`*^9, 3.728084808599245*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"5d870a45-267c-4d5a-83a1-733328f3f7e3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  SubscriptBox["A", "1"], 
+  TraditionalForm]],ExpressionUUID->"ee919983-d76d-4d86-96b4-f61b7b7385b1"]], \
+"Subsubsection",
+ CellChangeTimes->{{3.7280785642008123`*^9, 3.728078566167017*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"2acb41bb-d5d2-4332-a702-1ca233203f85"],
+
+Cell[TextData[{
+ "\tConsidering ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SubscriptBox["A", 
+     RowBox[{"1", ","}]],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "90f648bc-96df-481f-92c6-0893203f9a0b"],
+ " we can calculate what the transformation of ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SubscriptBox["A", "1"],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "927694b2-0bfc-4a74-9b81-a7427f53d6ff"],
+ " will be; given the basis equation defined by ",
+ StyleBox["S",
+  FontWeight->"Bold"],
+ ". After finding ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"T", "(", 
+    SubscriptBox["A", "1"]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"a3a99321-1ead-4694-9927-be8183b2cb0c"],
+ StyleBox[")",
+  FontWeight->"Bold"],
+ ", we will use the dependence equation to determine if ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SubscriptBox["A", "1"],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "b88b1498-fdc3-4627-ad2f-2c432323f370"],
+ " is linearly independent or linearly dependent. "
+}], "Text",
+ CellChangeTimes->{{3.7280786155493703`*^9, 3.728078733975377*^9}, {
+  3.728078793609004*^9, 3.728078799819518*^9}, {3.7280848660615788`*^9, 
+  3.7280848803997593`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"2135810d-7ed7-435f-b56f-a1a0c8a4f219"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Set", "-", "up"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    SubscriptBox["transA", "1"], "=", 
+    RowBox[{
+     SubscriptBox["A", "1"], ".", "calcS"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.7280788389877048`*^9, 3.7280788919657984`*^9}, {
+  3.7280801052918544`*^9, 3.728080152767101*^9}, {3.7280801933079386`*^9, 
+  3.728080252571587*^9}, {3.7280804847102*^9, 3.7280805717707424`*^9}, {
+  3.7280806019640827`*^9, 3.72808065892561*^9}, {3.7280808781690283`*^9, 
+  3.7280808789079967`*^9}, {3.7280811531364374`*^9, 3.728081172837841*^9}, {
+  3.728081802843194*^9, 3.7280818074935665`*^9}, {3.728082136102685*^9, 
+  3.728082136640111*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"22401f66-a3f8-4508-aebd-3a75ffc3a341"],
+
+Cell[BoxData[{"\"\<The transformation of \!\(\*SubscriptBox[\(A\), \(1\)]\) \
+under the basis of S: \>\"", "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<````=``\>\"", ",", 
+   RowBox[{"MatrixForm", "[", 
+    SubscriptBox["A", "1"], "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "calcS", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", 
+    SubscriptBox["transA", "1"], "]"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"\"\<Using the dependence equation: \>\"", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Set", " ", "everything"}], " ", "=", " ", 
+    RowBox[{"to", " ", "zero"}]}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"hoss1", "=", 
+   RowBox[{"Transpose", "[", 
+    SubscriptBox["transA", "1"], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"hossA", "=", 
+   RowBox[{"Join", "[", 
+    RowBox[{"hoss1", ",", 
+     RowBox[{"{", "zero", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"hossA", "=", 
+   RowBox[{"Transpose", "[", "hossA", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "hossA", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dispHossA", "=", 
+   RowBox[{"Transpose", "[", "hossA", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", "\"\<Or:\>\"", "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<a`` + b`` + c `` = ``; where a,b,&c are constants\>\"", ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"dispHossA", "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"dispHossA", "[", 
+     RowBox[{"[", "2", "]"}], "]"}], "]"}], ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"dispHossA", "[", 
+     RowBox[{"[", "3", "]"}], "]"}], "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "zero", "]"}]}], 
+  "]"}], "\[IndentingNewLine]", "\"\<Row reduce: \>\"", "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", 
+  RowBox[{"RowReduce", "[", "hossA", "]"}], 
+  "]"}], "\[IndentingNewLine]", "\"\<By inspection, a,b,&c=0; therefore \
+\!\(\*SubscriptBox[\(A\), \(1\)]\) is linearly independent as defined by the \
+basis given by S\>\""}], "Input",
+ CellOpen->False,
+ CellChangeTimes->{{3.7280802754374027`*^9, 3.7280804600365734`*^9}, {
+  3.72808088485686*^9, 3.7280810773959656`*^9}, {3.728081127868219*^9, 
+  3.7280811410603533`*^9}, {3.728081179380243*^9, 3.7280812220507417`*^9}, {
+  3.7280812998416653`*^9, 3.7280813055979834`*^9}, {3.728081348814937*^9, 
+  3.7280814205367403`*^9}, {3.728081475171036*^9, 3.728081526804412*^9}, {
+  3.7280815659214287`*^9, 3.7280816499755907`*^9}, {3.7280817215489902`*^9, 
+  3.7280821271087747`*^9}, {3.7280822006784215`*^9, 3.7280822798019314`*^9}, {
+  3.7280823506593933`*^9, 3.7280825164320307`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"ad31ec2a-7681-4f6e-8334-0a32e0819a13"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ FormBox[
+  SubscriptBox["A", "2"], 
+  TraditionalForm]],ExpressionUUID->"5ad27e21-41a2-40b6-b755-079fe75038a8"]], \
+"Subsubsection",
+ CellChangeTimes->{{3.7280825428994427`*^9, 3.728082543642414*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"05a4ea6d-520a-4ee5-bd2c-4064f16223d1"],
+
+Cell[TextData[{
+ "\tThe same methodology will be used for the given transformation ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SubscriptBox["A", "2"],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "d47aa7ab-0a19-4a81-88a4-4470a0f50018"],
+ " as used in ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    RowBox[{
+     SubscriptBox["A", "1"], "."}],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "4828e406-838a-498e-bb37-28643c0f8626"]
+}], "Text",
+ CellChangeTimes->{{3.7280825503201447`*^9, 3.7280825737835984`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"b55535b9-3536-4a11-a243-b9c64fcc29fa"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Set", "-", "up"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    SubscriptBox["transA", "2"], "=", 
+    RowBox[{
+     SubscriptBox["A", "2"], ".", "calcS"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{
+  3.728081072892986*^9, 3.7280825465431004`*^9, {3.7280826006821117`*^9, 
+   3.7280826174136086`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"563fee6f-0e33-4070-bb0a-c3bee13c2950"],
+
+Cell[BoxData[{"\"\<The transformation of \!\(\*SubscriptBox[\(A\), \(2\)]\) \
+under the basis of S: \>\"", "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<````=``\>\"", ",", 
+   RowBox[{"MatrixForm", "[", 
+    SubscriptBox["A", "2"], "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "calcS", "]"}], ",", 
+   RowBox[{"MatrixForm", "[", 
+    SubscriptBox["transA", "2"], "]"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"\"\<Using the dependence equation: \>\"", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Set", " ", "everything"}], " ", "=", " ", 
+    RowBox[{"to", " ", "zero"}]}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"hoss2", "=", 
+   RowBox[{"Transpose", "[", 
+    SubscriptBox["transA", "2"], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"hossA2", "=", 
+   RowBox[{"Join", "[", 
+    RowBox[{"hoss2", ",", 
+     RowBox[{"{", "zero", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"hossA2", "=", 
+   RowBox[{"Transpose", "[", "hossA2", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", "hossA2", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"dispHossA2", "=", 
+   RowBox[{"Transpose", "[", "hossA2", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", "\"\<Or:\>\"", "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<a`` + b`` + c `` = ``; where a,b,&c are constants\>\"", ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"dispHossA2", "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"dispHossA2", "[", 
+     RowBox[{"[", "2", "]"}], "]"}], "]"}], ",", 
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"dispHossA2", "[", 
+     RowBox[{"[", "3", "]"}], "]"}], "]"}], ",", 
+   RowBox[{"MatrixForm", "[", "zero", "]"}]}], 
+  "]"}], "\[IndentingNewLine]", "\"\<Row reduce: \>\"", "\[IndentingNewLine]", 
+ RowBox[{"MatrixForm", "[", 
+  RowBox[{"RowReduce", "[", "hossA2", "]"}], 
+  "]"}], "\[IndentingNewLine]", "\"\<By inspection, \!\(\*SubscriptBox[\(A\), \
+\(2\)]\) is linearly dependent as defined by the basis given by S because of \
+the row of zeros. It can also be observed that columns 2 and 3 are \
+equivalent, and therefore \!\(\*SubscriptBox[\(A\), \(2\)]\) is linearly \
+dependent.\>\""}], "Input",
+ CellOpen->False,
+ CellChangeTimes->{{3.7280826351337566`*^9, 3.7280827141148643`*^9}, {
+  3.7280828384956875`*^9, 3.728082889304869*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"e9018ed7-3fa6-45a3-80de-0da6fc31e79b"],
+
+Cell[BoxData["s"], "Input",
+ CellChangeTimes->{
+  3.72808501836911*^9},ExpressionUUID->"857db01d-c812-4e4c-b07b-e8d77d9e3b61"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Conclusion", "Subsubsection",
+ CellChangeTimes->{{3.728082915455434*^9, 3.7280829185676785`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"e83cd53e-5d75-489f-bf41-04c700dcbb76"],
+
+Cell[TextData[{
+ "\tIn conclusion, ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SubscriptBox["A", "1"],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "5d902faf-ef2d-4b9e-959a-16457476411b"],
+ " is linearly independent in the image of ",
+ StyleBox["S",
+  FontWeight->"Bold"],
+ " but ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SubscriptBox["A", "2"],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "ccc563f2-b92e-4d87-9b12-ca55f76b87bf"],
+ " is linearly dependent in the image of ",
+ StyleBox["S",
+  FontWeight->"Bold"],
+ ", according to the linear independence test and the basis vector defined by \
+the space."
+}], "Text",
+ CellChangeTimes->{{3.727746604598733*^9, 3.7277466574943895`*^9}, {
+  3.7277837633318987`*^9, 3.7277838280294423`*^9}, {3.728082922570342*^9, 
+  3.7280829326020055`*^9}, {3.728083337704404*^9, 3.7280833672540503`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"03f19575-ec10-494c-8409-baeb00932d33"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 821},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+TaggingRules->{"$testsRun" -> False},
+Magnification:>1.05 Inherited,
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->FrontEnd`FileName[{"Report"}, "StandardReport.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 352, 8, 98, "Title",ExpressionUUID->"1c8560c0-5a63-49ed-9732-2ddde33c3518"],
+Cell[935, 32, 442, 12, 60, "Subtitle",ExpressionUUID->"8a599d3f-9dac-4da4-a9f2-1f88a1365c41"],
+Cell[1380, 46, 445, 11, 54, "Subsubtitle",ExpressionUUID->"914bbe7f-2dbf-4117-9b68-344d176c0899"],
+Cell[1828, 59, 534, 13, 56, "Text",ExpressionUUID->"17cf01ea-063b-4f0a-827e-8df88e3bd6d3"],
+Cell[CellGroupData[{
+Cell[2387, 76, 215, 3, 69, "Section",ExpressionUUID->"aaeffc5f-21bb-4c7d-b5ff-60e36decda2f"],
+Cell[2605, 81, 720, 15, 33, "Text",ExpressionUUID->"a15ba982-c9f2-4837-b1d0-62586dd91a3a"],
+Cell[3328, 98, 1969, 48, 19, "Input",ExpressionUUID->"9d3e8de2-9dcd-439f-8682-31d330f123e5",
+ CellOpen->False],
+Cell[CellGroupData[{
+Cell[5322, 150, 231, 3, 33, "Subsection",ExpressionUUID->"d1e70b22-3cd4-4411-afb6-51e751fb6c70"],
+Cell[CellGroupData[{
+Cell[5578, 157, 227, 3, 32, "Subsubsection",ExpressionUUID->"65391b5f-2c8c-495f-a067-0b2fed25b7f2"],
+Cell[5808, 162, 2743, 82, 122, "Text",ExpressionUUID->"0f1d9ae9-659a-41a4-90f0-dc7b5eee4cf4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8588, 249, 298, 5, 32, "Subsubsection",ExpressionUUID->"feeeb6ff-bd53-4bca-a5ee-2dc967eaea90"],
+Cell[8889, 256, 1904, 40, 110, "Input",ExpressionUUID->"27989f44-afee-45ea-b10a-1516443b49c1"],
+Cell[10796, 298, 406, 8, 19, "Input",ExpressionUUID->"f7bc87e4-2610-4f00-88ae-e7bf0e2bbef7",
+ CellOpen->False],
+Cell[11205, 308, 1632, 49, 122, "Text",ExpressionUUID->"9b6b253e-9e5c-47b6-9b6c-048d1bc701b9"],
+Cell[12840, 359, 1119, 23, 87, "Input",ExpressionUUID->"5069b91a-2dbd-4c01-a95c-43e8a41c1e75"],
+Cell[13962, 384, 443, 9, 19, "Input",ExpressionUUID->"df58caf8-3749-4a65-abe7-81f79d6bf340",
+ CellOpen->False],
+Cell[14408, 395, 1000, 30, 100, "Text",ExpressionUUID->"e0542e90-d35b-4619-b328-857cc44b0fde"],
+Cell[15411, 427, 944, 19, 87, "Input",ExpressionUUID->"323ffe5f-207a-4e8a-a048-1e160b6f0e84"],
+Cell[16358, 448, 598, 11, 19, "Input",ExpressionUUID->"26ff8ab6-ecb3-4df3-9d86-ee61d8af8c92",
+ CellOpen->False]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16993, 464, 231, 3, 32, "Subsubsection",ExpressionUUID->"a41e5a5f-a46a-4193-abc4-67858bba802f"],
+Cell[17227, 469, 876, 25, 78, "Text",ExpressionUUID->"f390b901-3526-475a-8e36-451b1ca5726c"],
+Cell[18106, 496, 479, 11, 87, "Input",ExpressionUUID->"7ccb4e4d-ae80-45fb-9897-5979624b57a8"],
+Cell[18588, 509, 1309, 26, 19, "Input",ExpressionUUID->"7bd87d03-a1be-4e32-a43e-5f0c1e3c914f",
+ CellOpen->False],
+Cell[19900, 537, 837, 21, 100, "Text",ExpressionUUID->"de2edd0a-99d0-40ab-b91e-d7b2991307f0"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20774, 563, 449, 7, 32, "Subsubsection",ExpressionUUID->"2a790d53-73c8-462d-b5ba-88d270c73ecd"],
+Cell[21226, 572, 3713, 85, 19, "Input",ExpressionUUID->"3c2ab792-ed17-47a8-86ac-b31cec825fb2",
+ CellOpen->False]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24976, 662, 179, 2, 32, "Subsubsection",ExpressionUUID->"046b07d4-8cd6-49ba-9e60-15fe700f900e"],
+Cell[25158, 666, 330, 8, 33, "Text",ExpressionUUID->"ed1350d2-60ff-4357-a385-168edd98884d"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25549, 681, 215, 3, 69, "Section",ExpressionUUID->"756d14f3-68a1-44ed-a452-d40c6cc38e24"],
+Cell[25767, 686, 779, 15, 33, "Text",ExpressionUUID->"c495583c-412a-4c4d-a773-9ec7edc8bd9d"],
+Cell[26549, 703, 1874, 48, 89, "Input",ExpressionUUID->"b445df44-6df5-449a-b56d-b9020d7eef0d"],
+Cell[CellGroupData[{
+Cell[28448, 755, 173, 2, 33, "Subsection",ExpressionUUID->"12a0a3fa-6ce4-43c0-ac72-a5d5dd227c30"],
+Cell[CellGroupData[{
+Cell[28646, 761, 193, 2, 32, "Subsubsection",ExpressionUUID->"1ca28d47-ae6b-4b58-b2ba-c44c54ea4e14"],
+Cell[28842, 765, 4241, 139, 82, "Text",ExpressionUUID->"1d69d8e3-e93b-4a33-933f-7eb9db45aace"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33120, 909, 204, 2, 32, "Subsubsection",ExpressionUUID->"36c9c91b-0c27-474d-931e-273f2569fee3"],
+Cell[33327, 913, 3415, 108, 56, "Text",ExpressionUUID->"a8aac4d6-13e2-4859-8ad3-b0470b2ad592"],
+Cell[36745, 1023, 1420, 33, 111, "Input",ExpressionUUID->"ca19d8e9-1e31-4444-9879-193699ad8f44"],
+Cell[38168, 1058, 2912, 62, 19, "Input",ExpressionUUID->"330aef3c-af68-4e6b-a661-b0bcef8d3209",
+ CellOpen->False]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41117, 1125, 307, 5, 32, "Subsubsection",ExpressionUUID->"06ead669-5dae-495b-9915-d490f0340a30"],
+Cell[41427, 1132, 746, 22, 33, "Text",ExpressionUUID->"bc934121-c6fa-4e86-a1ff-6fc34dc7fc0e"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42234, 1161, 266, 4, 69, "Section",ExpressionUUID->"8ef00e93-6987-4333-a56e-636a7f8468b0"],
+Cell[42503, 1167, 853, 24, 33, "Text",ExpressionUUID->"cf903b17-7a6e-4dd9-81b8-e476663a00cf"],
+Cell[43359, 1193, 1962, 48, 66, "Input",ExpressionUUID->"18ffcb1e-51a3-43ad-9eba-e26fc633c152"],
+Cell[CellGroupData[{
+Cell[45346, 1245, 174, 2, 33, "Subsection",ExpressionUUID->"b9766ceb-f950-4760-b01a-df5ba6b99e4b"],
+Cell[CellGroupData[{
+Cell[45545, 1251, 195, 2, 32, "Subsubsection",ExpressionUUID->"c26ac729-028b-43fe-b617-9f30f191f267"],
+Cell[45743, 1255, 1710, 51, 56, "Text",ExpressionUUID->"212afcd0-0017-4ec9-84bd-678fc798000c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47490, 1311, 247, 3, 32, "Subsubsection",ExpressionUUID->"61075124-9580-408f-b82f-83748385d86c"],
+Cell[47740, 1316, 535, 15, 33, "Text",ExpressionUUID->"b295a3a8-b6a0-414c-b75f-d7368c2c2ab2"],
+Cell[48278, 1333, 399, 9, 65, "Input",ExpressionUUID->"49403215-8e8c-4b75-8d93-a102cc74c5d6"],
+Cell[48680, 1344, 3960, 83, 19, "Input",ExpressionUUID->"5d870a45-267c-4d5a-83a1-733328f3f7e3",
+ CellOpen->False]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[52677, 1432, 307, 6, 32, "Subsubsection",ExpressionUUID->"2acb41bb-d5d2-4332-a702-1ca233203f85"],
+Cell[52987, 1440, 1309, 39, 59, "Text",ExpressionUUID->"2135810d-7ed7-435f-b56f-a1a0c8a4f219"],
+Cell[54299, 1481, 791, 16, 65, "Input",ExpressionUUID->"22401f66-a3f8-4508-aebd-3a75ffc3a341"],
+Cell[55093, 1499, 2796, 58, 19, "Input",ExpressionUUID->"ad31ec2a-7681-4f6e-8334-0a32e0819a13",
+ CellOpen->False]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[57926, 1562, 307, 6, 32, "Subsubsection",ExpressionUUID->"05a4ea6d-520a-4ee5-bd2c-4064f16223d1"],
+Cell[58236, 1570, 622, 18, 33, "Text",ExpressionUUID->"b55535b9-3536-4a11-a243-b9c64fcc29fa"],
+Cell[58861, 1590, 445, 12, 65, "Input",ExpressionUUID->"563fee6f-0e33-4070-bb0a-c3bee13c2950"],
+Cell[59309, 1604, 2493, 54, 19, "Input",ExpressionUUID->"e9018ed7-3fa6-45a3-80de-0da6fc31e79b",
+ CellOpen->False],
+Cell[61805, 1660, 126, 2, 41, "Input",ExpressionUUID->"857db01d-c812-4e4c-b07b-e8d77d9e3b61"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[61968, 1667, 181, 2, 32, "Subsubsection",ExpressionUUID->"e83cd53e-5d75-489f-bf41-04c700dcbb76"],
+Cell[62152, 1671, 955, 27, 33, "Text",ExpressionUUID->"03f19575-ec10-494c-8409-baeb00932d33"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
