@@ -1,0 +1,1083 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     42144,       1075]
+NotebookOptionsPosition[     38580,       1017]
+NotebookOutlinePosition[     38957,       1033]
+CellTagsIndexPosition[     38914,       1030]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Linear Algebra", "Title",
+ CellChangeTimes->{{3.730541489243086*^9, 3.730541499044345*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontWeight->"Bold",
+ FontColor->RGBColor[
+  0.5019607843137255, 0., 
+   0.],ExpressionUUID->"fe3c27fc-f732-4ed4-8bf0-1e406f214a54"],
+
+Cell["Population Dynamics via Leslie Matrices", "Subtitle",
+ CellChangeTimes->{{3.7305415042575054`*^9, 3.7305415140389137`*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",ExpressionUUID->"eac80a3f-3976-4028-8b55-b6d95ade7374"],
+
+Cell[TextData[StyleBox["\nCreated By: Clarisa Leu-Rodriguez, Joey Tonzi, \
+Elana Hummel, & Hunter Kennedy",
+ FontSize->14]], "Subtitle",
+ CellChangeTimes->{{3.7305415191593165`*^9, 3.7305415767276297`*^9}, {
+   3.73054239055922*^9, 3.7305423921402864`*^9}, 3.730543908759054*^9, {
+   3.730557350144739*^9, 3.7305573577986555`*^9}, {3.73197969336438*^9, 
+   3.7319796936882334`*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",ExpressionUUID->"42348784-ffb7-4b06-926a-e8a66619d2e7"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Introduction",
+ FontWeight->"Bold"]], "Section",
+ CellChangeTimes->{{3.730541591070054*^9, 3.7305415928381443`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->26,ExpressionUUID->"e6849fee-7804-49d2-a661-59d3c7ce4106"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Purpose of  Project",
+ FontWeight->"Bold"]], "Subsection",
+ CellChangeTimes->{{3.730541613502222*^9, 3.7305416143282447`*^9}, {
+  3.7305420035338593`*^9, 3.7305420123840013`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"8280547b-fa44-40f9-b3de-19b2521c4c37"],
+
+Cell["\<\
+\tA common way of modeling a population is dividing the population into \
+specific age classes. For humans, the most common method is to use 5 year age \
+intervals. For other species, the length of the interval is different. The \
+purpose of this project is to use information about the distribution of \
+females in the US in 2000 to predict the distribution of females in 2020 \
+using an appropriate Leslie matrix. To check how valid our projection is, we \
+will use it to predict the distribution of ages in 2010 & check it with the \
+census for accuracy. This will be done by finding the relative error between \
+the model and the 2010 census data. 
+\tThe data for this project came from the US Census Bureau which conducts a \
+census (complete count, not a statistical sample) of the US population every \
+10 years, and from the Centers for Disease Control, which collects \
+information about birth and death rates for various populations in the US, \
+including the female population. The Census Bureau uses five year age ranges \
+for females until age 85 and then includes everyone over age 85 in one group. \
+The CDC tracks mortality rates for five year time spans similar to the Census \
+Bureau, but only includes birth rates through the 50-54 age range. Our \
+project will predict the populations through 50-54 age range only. \
+\>", "Text",
+ CellChangeTimes->{{3.7305416161854177`*^9, 3.730542001383024*^9}, {
+   3.730542640644925*^9, 3.7305426502470026`*^9}, 3.730542850107362*^9, 
+   3.7305443198646784`*^9, {3.730548753660033*^9, 3.730548886607758*^9}, {
+   3.73055737537576*^9, 3.7305573816585875`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->16,ExpressionUUID->"0297106c-4d54-429a-b30e-fe3703249928"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["The Data",
+ FontWeight->"Bold"]], "Subsection",
+ CellChangeTimes->{{3.730542859251788*^9, 3.7305428898900905`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->14,ExpressionUUID->"cef15ed2-c0ef-46bf-9d60-901d58cda6dd"],
+
+Cell["\<\
+First, we will import the data from the given files containing the number of \
+women in each age range for the years 2000 and 2010 and the birth and death \
+rates in 2000:\
+\>", "Text",
+ CellChangeTimes->{{3.730542880424283*^9, 3.730542891900842*^9}, 
+   3.730543568657262*^9},
+ FontFamily->"Tahoma",
+ FontSize->16,ExpressionUUID->"6dde77ba-19cf-4f81-a87e-6a54c34dbf8e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Importing", " ", "Data"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Age2000", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<https://wamaps3.s3.amazonaws.com/cfiles/15972/\
+2000femaledistribution.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Age2010", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<https://wamaps3.s3.amazonaws.com/cfiles/15972/\
+2010femaledistribution.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"BD2000", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<https://wamaps3.s3.amazonaws.com/cfiles/15972/2000birthdeathrates_\
+0.xlsx\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.730651985151955*^9, 3.730651985323555*^9}, {
+  3.7306520211099553`*^9, 3.7306520212971554`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->14,
+ FontWeight->"Bold",
+ FontColor->RGBColor[
+  0., 0.5019607843137255, 
+   0.5019607843137255],ExpressionUUID->"1243aebe-d3c9-4dc2-9307-ec64110e2775"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Displaying", " ", "Data"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"Framed", "[", 
+      RowBox[{"Framed", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{
+         "StringForm", "[", "\"\<2000 Female Distribution \>\"", "]"}], ",", 
+         RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+         RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+         RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}], "]"}], "]"}], 
+     ",", 
+     RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"Framed", "[", 
+      RowBox[{"Style", "[", 
+       RowBox[{
+        RowBox[{"Grid", "[", 
+         RowBox[{
+          RowBox[{"Flatten", "[", 
+           RowBox[{"Age2000", ",", "1"}], "]"}], ",", 
+          RowBox[{"Alignment", "\[Rule]", "Center"}], ",", 
+          RowBox[{"Spacings", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"2", ",", "1"}], "}"}]}], ",", 
+          RowBox[{"Frame", "\[Rule]", "All"}], ",", 
+          RowBox[{"Background", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"None", ",", "None"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Pink", ",", "None"}], "}"}]}], "}"}]}]}], "]"}], ",", 
+        RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+        RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}], "]"}], ",", 
+     RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"Framed", "[", 
+      RowBox[{"Framed", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{
+         "StringForm", "[", "\"\<2010 Female Distribution \>\"", "]"}], ",", 
+         RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+         RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+         RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}], "]"}], "]"}], 
+     ",", 
+     RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"Framed", "[", 
+      RowBox[{"Style", "[", 
+       RowBox[{
+        RowBox[{"Grid", "[", 
+         RowBox[{
+          RowBox[{"Flatten", "[", 
+           RowBox[{"Age2010", ",", "1"}], "]"}], ",", 
+          RowBox[{"Alignment", "\[Rule]", "Center"}], ",", 
+          RowBox[{"Spacings", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"2", ",", "1"}], "}"}]}], ",", 
+          RowBox[{"Frame", "\[Rule]", "All"}], ",", 
+          RowBox[{"Background", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"None", ",", "None"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Pink", ",", "None"}], "}"}]}], "}"}]}]}], "]"}], ",", 
+        RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+        RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}], "]"}], ",", 
+     RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"Framed", "[", 
+      RowBox[{"Framed", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"StringForm", "[", "\"\<2000 Birth Death Rate \>\"", "]"}], 
+         ",", 
+         RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+         RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+         RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}], "]"}], "]"}], 
+     ",", 
+     RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"Framed", "[", 
+      RowBox[{"Style", "[", 
+       RowBox[{
+        RowBox[{"Grid", "[", 
+         RowBox[{
+          RowBox[{"Flatten", "[", 
+           RowBox[{"BD2000", ",", "1"}], "]"}], ",", 
+          RowBox[{"Alignment", "\[Rule]", "Center"}], ",", 
+          RowBox[{"Spacings", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"2", ",", "1"}], "}"}]}], ",", 
+          RowBox[{"Frame", "\[Rule]", "All"}], ",", 
+          RowBox[{"Background", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"None", ",", "None"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"Pink", ",", "None"}], "}"}]}], "}"}]}]}], "]"}], ",", 
+        RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+        RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}], "]"}], ",", 
+     RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.730542907291984*^9, 3.7305434977414637`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->14,
+ FontWeight->"Bold",
+ FontColor->RGBColor[
+  0., 0.5019607843137255, 
+   0.5019607843137255],ExpressionUUID->"35dcf5dd-8a6c-4c8a-bc5f-20bb09538675"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Calculations",
+ FontWeight->"Bold"]], "Section",
+ CellChangeTimes->{{3.730542028158451*^9, 3.730542031104876*^9}, {
+  3.7305421062315154`*^9, 3.730542117500841*^9}},
+ FontFamily->"Tahoma",
+ FontSize->26,ExpressionUUID->"a84d103d-f703-427f-aed8-7240cb065a62"],
+
+Cell["\<\
+Now we will reformat the given data to make calculations easier:\
+\>", "Text",
+ CellChangeTimes->{{3.7305420798031583`*^9, 3.7305420822656827`*^9}, {
+   3.7305421219646573`*^9, 3.7305421229726343`*^9}, 3.730542193758086*^9, 
+   3.7305435642011614`*^9, {3.730549014031065*^9, 3.730549031313141*^9}},
+ FontFamily->"Tahoma",
+ FontSize->16,ExpressionUUID->"2bf15d0b-ebfd-4548-bc29-a8ec711b5424"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Reformatting", " ", "Data"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Age20001", "=", 
+     RowBox[{"Drop", "[", 
+      RowBox[{
+       RowBox[{"Flatten", "[", 
+        RowBox[{"Age2000", ",", "1"}], "]"}], ",", "1"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Age20101", "=", 
+     RowBox[{"Drop", "[", 
+      RowBox[{
+       RowBox[{"Flatten", "[", 
+        RowBox[{"Age2010", ",", "1"}], "]"}], ",", "1"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"AgeRange", "=", 
+     RowBox[{"Drop", "[", 
+      RowBox[{
+       RowBox[{"Age20001", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "1"}], "]"}], "]"}], ",", 
+       RowBox[{"-", "7"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"BD20001", "=", 
+     RowBox[{"Drop", "[", 
+      RowBox[{
+       RowBox[{"Flatten", "[", 
+        RowBox[{"BD2000", ",", "1"}], "]"}], ",", "1"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Age2000vals", "=", 
+     RowBox[{"Age20001", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Age2010vals", "=", 
+     RowBox[{"Age20101", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Birth2000", "=", 
+     RowBox[{"BD20001", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "2"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Death2000", "=", 
+     RowBox[{"BD20001", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "3"}], "]"}], "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.730542152974467*^9, 3.7305421587072043`*^9}, 
+   3.730559485708934*^9, {3.730559585099766*^9, 3.73055959203504*^9}},
+ FontFamily->"Tahoma",
+ FontSize->14,
+ FontWeight->"Bold",
+ FontColor->RGBColor[
+  0., 0.5019607843137255, 
+   0.5019607843137255],ExpressionUUID->"edc46365-0ca7-48b4-95bd-70a100ea3c9c"],
+
+Cell["\<\
+Eliminating all the data for age ranges 55 and older for the female \
+population data in 2000 and 2010:\
+\>", "Text",
+ CellChangeTimes->{{3.7305421852161603`*^9, 3.7305421923019238`*^9}, 
+   3.730543561174136*^9, {3.7305489155760336`*^9, 3.7305489203147526`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->16,ExpressionUUID->"2843564f-ad81-4d36-9ac8-3b2d9cf17b95"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Eliminating", " ", "age", " ", "ranges", " ", "55"}], "+"}], 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"A2000", "=", 
+     RowBox[{"Drop", "[", 
+      RowBox[{"Age2000vals", ",", 
+       RowBox[{"-", "7"}]}], "]"}]}], ";"}], "  ", 
+   RowBox[{"(*", 
+    RowBox[{"x", " ", "vector"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"A2010", "=", 
+     RowBox[{"Drop", "[", 
+      RowBox[{"Age2010vals", ",", 
+       RowBox[{"-", "7"}]}], "]"}]}], " ", ";"}], 
+   RowBox[{"(*", 
+    RowBox[{"2010", " ", "data"}], "*)"}]}]}]], "Input",
+ CellChangeTimes->{{3.7305422187301855`*^9, 3.730542229795296*^9}, 
+   3.730548956352441*^9},
+ FontFamily->"Tahoma",
+ FontSize->14,
+ FontWeight->"Bold",
+ FontColor->RGBColor[
+  0., 0.5019607843137255, 
+   0.5019607843137255],ExpressionUUID->"941c89ae-47aa-4362-896b-5bea827d706e"],
+
+Cell["\<\
+The ratio we found for female babies to male babies born in 2000 was 100/205, \
+or about 48.8 % female. We will create a value to represent this number:\
+\>", "Text",
+ CellChangeTimes->{{3.7305422373449*^9, 3.7305422418365617`*^9}, 
+   3.7305435593907547`*^9},
+ FontFamily->"Tahoma",
+ FontSize->16,ExpressionUUID->"a7ab5488-67b1-4f0e-9f72-20f3f98f235e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ratio", "=", 
+   RowBox[{"100", "/", "205"}]}], ";"}]], "Input",
+ FontFamily->"Tahoma",
+ FontSize->14,
+ FontWeight->"Bold",
+ FontColor->RGBColor[
+  0., 0.5019607843137255, 
+   0.5019607843137255],ExpressionUUID->"1a6af9b6-efe8-4b58-861f-d2ef10ee95bc"],
+
+Cell["\<\
+Using this ratio and the ratio of babies born to women in 2000, we can find a \
+matrix containing the percentage of female babies born to women for each age \
+range in the year 2000:\
+\>", "Text",
+ CellChangeTimes->{{3.730542263335816*^9, 3.730542271405966*^9}, 
+   3.730543557765585*^9},
+ FontFamily->"Tahoma",
+ FontSize->16,ExpressionUUID->"5deae884-403e-471d-beb7-e192539b7a25"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"Birth", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"Birth2000", "/", "1000"}], ")"}], "*", "ratio"}]}], " ", 
+    "]"}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"a", " ", "values"}], "*)"}]}]], "Input",
+ CellChangeTimes->{3.7305489536028795`*^9},
+ FontFamily->"Tahoma",
+ FontSize->14,
+ FontWeight->"Bold",
+ FontColor->RGBColor[
+  0., 0.5019607843137255, 
+   0.5019607843137255],ExpressionUUID->"484b054b-d135-45c4-9561-16f35c4a2703"],
+
+Cell["\<\
+Now we will want to find the amount of females who died from each age range \
+in 2000 and use those values to find the percentage of females who survived \
+that year:\
+\>", "Text",
+ CellChangeTimes->{{3.7305422802668743`*^9, 3.730542284138649*^9}, 
+   3.7305435551083765`*^9, 3.7305489449554105`*^9},
+ FontFamily->"Tahoma",
+ FontSize->16,ExpressionUUID->"e210b654-da93-4b0b-b355-9dd6d054b49f"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"MatrixForm", "[", 
+   RowBox[{"Death", "=", 
+    RowBox[{"(", 
+     RowBox[{"Death2000", "/", "100000"}], ")"}]}], " ", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MatrixForm", "[", 
+    RowBox[{"Survive", "=", 
+     RowBox[{"1", "-", 
+      RowBox[{"Drop", "[", 
+       RowBox[{"Death", ",", 
+        RowBox[{"-", "1"}]}], "]"}]}]}], "]"}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"b", " ", "values"}], "*)"}]}]}], "Input",
+ CellChangeTimes->{3.730548951855764*^9},
+ FontFamily->"Tahoma",
+ FontSize->14,
+ FontWeight->"Bold",
+ FontColor->RGBColor[
+  0., 0.5019607843137255, 
+   0.5019607843137255],ExpressionUUID->"c704933a-ceb8-423b-a977-ad57d09c5d6c"],
+
+Cell["The Leslie matrix takes the form of:", "Text",
+ CellChangeTimes->{{3.730542299610342*^9, 3.7305423097776566`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->16,ExpressionUUID->"64661e1e-0889-4457-bf5e-dce1ff335c14"],
+
+Cell[TextData[Cell[BoxData[
+ RowBox[{"L", "=", 
+  RowBox[{"(", GridBox[{
+     {
+      SubscriptBox["a", "1"], 
+      SubscriptBox["a", "2"], 
+      SubscriptBox["a", "3"], "...", 
+      SubscriptBox["a", 
+       RowBox[{"n", "-", "1"}]], 
+      SubscriptBox["a", "n"]},
+     {
+      SubscriptBox["b", "1"], "0", "0", "...", "0", "0"},
+     {"0", 
+      SubscriptBox["b", "2"], "0", "...", "0", "0"},
+     {".", ".", ".", " ", ".", "."},
+     {".", ".", ".", " ", ".", "."},
+     {".", ".", ".", " ", ".", "."},
+     {"0", "0", "0", "...", 
+      SubscriptBox["b", 
+       RowBox[{"n", "-", "1"}]], "0"}
+    }], ")"}]}]],
+ CellChangeTimes->{{3.7304899756077194`*^9, 3.730490096235304*^9}, {
+  3.730490134248935*^9, 3.7304902440299873`*^9}, {3.730506291810135*^9, 
+  3.7305065182924767`*^9}},
+ TextAlignment->
+  Center,ExpressionUUID->"0497c4f3-e50d-40f0-88f9-bf153b925b7e"]], "Text",
+ CellChangeTimes->{3.730542315103036*^9},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"85585331-f424-41e9-8113-8b4c1b1b48c1"],
+
+Cell["\<\
+With the a values being the birth rates for each age range and the b values \
+being the survival rates for each age range. So, using the survival rates and \
+birth rates for females that we found above, we can form our Leslie matrix:\
+\>", "Text",
+ CellChangeTimes->{
+  3.730542322921859*^9, 3.730543540288237*^9, 3.7305435774913807`*^9, {
+   3.730557519211094*^9, 3.730557519855132*^9}},
+ FontFamily->"Tahoma",
+ FontSize->16,ExpressionUUID->"f3299a50-6856-4111-9ae9-b5f54931d76d"],
+
+Cell[BoxData[{
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"Framed", "[", 
+    RowBox[{"Framed", "[", 
+     RowBox[{"Style", "[", 
+      RowBox[{
+       RowBox[{
+       "StringForm", "[", "\"\<Leslie Matrix for Given Population Data\>\"", 
+        "]"}], ",", 
+       RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+       RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+       RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}], "]"}], "]"}], ",", 
+   RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"Framed", "[", 
+    RowBox[{"StringForm", "[", 
+     RowBox[{"\"\<L = ``\>\"", ",", 
+      RowBox[{"MatrixForm", "[", 
+       RowBox[{"L", "=", 
+        RowBox[{"Prepend", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"Insert", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"DiagonalMatrix", "[", "Survive", "]"}], "[", 
+               RowBox[{"[", "i", "]"}], "]"}], ",", "0", ",", 
+              RowBox[{"-", "1"}]}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", 
+              RowBox[{"Length", "[", "Survive", "]"}]}], "}"}]}], "]"}], ",", 
+          RowBox[{"5", "*", "Birth"}]}], "]"}]}], "]"}]}], "]"}], "]"}], ",", 
+   RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+   RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+   RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.730549082616088*^9, 3.730549157643211*^9}},
+ FontFamily->"Tahoma",
+ FontSize->14,
+ FontWeight->"Bold",
+ FontColor->RGBColor[
+  0., 0.5019607843137255, 
+   0.5019607843137255],ExpressionUUID->"7b7d6896-afe5-4caa-9762-de496d7a509b"],
+
+Cell[TextData[{
+ "Using the Leslie matrix, we can check to see if it is correct by predicting \
+what the population of females will be in each age range in 2010. To do this, \
+we use the equation ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["x", 
+     RowBox[{"(", "1", ")"}]], "=", 
+    RowBox[{
+     SuperscriptBox["L", "n"], 
+     SuperscriptBox["x", 
+      RowBox[{"(", "0", ")"}]]}]}], TraditionalForm]],ExpressionUUID->
+  "ebb6d4ac-f8ba-4f38-a960-9755a16d959c"],
+ " where ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["x", 
+    RowBox[{"(", "0", ")"}]], TraditionalForm]],ExpressionUUID->
+  "15b7879a-453d-45d3-a46d-dc8f8d864dc8"],
+ " is the initial population and ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["L", "n"], TraditionalForm]],ExpressionUUID->
+  "37989185-828e-4062-b412-33d5fd313650"],
+ " is the Leslie matrix to the power of ",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ " time periods. Because the age groupings range by 5 years, to find the 2010 \
+population data, we need to do the Leslie matrix to the power of 2. Our \
+prediction for the population of females in each age range for the year 2010 \
+is:"
+}], "Text",
+ CellChangeTimes->{3.7305423384086623`*^9},
+ FontFamily->"Tahoma",
+ FontSize->16,ExpressionUUID->"60b62091-f29f-46d8-92c6-df211287911c"],
+
+Cell[BoxData[{
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"Framed", "[", 
+    RowBox[{"Framed", "[", 
+     RowBox[{"Style", "[", 
+      RowBox[{
+       RowBox[{
+       "StringForm", "[", "\"\<Prediction for Female Census for 2010 \>\"", 
+        "]"}], ",", 
+       RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+       RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+       RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}], "]"}], "]"}], ",", 
+   RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AgeRangeDisplay", "=", 
+   RowBox[{"Prepend", "[", 
+    RowBox[{"AgeRange", ",", "\"\<Age Range (years)\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Check2010", "=", 
+    RowBox[{
+     RowBox[{"MatrixPower", "[", 
+      RowBox[{"L", ",", "2"}], "]"}], ".", "A2000"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", "Display", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Check2010Disp", " ", "=", " ", 
+   RowBox[{"Prepend", "[", 
+    RowBox[{"Check2010", ",", "\"\<Prediction\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Disp1", "=", 
+   RowBox[{"Join", "[", 
+    RowBox[{
+     RowBox[{"{", "AgeRangeDisplay", "}"}], ",", 
+     RowBox[{"{", "Check2010Disp", "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Disp1", "=", 
+   RowBox[{"Transpose", "[", "Disp1", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"Framed", "[", 
+    RowBox[{"StringForm", "[", 
+     RowBox[{"\"\<``\>\"", ",", 
+      RowBox[{"MatrixForm", "[", "Disp1", "]"}]}], "]"}], "]"}], ",", 
+   RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+   RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+   RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"A2010Disp", "=", 
+   RowBox[{"Prepend", "[", 
+    RowBox[{"A2010", ",", "\"\<Actual\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Disp2", "=", 
+   RowBox[{"Join", "[", 
+    RowBox[{
+     RowBox[{"{", "AgeRangeDisplay", "}"}], ",", 
+     RowBox[{"{", "A2010Disp", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Disp2", "=", 
+   RowBox[{"Transpose", "[", "Disp2", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"Framed", "[", 
+    RowBox[{"Framed", "[", 
+     RowBox[{"Style", "[", 
+      RowBox[{
+       RowBox[{
+       "StringForm", "[", "\"\<Actual Female Census for 2010 \>\"", "]"}], 
+       ",", 
+       RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+       RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+       RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}], "]"}], "]"}], ",", 
+   RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"Framed", "[", 
+    RowBox[{"StringForm", "[", 
+     RowBox[{"\"\<``\>\"", ",", 
+      RowBox[{"MatrixForm", "[", "Disp2", "]"}]}], "]"}], "]"}], ",", 
+   RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+   RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+   RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.730549179146849*^9, 3.730549426836632*^9}, {
+  3.7305495177830524`*^9, 3.7305495258396487`*^9}, {3.7305498126173134`*^9, 
+  3.7305498150768023`*^9}, {3.7305499404756413`*^9, 3.730549959120119*^9}, {
+  3.7305500385753155`*^9, 3.7305500480506773`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->14,
+ FontWeight->"Bold",
+ FontColor->RGBColor[
+  0., 0.5019607843137255, 
+   0.5019607843137255],ExpressionUUID->"dad3f937-45fa-481e-bc28-1e0b29c4cfbe"],
+
+Cell["\<\
+We can find the percent error between these numbers and the actual data to \
+see how close we were to the correct numbers:\
+\>", "Text",
+ CellChangeTimes->{3.730542351103532*^9},
+ FontFamily->"Tahoma",
+ FontSize->16,ExpressionUUID->"0241c172-9c81-47c2-b952-5f0c6f765879"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"percErr", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"A2010", "-", "Check2010"}], ")"}], "/", "A2010"}], "*", 
+     "100"}]}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "Display", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"percErrDisp", "=", 
+   RowBox[{"Prepend", "[", 
+    RowBox[{"percErr", ",", "\"\<Percent Error\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Disp3", "=", 
+   RowBox[{"Join", "[", 
+    RowBox[{
+     RowBox[{"{", "AgeRangeDisplay", "}"}], ",", 
+     RowBox[{"{", "percErrDisp", "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Disp3", "=", 
+   RowBox[{"Transpose", "[", "Disp3", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"Framed", "[", 
+    RowBox[{"Framed", "[", 
+     RowBox[{"Style", "[", 
+      RowBox[{
+       RowBox[{
+       "StringForm", "[", 
+        "\"\<Relative Error of Our Prediction vs. Actual \>\"", "]"}], ",", 
+       RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+       RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+       RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}], "]"}], "]"}], ",", 
+   RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Style", "[", 
+   RowBox[{
+    RowBox[{"Framed", "[", 
+     RowBox[{"StringForm", "[", 
+      RowBox[{"\"\<``\>\"", ",", 
+       RowBox[{"MatrixForm", "[", "Disp3", "]"}]}], "]"}], "]"}], ",", 
+    RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+    RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+    RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], "]"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"Predicted", " ", 
+    RowBox[{"vs", ".", " ", "Actual"}], " ", "2010", " ", "Female", " ", 
+    "Population"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"Framed", "[", 
+    RowBox[{"BarChart", "[", 
+     RowBox[{
+      RowBox[{"Transpose", "[", 
+       RowBox[{"Join", "[", 
+        RowBox[{"{", 
+         RowBox[{"Check2010", ",", "A2010"}], "}"}], "]"}], "]"}], ",", 
+      RowBox[{"AxesLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"HoldForm", "[", 
+          RowBox[{"Age", " ", "Range"}], "]"}], ",", 
+         RowBox[{"HoldForm", "[", 
+          RowBox[{"Number", " ", "of", " ", "Females"}], "]"}]}], "}"}]}], 
+      ",", 
+      RowBox[{"PlotLabel", "\[Rule]", 
+       RowBox[{"HoldForm", "[", 
+        RowBox[{"Predicted", " ", 
+         RowBox[{"Vs", ".", " ", "Actual"}], " ", "2010", " ", "Female", " ", 
+         "Population"}], "]"}]}], ",", 
+      RowBox[{"LabelStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", "12", ",", 
+         RowBox[{"GrayLevel", "[", "0", "]"}]}], "}"}]}], ",", 
+      RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", 
+      RowBox[{"ChartLegends", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"2010", " ", "Predicted", " ", "Female", " ", "Population"}],
+          ",", 
+         RowBox[{"Actual", " ", "2010", " ", "Female", " ", "Population"}]}], 
+        "}"}]}], ",", 
+      RowBox[{"ChartLabels", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Placed", "[", 
+          RowBox[{"AgeRange", ",", "Below"}], "]"}], ",", 
+         RowBox[{"Placed", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"Null", ",", "Null"}], "}"}], ",", "Top"}], "]"}]}], 
+        "}"}]}]}], "]"}], "]"}], ",", 
+   RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.730549436507581*^9, 3.730549611717971*^9}},
+ FontFamily->"Tahoma",
+ FontSize->14,
+ FontWeight->"Bold",
+ FontColor->RGBColor[
+  0., 0.5019607843137255, 
+   0.5019607843137255],ExpressionUUID->"8d675534-6d23-4087-bbe1-f870e8da49c6"],
+
+Cell["\<\
+Our percent error for each age range is less than 10%, so our prediction is \
+fairly close to being correct. Now, we can use the Leslie matrix to predict \
+how the 2020 census results will look like for females. We can also use our \
+prediction of the female census for 2020 and the actual female census in 2010 \
+to analyze the growth or decay of the female population.\
+\>", "Text",
+ CellChangeTimes->{
+  3.730542363821118*^9, {3.730549898908553*^9, 3.7305499325136156`*^9}, {
+   3.730550028900906*^9, 3.730550084425907*^9}, {3.7305503415108747`*^9, 
+   3.7305503467239957`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->16,ExpressionUUID->"5948eb0f-274d-4f3e-88b3-c93a58b01941"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Check2020", "=", 
+    RowBox[{
+     RowBox[{"MatrixPower", "[", 
+      RowBox[{"L", ",", "4"}], "]"}], ".", "A2000"}]}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "Display", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Check2020Disp", "=", 
+   RowBox[{"Prepend", "[", 
+    RowBox[{"Check2020", ",", "\"\<Prediction\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Disp4", "=", 
+   RowBox[{"Join", "[", 
+    RowBox[{
+     RowBox[{"{", "AgeRangeDisplay", "}"}], ",", 
+     RowBox[{"{", "Check2020Disp", "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Disp4", "=", 
+   RowBox[{"Transpose", "[", "Disp4", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"Framed", "[", 
+    RowBox[{"Framed", "[", 
+     RowBox[{"Style", "[", 
+      RowBox[{
+       RowBox[{
+       "StringForm", "[", "\"\<Our Prediction for the 2020 Census\>\"", "]"}],
+        ",", 
+       RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+       RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+       RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}], "]"}], "]"}], ",", 
+   RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Style", "[", 
+   RowBox[{
+    RowBox[{"Framed", "[", 
+     RowBox[{"StringForm", "[", 
+      RowBox[{"\"\<``\>\"", ",", 
+       RowBox[{"MatrixForm", "[", "Disp4", "]"}]}], "]"}], "]"}], ",", 
+    RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+    RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+    RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], "]"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"Analylzing", " ", "female", " ", "population", " ", "decay"}], 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"popDiff", "=", 
+   RowBox[{"Check2020", "-", "A2010"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"popDiffGraphHelp", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "0", ",", "5", ",", "10", ",", "15", ",", "20", ",", "25", ",", "30", ",",
+      "35", ",", "40", ",", "45", ",", "50"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"popDiffGraph", "=", 
+   RowBox[{"Join", "[", 
+    RowBox[{
+     RowBox[{"{", "popDiffGraphHelp", "}"}], ",", 
+     RowBox[{"{", "popDiff", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"popDiffGraph", "=", 
+   RowBox[{"Transpose", "[", "popDiffGraph", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Style", "[", 
+   RowBox[{
+    RowBox[{"Framed", "[", 
+     RowBox[{"ListLinePlot", "[", 
+      RowBox[{"popDiffGraph", ",", 
+       RowBox[{"PlotStyle", "\[Rule]", "Thick"}], ",", 
+       RowBox[{"PlotLabel", "\[Rule]", 
+        RowBox[{"Style", "[", 
+         RowBox[{
+         "\"\<Change in Female Census 2010 to 2020 Using Prediction\>\"", ",", 
+          RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+          RowBox[{"FontWeight", "\[Rule]", "Bold"}], ",", 
+          RowBox[{"FontSize", "\[Rule]", "16"}], ",", 
+          RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}]}], ",", " ", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Age (years)\>\"", ",", 
+            RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+            RowBox[{"FontSize", "\[Rule]", "12"}], ",", 
+            RowBox[{"FontColor", "\[Rule]", "Black"}], ",", 
+            RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}], ",", 
+          RowBox[{"Style", "[", 
+           RowBox[{
+           "\"\<Change in  Female Population (# of individuals)\>\"", ",", 
+            RowBox[{"FontSize", "\[Rule]", "11"}], ",", 
+            RowBox[{"FontColor", "\[Rule]", "Black"}], ",", 
+            RowBox[{"FontWeight", "\[Rule]", "Bold"}], ",", 
+            RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}]}], "]"}]}], 
+         "}"}]}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", " ", 
+       RowBox[{"ColorFunction", "\[Rule]", 
+        RowBox[{"Function", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"x", ",", "y"}], "}"}], ",", 
+          RowBox[{"Hue", "[", "y", "]"}]}], "]"}]}]}], "]"}], "]"}], ",", 
+    RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], "]"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.730549594690257*^9, 3.7305497083854923`*^9}, {
+  3.730550088720067*^9, 3.730550089264655*^9}, {3.7305501585620184`*^9, 
+  3.730550226521328*^9}, {3.730550282312361*^9, 3.730550321094174*^9}, {
+  3.730550353108035*^9, 3.7305504829862795`*^9}, {3.7305505699184446`*^9, 
+  3.73055065036654*^9}, {3.7305507376012735`*^9, 3.730550744027983*^9}, {
+  3.7305507885152855`*^9, 3.730550851199304*^9}, {3.7305509006494765`*^9, 
+  3.730550996344976*^9}, {3.730551106636161*^9, 3.730551280654978*^9}, {
+  3.7305513130523605`*^9, 3.730551379324795*^9}, {3.730551421941221*^9, 
+  3.73055142573926*^9}, {3.7305514558959055`*^9, 3.7305516880394063`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->14,
+ FontWeight->"Bold",
+ FontColor->RGBColor[
+  0., 0.5019607843137255, 
+   0.5019607843137255],ExpressionUUID->"299dc97d-07a6-42d0-b7fc-3b01dcdf7b54"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Conclusion", "Section",
+ CellChangeTimes->{{3.730542427912657*^9, 3.73054242952466*^9}},
+ FontFamily->"Tahoma",
+ FontSize->26,
+ FontWeight->"Bold",ExpressionUUID->"a4bfdbc6-4461-403b-bf6c-756a16ea3673"],
+
+Cell[TextData[{
+ "\tFrom the steps of creating and using a Leslie Matrix from statistics for \
+the year 2000, we have estimated the population of women in 2020. We can \
+assume that we are predicting as best we can, because the percent error \
+between the 2010 prediction numbers and actual 2010 numbers were quite small, \
+the maximum being just under 8%. As can be seen in the graphic directly",
+ StyleBox[" above this section, all of the 2010 prediction numbers were just \
+slightly below the actual reported numbers. Reasons for this could be things \
+that were not factored into our Leslie matrix such as immigration, increased \
+birthing rate, and longer lived lives. However it also could have been due to \
+a rounding error in the data or an insufficient girl:boy birth ratio. In our \
+predictions for 2020, which was our goal for the project, it is right to \
+assume that our numbers again will have been a little low, because it does \
+not factor in those key components of population mentioned earlier. However, \
+the percent errors will likely end up being slightly larger than the 2010 \
+numbers, because as more time progresses, tools like the Leslie Matrix become \
+less reliable, as the world is always changing. If we wanted to have a more \
+precise estimation, the best way to do so would be to add more real-world \
+factors in with better, more accurate data. There must be an additional way \
+to account for immigration, as well as the changing social climate that \
+affects population, but that likely requires a lot more knowledge of and \
+access to global affairs. For the purpose of the project, when using the \
+Leslie Matrix, our results are worthy and fairly reliable.",
+  FontColor->GrayLevel[0]]
+}], "Text",
+ CellChangeTimes->{
+  3.7305424317474327`*^9, 3.730542683475696*^9, {3.730557619524124*^9, 
+   3.7305576199021463`*^9}, {3.730557661320997*^9, 3.7305578182856627`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->16,ExpressionUUID->"3871f303-c63b-48f4-bfad-5ccb5ed57c8f"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1451, 905},
+WindowMargins->{{-8, Automatic}, {Automatic, 0}},
+Magnification:>1.1 Inherited,
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 277, 7, 104, "Title",ExpressionUUID->"fe3c27fc-f732-4ed4-8bf0-1e406f214a54"],
+Cell[860, 31, 231, 3, 55, "Subtitle",ExpressionUUID->"eac80a3f-3976-4028-8b55-b6d95ade7374"],
+Cell[1094, 36, 484, 8, 62, "Subtitle",ExpressionUUID->"42348784-ffb7-4b06-926a-e8a66619d2e7"],
+Cell[CellGroupData[{
+Cell[1603, 48, 233, 4, 69, "Section",ExpressionUUID->"e6849fee-7804-49d2-a661-59d3c7ce4106"],
+Cell[CellGroupData[{
+Cell[1861, 56, 281, 4, 58, "Subsection",ExpressionUUID->"8280547b-fa44-40f9-b3de-19b2521c4c37"],
+Cell[2145, 62, 1719, 25, 242, "Text",ExpressionUUID->"0297106c-4d54-429a-b30e-fe3703249928"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3901, 92, 232, 4, 49, "Subsection",ExpressionUUID->"cef15ed2-c0ef-46bf-9d60-901d58cda6dd"],
+Cell[4136, 98, 380, 8, 65, "Text",ExpressionUUID->"6dde77ba-19cf-4f81-a87e-6a54c34dbf8e"],
+Cell[4519, 108, 1147, 32, 104, "Input",ExpressionUUID->"1243aebe-d3c9-4dc2-9307-ec64110e2775"],
+Cell[5669, 142, 4947, 127, 245, "Input",ExpressionUUID->"35dcf5dd-8a6c-4c8a-bc5f-20bb09538675"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10665, 275, 282, 5, 69, "Section",ExpressionUUID->"a84d103d-f703-427f-aed8-7240cb065a62"],
+Cell[10950, 282, 401, 7, 39, "Text",ExpressionUUID->"2bf15d0b-ebfd-4548-bc29-a8ec711b5424"],
+Cell[11354, 291, 2071, 64, 219, "Input",ExpressionUUID->"edc46365-0ca7-48b4-95bd-70a100ea3c9c"],
+Cell[13428, 357, 366, 7, 39, "Text",ExpressionUUID->"2843564f-ad81-4d36-9ac8-3b2d9cf17b95"],
+Cell[13797, 366, 918, 28, 83, "Input",ExpressionUUID->"941c89ae-47aa-4362-896b-5bea827d706e"],
+Cell[14718, 396, 363, 7, 39, "Text",ExpressionUUID->"a7ab5488-67b1-4f0e-9f72-20f3f98f235e"],
+Cell[15084, 405, 286, 9, 33, "Input",ExpressionUUID->"1a6af9b6-efe8-4b58-861f-d2ef10ee95bc"],
+Cell[15373, 416, 391, 8, 65, "Text",ExpressionUUID->"5deae884-403e-471d-beb7-e192539b7a25"],
+Cell[15767, 426, 525, 17, 35, "Input",ExpressionUUID->"484b054b-d135-45c4-9561-16f35c4a2703"],
+Cell[16295, 445, 403, 8, 65, "Text",ExpressionUUID->"e210b654-da93-4b0b-b355-9dd6d054b49f"],
+Cell[16701, 455, 720, 23, 59, "Input",ExpressionUUID->"c704933a-ceb8-423b-a977-ad57d09c5d6c"],
+Cell[17424, 480, 213, 3, 39, "Text",ExpressionUUID->"64661e1e-0889-4457-bf5e-dce1ff335c14"],
+Cell[17640, 485, 1041, 29, 193, "Text",ExpressionUUID->"85585331-f424-41e9-8113-8b4c1b1b48c1"],
+Cell[18684, 516, 491, 9, 65, "Text",ExpressionUUID->"f3299a50-6856-4111-9ae9-b5f54931d76d"],
+Cell[19178, 527, 1764, 45, 81, "Input",ExpressionUUID->"7b7d6896-afe5-4caa-9762-de496d7a509b"],
+Cell[20945, 574, 1291, 35, 90, "Text",ExpressionUUID->"60b62091-f29f-46d8-92c6-df211287911c"],
+Cell[22239, 611, 3748, 100, 360, "Input",ExpressionUUID->"dad3f937-45fa-481e-bc28-1e0b29c4cfbe"],
+Cell[25990, 713, 281, 6, 39, "Text",ExpressionUUID->"0241c172-9c81-47c2-b952-5f0c6f765879"],
+Cell[26274, 721, 3970, 107, 340, "Input",ExpressionUUID->"8d675534-6d23-4087-bbe1-f870e8da49c6"],
+Cell[30247, 830, 684, 12, 90, "Text",ExpressionUUID->"5948eb0f-274d-4f3e-88b3-c93a58b01941"],
+Cell[30934, 844, 5372, 129, 594, "Input",ExpressionUUID->"299dc97d-07a6-42d0-b7fc-3b01dcdf7b54"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36343, 978, 208, 4, 69, "Section",ExpressionUUID->"a4bfdbc6-4461-403b-bf6c-756a16ea3673"],
+Cell[36554, 984, 1998, 29, 267, "Text",ExpressionUUID->"3871f303-c63b-48f4-bfad-5ccb5ed57c8f"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,2117 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     76846,       2109]
+NotebookOptionsPosition[     71411,       2027]
+NotebookOutlinePosition[     71828,       2043]
+CellTagsIndexPosition[     71785,       2040]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[StyleBox["Differential  Equations & Linear Algebra",
+ FontColor->RGBColor[0.5019607843137255, 0., 0.]]], "Title",
+ CellChangeTimes->{{3.7300568576999626`*^9, 3.730056873216177*^9}, {
+  3.7304214084791975`*^9, 3.730421409735823*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontWeight->
+  "SemiBold",ExpressionUUID->"2b5184a1-35f0-43f4-b6f4-af85fc92f881"],
+
+Cell[TextData[{
+ "\n",
+ StyleBox["\nCreated By: Clarisa Leu-Rodriguez",
+  FontSlant->"Plain"]
+}], "Subtitle",
+ CellChangeTimes->{{3.730056884198413*^9, 3.7300568915118256`*^9}, {
+   3.730056925737938*^9, 3.730056955432722*^9}, 3.7303948874421806`*^9, {
+   3.730421412168219*^9, 3.7304214140241356`*^9}, 3.7319800407389812`*^9},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontSize->16,
+ FontSlant->"Italic",ExpressionUUID->"78c6e15f-d95f-471c-846c-3746d857d6c6"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Problem 1",
+ FontWeight->"Plain"]], "Section",
+ CellChangeTimes->{{3.730056980256485*^9, 3.730056983017863*^9}},
+ FontFamily->"Tahoma",
+ FontSize->24,
+ FontWeight->"Bold",ExpressionUUID->"864c9be7-b451-4175-adb5-c80a39212381"],
+
+Cell["\<\
+\tOne method of solving differential equations is by using a change of \
+variables and a system of equations instead of a single equation. Use the \
+systems method to solve the given third order linear differential equation \
+with constant coefficients:\:f35f\
+\>", "Text",
+ CellChangeTimes->{{3.7300570434272003`*^9, 3.7300570614780407`*^9}, {
+  3.7300571523905783`*^9, 3.7300571533323717`*^9}, {3.73025112339176*^9, 
+  3.730251385716507*^9}, {3.7302516946337605`*^9, 3.7302516949294224`*^9}, {
+  3.730251734085741*^9, 3.7302517387688036`*^9}, {3.730251801417264*^9, 
+  3.7302518795344543`*^9}, {3.730388231881005*^9, 3.7303882752390795`*^9}, {
+  3.730388392248721*^9, 3.730388392497871*^9}, {3.730388424564454*^9, 
+  3.730388457664032*^9}, {3.730391969675666*^9, 3.7303919868058167`*^9}, {
+  3.7303922873715935`*^9, 3.730392297970742*^9}},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"c0f42872-d8eb-4fcd-9cef-a38af772d3c2"],
+
+Cell["y\[CloseCurlyQuote]\[CloseCurlyQuote]\[CloseCurlyQuote] - 2y\
+\[CloseCurlyQuote]\[CloseCurlyQuote] - y\[CloseCurlyQuote] + 2y = 0", "Text",
+ CellChangeTimes->{{3.730388357283593*^9, 3.73038837035273*^9}, {
+  3.7304199371137156`*^9, 3.730419944356932*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontSize->18,
+ FontWeight->"Bold",ExpressionUUID->"076828a0-243f-48fd-9ef9-2f2b868d71d5"],
+
+Cell[TextData[{
+ "\tVerify your solution for y by plugging it in to the differential equation \
+and confirming that 0 comes out. Secondly, by using the built in command ",
+ StyleBox["DSolve[]",
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.7303884626747074`*^9, 3.730388539858151*^9}, 
+   3.730391988898507*^9, {3.730408588243833*^9, 3.730408601225212*^9}, 
+   3.730425396361542*^9},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"c9ab4d48-807c-410d-b6dd-8b127882a8ba"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Solution",
+ FontSize->20,
+ FontWeight->"Plain"]], "Subsection",
+ CellChangeTimes->{{3.730388570638403*^9, 3.73038857201055*^9}},
+ FontFamily->"Tahoma",
+ FontSize->24,
+ FontWeight->"Bold",ExpressionUUID->"dfe7d6ee-25fe-4e88-b481-914f8c44ea30"],
+
+Cell["\<\
+\tGiven the differential equation above, the following relationships are \
+observed:\
+\>", "Text",
+ CellChangeTimes->{3.7303920794135222`*^9, 3.7304199551532784`*^9},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"ae35e40d-ad34-4ebd-933b-6b361efaf8ae"],
+
+Cell[TextData[{
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["y", 
+    RowBox[{"1", " "}]], TraditionalForm]],ExpressionUUID->
+  "dd714913-b48c-44fd-ab2b-7e4c1d2b04d8"],
+ "= y \[Rule] ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["y", "1"], TraditionalForm]],ExpressionUUID->
+  "9decd4bc-d59e-4c50-8a80-d7514a66ce92"],
+ "\[CloseCurlyQuote] = y\[CloseCurlyQuote]\n",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["y", "2"], TraditionalForm]],ExpressionUUID->
+  "0b737463-a27e-435f-bd8b-4695d4011597"],
+ "=y\[CloseCurlyQuote] \[Rule] ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["y", "2"], TraditionalForm]],ExpressionUUID->
+  "0880d9b5-4169-4a73-9af8-f824d9e08426"],
+ "\[CloseCurlyQuote] = y\[CloseCurlyQuote]\[CloseCurlyQuote]\n",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["y", "3"], TraditionalForm]],ExpressionUUID->
+  "200c0c5c-a49e-45cf-ba3f-edd1da476012"],
+ "=y\[CloseCurlyQuote]\[CloseCurlyQuote] \[Rule] ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["y", "3"], TraditionalForm]],ExpressionUUID->
+  "a150ce51-7abc-4631-8bb8-565252ade363"],
+ "\[CloseCurlyQuote] = \
+y\[CloseCurlyQuote]\[CloseCurlyQuote]\[CloseCurlyQuote]\n"
+}], "Text",
+ CellChangeTimes->{
+  3.730392073627451*^9, {3.7303923120145655`*^9, 3.730392323674435*^9}, 
+   3.730392473943911*^9, {3.7304086124622965`*^9, 3.7304086132367973`*^9}, 
+   3.7304254829392915`*^9},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontSize->18,
+ FontWeight->"Bold",ExpressionUUID->"cb5fbb9c-d409-4c4a-b435-eb979888df6c"],
+
+Cell["\tThis is of the form:", "Text",
+ CellChangeTimes->{{3.7303924248523693`*^9, 3.7303924299469175`*^9}, {
+  3.7304199589280214`*^9, 3.7304199612290573`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"18f5bf5f-298b-48cb-83aa-1cb1cb494459"],
+
+Cell[TextData[StyleBox["<y\[CloseCurlyQuote]> = A<y>",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{{3.7303924391955085`*^9, 3.7303924469601564`*^9}, {
+  3.7304086232092505`*^9, 3.730408628751701*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"f8acdb3a-cbff-42a3-a822-61d919ca40e2"],
+
+Cell[TextData[{
+ "where ",
+ StyleBox["A",
+  FontWeight->"Bold"],
+ " is a non-diagonal constant coefficient matrix. Therefore, we must use the \
+Diagonalization Theorem to solve the given differential equation. \n\t\n\t\
+Given the following relationship between an unknown vector ",
+ StyleBox["<u> ",
+  FontWeight->"Bold"],
+ "and ",
+ StyleBox["<y>",
+  FontWeight->"Bold"],
+ ",",
+ StyleBox[" <y> ",
+  FontWeight->"Bold"],
+ "can be solved for: "
+}], "Text",
+ CellChangeTimes->{{3.7303924500032496`*^9, 3.7303924511272373`*^9}, {
+   3.7303925055960827`*^9, 3.730392563673519*^9}, {3.7303932745728955`*^9, 
+   3.7303932809538727`*^9}, {3.7304086439565573`*^9, 
+   3.7304086656982584`*^9}, {3.7304199673127017`*^9, 3.730419974638714*^9}, {
+   3.7304254204227476`*^9, 3.73042543843391*^9}, 3.7304254696596513`*^9},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"66def1af-8d8b-4e02-8b73-0befc4c35445"],
+
+Cell["<y>= P<u>", "Text",
+ CellChangeTimes->{{3.730392565823237*^9, 3.730392579850536*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontSize->18,
+ FontWeight->"Bold",ExpressionUUID->"ed5659dc-aa7a-45d3-9cb0-4ab4179601d6"],
+
+Cell[TextData[{
+ "\twhere ",
+ StyleBox["P",
+  FontWeight->"Bold"],
+ " is an invertible matrix that diagonalizes ",
+ StyleBox["A.",
+  FontWeight->"Bold"],
+ " \n\t\n\tThis can be rewritten as:"
+}], "Text",
+ CellChangeTimes->{{3.7303925975435877`*^9, 3.7303926201507134`*^9}, {
+  3.7304254506868334`*^9, 3.730425465683501*^9}},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"f504a6f7-0ad5-423a-bc53-d507b9fd2de4"],
+
+Cell[TextData[{
+ StyleBox["\tP<u\[CloseCurlyQuote]> = A(P<u>)",
+  FontWeight->"Bold"],
+ " or ",
+ StyleBox["<u\[CloseCurlyQuote]> = ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    SuperscriptBox["P", 
+     RowBox[{"-", "1"}]]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"adfe8d39-7ca1-4371-9436-68be56374b8c"],
+ StyleBox["AP)<u>",
+  FontWeight->"Bold"],
+ ". Or, more commonly referred to as ",
+ StyleBox["<u\[CloseCurlyQuote]> = D<u>",
+  FontWeight->"Bold"],
+ " where",
+ StyleBox[" D = ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    SuperscriptBox["P", 
+     RowBox[{"-", "1"}]]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"3d7ad011-8d1c-4b33-8c1b-a7d625d4a901"],
+ StyleBox["AP)",
+  FontWeight->"Bold"],
+ ".\n\n\tWe are able to solve the differential equation ",
+ StyleBox["<u\[CloseCurlyQuote]> = D<u> ",
+  FontWeight->"Bold"],
+ "for ",
+ StyleBox["<u>",
+  FontWeight->"Bold"],
+ " using the general solution that <",
+ StyleBox["y> = ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["ce", "ax"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"bee54908-b04f-4739-8d9f-ecd9e1810d5d"],
+ "; where ",
+ StyleBox["c",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ " is an arbitrary constant and ",
+ StyleBox["a ",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ "is a constant given in the differential equation <",
+ StyleBox["y\[CloseCurlyQuote]> = a<y>",
+  FontWeight->"Bold"],
+ ". We are than able to relate ",
+ StyleBox["<u> ",
+  FontWeight->"Bold"],
+ "back to ",
+ StyleBox["<y> ",
+  FontWeight->"Bold"],
+ "given ",
+ StyleBox["<y>= P<u>",
+  FontWeight->"Bold"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.730392624728921*^9, 3.7303928161539516`*^9}, {
+  3.730393198515664*^9, 3.730393213451389*^9}, {3.730393308815954*^9, 
+  3.7303933392889943`*^9}, {3.7304086839177628`*^9, 3.730408695370954*^9}},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"f3dad1e3-9666-4acd-858b-2f2c17ec7c4c"],
+
+Cell[TextData[{
+ "\tFirst, we will find the constant coefficient matrix ",
+ StyleBox["A",
+  FontWeight->"Bold"],
+ ". From the given differential equation:"
+}], "Text",
+ CellChangeTimes->{{3.7303928376350408`*^9, 3.730392855240883*^9}, {
+   3.7303928991766872`*^9, 3.730392926270733*^9}, {3.730408710315573*^9, 
+   3.730408715485275*^9}, {3.7304200141594296`*^9, 3.730420028178175*^9}, 
+   3.7304200853510523`*^9},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"a217d7c9-f374-483b-a1c3-9cfbf1a7d5b1"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["y", "1"], TraditionalForm]],ExpressionUUID->
+  "a9c5c190-e6df-463f-9770-a03226dfeae2"],
+ "\[CloseCurlyQuote] = ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["y", "2"], TraditionalForm]],ExpressionUUID->
+  "4a5c4f80-37f3-44f4-9bdc-dc5f19af2104"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["y", "2"], TraditionalForm]],ExpressionUUID->
+  "d46db9f6-9efe-45e7-a7d9-18665a8c163a"],
+ "\[CloseCurlyQuote] = ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["y", "3"], TraditionalForm]],ExpressionUUID->
+  "066ae183-2b37-49fb-b329-abfc61e02e6b"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["y", "3"], TraditionalForm]],ExpressionUUID->
+  "a48ed9e6-174d-4050-871c-8813a6e23e1a"],
+ "\[CloseCurlyQuote] =  -",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", 
+    SubscriptBox["y", "1"]}], TraditionalForm]],ExpressionUUID->
+  "8460ab0a-33e8-49d9-b568-775ae9d8bf77"],
+ " + ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["y", "2"], TraditionalForm]],ExpressionUUID->
+  "c57bc1b5-5e58-4060-9e7d-f76cf52fe93e"],
+ " + ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", 
+    SubscriptBox["y", "3"]}], TraditionalForm]],ExpressionUUID->
+  "f4a442ad-0952-40c1-a390-9ae6c80bf738"],
+ " \n\nWhich is of the form: <y\[CloseCurlyQuote]> = A<y>\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {
+       RowBox[{
+        SubscriptBox["y", "1"], "'"}]},
+      {
+       RowBox[{
+        SubscriptBox["y", "2"], "'"}]},
+      {
+       RowBox[{
+        SubscriptBox["y", "3"], "'"}]}
+     }], ")"}], TraditionalForm]],ExpressionUUID->
+  "401894da-5b53-44fe-9b0e-3c2a1afdb9fe"],
+ " = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"0", "1", "0"},
+      {"0", "0", "1"},
+      {
+       RowBox[{"-", "2"}], "1", "2"}
+     }], ")"}], TraditionalForm]],ExpressionUUID->
+  "87c71753-ae52-43a6-a5cd-709d03020695"],
+ " ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {
+       SubscriptBox["y", "1"]},
+      {
+       SubscriptBox["y", "2"]},
+      {
+       SubscriptBox["y", "3"]}
+     }], ")"}], TraditionalForm]],ExpressionUUID->
+  "527f4cea-53ce-437b-b6f6-48f85aaf47c4"],
+ "\n\nWhere",
+ StyleBox[":",
+  FontWeight->"Plain"],
+ "\nA = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {"0", "1", "0"},
+      {"0", "0", "1"},
+      {
+       RowBox[{"-", "2"}], "1", "2"}
+     }], ")"}], TraditionalForm]],ExpressionUUID->
+  "d140d4b3-396b-43fc-b414-f16a5483a9c3"]
+}], "Text",
+ CellChangeTimes->{{3.730392936833828*^9, 3.7303929946094637`*^9}, {
+   3.7303930354652843`*^9, 3.73039316356733*^9}, {3.730393227091632*^9, 
+   3.730393253336423*^9}, 3.730393375675747*^9, {3.730408723626733*^9, 
+   3.7304087287096615`*^9}, {3.730420012114072*^9, 3.730420076007903*^9}, {
+   3.7304255303363*^9, 3.730425533049016*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontSize->18,
+ FontWeight->"Bold",ExpressionUUID->"e2367e0a-40da-4927-a038-e0e75fb8299f"],
+
+Cell[TextData[{
+ "\tTo diagonalize ",
+ StyleBox["A",
+  FontWeight->"Bold"],
+ ", we will find the eigen vectors of ",
+ StyleBox["A",
+  FontWeight->"Bold"],
+ " which will form the columns of matrix ",
+ StyleBox["P",
+  FontWeight->"Bold"],
+ ". "
+}], "Text",
+ CellChangeTimes->{{3.7303933817579613`*^9, 3.73039343280469*^9}, {
+  3.7304087482952976`*^9, 3.730408749665507*^9}, {3.7304200837578707`*^9, 
+  3.7304201053960576`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"9a7be0b9-0971-4641-b71f-279ec9b4ad76"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{"Setting", " ", "up", " ", "problem"}], "*)"}],
+   FontWeight->"Bold"], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"A", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"0", ",", "1", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "2"}], ",", "1", ",", "2"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eigenVectors", " ", "=", " ", 
+     RowBox[{"Eigenvectors", "[", "A", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eigenValues", " ", "=", " ", 
+     RowBox[{"Eigenvalues", "[", "A", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"P", " ", "=", " ", 
+     RowBox[{"Transpose", "[", "eigenVectors", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"Framed", "[", 
+      RowBox[{"Style", "[", 
+       RowBox[{
+        RowBox[{"StringForm", "[", 
+         RowBox[{"\"\<A = `` \\n P =``\>\"", ",", 
+          RowBox[{"MatrixForm", "[", "A", "]"}], ",", 
+          RowBox[{"MatrixForm", "[", "P", "]"}]}], "]"}], ",", 
+        RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+        RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+        RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}], "]"}], ",", 
+     RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+     RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.73039344914815*^9, 3.730393525430972*^9}, {
+   3.7303938220888367`*^9, 3.7303938449115343`*^9}, {3.730394003669693*^9, 
+   3.730394017240827*^9}, {3.730394112679765*^9, 3.7303941583010716`*^9}, {
+   3.7303949663660526`*^9, 3.7303949717764387`*^9}, {3.730420253394644*^9, 
+   3.7304202891612597`*^9}, {3.73042113981588*^9, 3.730421142009138*^9}, 
+   3.730424900798231*^9, {3.7304764536490197`*^9, 3.7304764646884165`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->16,
+ FontWeight->"Plain",ExpressionUUID->"aa1dadbe-d143-4111-87d4-3c1096b0ffa5"],
+
+Cell[TextData[{
+ "\tAfter solving for",
+ StyleBox[" P",
+  FontWeight->"Bold"],
+ ", we can than set up our first order differential equation; ",
+ StyleBox["<u\[CloseCurlyQuote]> = D<u> ",
+  FontWeight->"Bold"],
+ "where ",
+ StyleBox["D = ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    SuperscriptBox["P", 
+     RowBox[{"-", "1"}]]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"844aa576-2acb-4aea-965c-b798526235ba"],
+ StyleBox["AP) ",
+  FontWeight->"Bold"],
+ "and solve for ",
+ StyleBox["<u>",
+  FontWeight->"Bold"],
+ ". "
+}], "Text",
+ CellChangeTimes->{{3.730393528342715*^9, 3.7303935664811325`*^9}, {
+  3.7304201448294163`*^9, 3.73042018258805*^9}, {3.7304255474809074`*^9, 
+  3.7304255730440607`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"b55499ee-a7dc-46f4-86c7-5c5ba826f3c6"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Solving", " ", "for", " ", "unknown"}], " ", "<", "u", ">"}], 
+    "*)"}],
+   FontWeight->"Bold"], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"DMatrix", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"Inverse", "[", "P", "]"}], ".", "A", ".", "P"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"uPrimeDisplay", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        SubscriptBox["u", "1"], "'"}], ",", 
+       RowBox[{
+        SubscriptBox["u", "2"], "'"}], ",", 
+       RowBox[{
+        SubscriptBox["u", "3"], "'"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"uPrimeDisplay2", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        SubscriptBox["u", "1"], "'"}], ",", 
+       RowBox[{
+        SubscriptBox["u", "2"], "'"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"uDisplay", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["u", "1"], ",", 
+       SubscriptBox["u", "2"], ",", 
+       SubscriptBox["u", "3"]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"uDisplay2", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["u", "1"], ",", 
+       SubscriptBox["u", "2"]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"xDisplay", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["x", "1"], ",", 
+       SubscriptBox["x", "2"]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"uSolutions", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        SubscriptBox["c", "1"], "*", 
+        RowBox[{"Exp", "[", 
+         RowBox[{
+          RowBox[{"eigenValues", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "*", "x"}], "]"}]}], ",", 
+       RowBox[{
+        SubscriptBox["c", "2"], "*", 
+        RowBox[{"Exp", "[", 
+         RowBox[{
+          RowBox[{"eigenValues", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], "*", "x"}], "]"}]}], ",", 
+       RowBox[{
+        SubscriptBox["c", "3"], "*", 
+        RowBox[{"Exp", "[", 
+         RowBox[{
+          RowBox[{"eigenValues", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], "*", "x"}], "]"}]}]}], "}"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"Framed", "[", 
+      RowBox[{"Style", "[", 
+       RowBox[{
+        RowBox[{"StringForm", "[", 
+         RowBox[{"\"\<Of the form: <u'>=D<u>\\n `` = ````\>\"", ",", 
+          RowBox[{"MatrixForm", "[", "uPrimeDisplay", "]"}], ",", 
+          RowBox[{"MatrixForm", "[", "DMatrix", "]"}], ",", 
+          RowBox[{"MatrixForm", "[", "uDisplay", "]"}]}], "]"}], ",", 
+        RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+        RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}]}], "]"}], "]"}], 
+     ",", 
+     RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+     RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"Framed", "[", 
+      RowBox[{"Style", "[", 
+       RowBox[{
+        RowBox[{
+        "StringForm", "[", 
+         "\"\<Reading off solutions, given the general solution of <y'>=A<y>; \
+where A is a Diagonal constant coefficient matrix: \\n \!\(\*SubscriptBox[\(u\
+\), \(1\)]\)=\!\(\*SubscriptBox[\(c\), \(1\)]\)\!\(\*SuperscriptBox[\(e\), \
+\(2  x\)]\) \\n \!\(\*SubscriptBox[\(u\), \(2\)]\)=\!\(\*SubscriptBox[\(c\), \
+\(2\)]\)\!\(\*SuperscriptBox[\(e\), \(-x\)]\) \\n \!\(\*SubscriptBox[\(u\), \
+\(3\)]\)=\!\(\*SubscriptBox[\(c\), \(3\)]\)\!\(\*SuperscriptBox[\(e\), \(x\)]\
+\) \\n *These are also just the eigenvalues of matrix A.*\>\"", "]"}], ",", 
+        RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+        RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}], "]"}], ",", 
+     RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+     RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.7303935696175127`*^9, 3.7303935894201307`*^9}, {
+   3.7303936205950317`*^9, 3.730393815905396*^9}, {3.730393848262437*^9, 
+   3.730393978490765*^9}, {3.7303940257564287`*^9, 3.730394106930438*^9}, {
+   3.7303941618825655`*^9, 3.730394238596562*^9}, {3.730394310708374*^9, 
+   3.730394352591698*^9}, {3.730394644080821*^9, 3.730394646513286*^9}, {
+   3.7303949570523076`*^9, 3.7303949629028482`*^9}, {3.730408794252081*^9, 
+   3.7304090054652553`*^9}, {3.730409147098091*^9, 3.7304092097879677`*^9}, {
+   3.730420232433182*^9, 3.730420233991339*^9}, {3.730421096247157*^9, 
+   3.730421135403182*^9}, {3.730421167294589*^9, 3.730421191397296*^9}, 
+   3.730421447586319*^9, 3.7304248963944483`*^9, {3.730425609736453*^9, 
+   3.730425620044381*^9}, {3.730476044494673*^9, 3.7304760669529943`*^9}, {
+   3.7304765725737476`*^9, 3.730476587428319*^9}},
+ FontFamily->"Tahoma",
+ FontSize->16,
+ FontWeight->"Plain",ExpressionUUID->"03ae02d2-4505-4e00-8171-e54e84846dfe"],
+
+Cell[TextData[{
+ "\tRelating our ",
+ StyleBox["<u>",
+  FontWeight->"Bold"],
+ " vector back to ",
+ StyleBox["<y>;",
+  FontWeight->"Bold"],
+ " given the following relationship: ",
+ StyleBox["<y> = P<u>",
+  FontWeight->"Bold"],
+ ": "
+}], "Text",
+ CellChangeTimes->{{3.7303942596926594`*^9, 3.730394285346882*^9}, {
+  3.7304090268352976`*^9, 3.730409028546507*^9}, {3.7304212056780443`*^9, 
+  3.7304212110494137`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"a3c2a8ad-2c8c-4cd3-9ccf-7f91e25c908b"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{"Relating", " ", "<", "u", ">", " ", 
+     RowBox[{"back", " ", "to"}], " ", "<", "y", ">"}], "*)"}],
+   FontWeight->"Bold"], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"ySolutions", "=", 
+     RowBox[{"P", ".", "uSolutions"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"yDisplay", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["y", "1"], ",", 
+       SubscriptBox["y", "2"], ",", 
+       SubscriptBox["y", "3"]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"Framed", "[", 
+      RowBox[{"StringForm", "[", 
+       RowBox[{"\"\<Of the form: <y>=P<u> \\n`` = ````\>\"", ",", 
+        RowBox[{"MatrixForm", "[", "yDisplay", "]"}], ",", 
+        RowBox[{"MatrixForm", "[", "P", "]"}], ",", 
+        RowBox[{"MatrixForm", "[", "uSolutions", "]"}]}], "]"}], "]"}], ",", 
+     RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+     RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+     RowBox[{"FontWeight", "\[Rule]", "Bold"}], ",", 
+     RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"Framed", "[", 
+      RowBox[{"StringForm", "[", 
+       RowBox[{
+       "\"\<Therefore: \\n \!\(\*SubscriptBox[\(y\), \(1\)]\)= `` \\n \
+\!\(\*SubscriptBox[\(y\), \(2\)]\)= `` \\n \!\(\*SubscriptBox[\(y\), \
+\(3\)]\)= `` \\n *Where \!\(\*SubscriptBox[\(y\), \(\(1\)\(\\\ \)\)]\)= y, \!\
+\(\*SubscriptBox[\(y\), \(2\)]\) = y', & \!\(\*SubscriptBox[\(y\), \(3\)]\) = \
+y''*\>\"", ",", 
+        RowBox[{"ySolutions", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", 
+        RowBox[{"ySolutions", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], ",", 
+        RowBox[{"ySolutions", "[", 
+         RowBox[{"[", "3", "]"}], "]"}]}], "]"}], "]"}], ",", 
+     RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+     RowBox[{"FontWeight", "\[Rule]", "Bold"}], ",", 
+     RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+     RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.7303942882836914`*^9, 3.730394293277972*^9}, {
+   3.730394358692922*^9, 3.730394504608939*^9}, {3.730394586514741*^9, 
+   3.7303945870110607`*^9}, {3.73039493144823*^9, 3.7303949426920986`*^9}, {
+   3.7304090518819027`*^9, 3.730409138147803*^9}, {3.7304214600515757`*^9, 
+   3.73042158369215*^9}, {3.7304245965942125`*^9, 3.73042476825657*^9}, 
+   3.7304248940621543`*^9},
+ FontFamily->"Tahoma",
+ FontSize->16,
+ FontWeight->"Plain",ExpressionUUID->"b4e35582-3178-4a8b-8e44-7009eb106d90"],
+
+Cell[TextData[{
+ "\tChecking our work by plugging in",
+ StyleBox[" y",
+  FontWeight->"Bold"],
+ " back into the original equation:"
+}], "Text",
+ CellChangeTimes->{{3.730394592111627*^9, 3.7303946098026686`*^9}, {
+   3.730394675872357*^9, 3.730394686370274*^9}, 3.7304248526082535`*^9},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"572b5f33-18b3-4dcc-a9b5-01b597ac62c1"],
+
+Cell[TextData[StyleBox["y\[CloseCurlyQuote]\[CloseCurlyQuote]\
+\[CloseCurlyQuote] - 2y\[CloseCurlyQuote]\[CloseCurlyQuote] - y\
+\[CloseCurlyQuote] + 2y = 0",
+ FontWeight->"Bold"]], "Text",
+ CellChangeTimes->{3.730394683831523*^9},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"068114f7-131b-4655-ab93-9ff31e44e828"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{"My", " ", "solved", " ", "for", " ", 
+     RowBox[{"solutions", ":", " ", "check"}]}], "*)"}],
+   FontWeight->"Bold"], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"FullSimplify", "[", 
+     RowBox[{
+      RowBox[{"D", "[", 
+       RowBox[{
+        RowBox[{"ySolutions", "[", 
+         RowBox[{"[", "3", "]"}], "]"}], ",", "x"}], "]"}], "-", 
+      RowBox[{"2", "*", 
+       RowBox[{"ySolutions", "[", 
+        RowBox[{"[", "3", "]"}], "]"}]}], "-", 
+      RowBox[{"ySolutions", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "+", 
+      RowBox[{"2", 
+       RowBox[{"ySolutions", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}]}], "]"}], "\[Equal]", "0"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.730394612848774*^9, 3.730394627154838*^9}, {
+  3.730394661315651*^9, 3.730394664052932*^9}, {3.730394697410632*^9, 
+  3.7303947588430367`*^9}, {3.730394911459076*^9, 3.7303949176264524`*^9}, {
+  3.730409238245493*^9, 3.730409243757949*^9}, {3.730424889951195*^9, 
+  3.730424909299796*^9}},
+ FontFamily->"Tahoma",
+ FontSize->16,
+ FontWeight->"Plain",ExpressionUUID->"583d0071-fbeb-47c1-ab2a-c29b3123fd64"],
+
+Cell[TextData[{
+ "\tAnd finally checking our work by using ",
+ StyleBox["DSolve[]",
+  FontWeight->"Bold"],
+ ":"
+}], "Text",
+ CellChangeTimes->{{3.730394774729245*^9, 3.7303947923835196`*^9}, 
+   3.730424865171154*^9},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"212289e7-4314-45a0-bfb1-0d77764da092"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Mathematica", "'"}], "s", " ", "solved", " ", "for", " ", 
+     RowBox[{"solutions", ":", " ", "check"}]}], "*)"}],
+   FontWeight->"Bold"], 
+  StyleBox["\[IndentingNewLine]",
+   FontWeight->"Plain"], 
+  StyleBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"solutionCheck2", "=", 
+      RowBox[{"DSolve", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"y", "'''"}], "[", "x", "]"}], "-", 
+          RowBox[{"2", 
+           RowBox[{
+            RowBox[{"y", "''"}], "[", "x", "]"}]}], "-", 
+          RowBox[{
+           RowBox[{"y", "'"}], "[", "x", "]"}], "+", 
+          RowBox[{"2", 
+           RowBox[{"y", "[", "x", "]"}]}]}], "\[Equal]", "0"}], ",", 
+        RowBox[{"y", "[", "x", "]"}], ",", "x"}], "]"}]}], ";"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"f", "[", "x_", "]"}], "=", 
+      RowBox[{
+       RowBox[{"y", "[", "x", "]"}], "/.", 
+       RowBox[{"solutionCheck2", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"FullSimplify", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"f", "'''"}], "[", "x", "]"}], "-", 
+       RowBox[{"2", 
+        RowBox[{
+         RowBox[{"f", "''"}], "[", "x", "]"}]}], "-", 
+       RowBox[{
+        RowBox[{"f", "'"}], "[", "x", "]"}], "+", 
+       RowBox[{"2", 
+        RowBox[{"f", "[", "x", "]"}]}]}], "]"}], "\[Equal]", "0"}], 
+    "\[IndentingNewLine]"}],
+   FontWeight->"Plain"]}]], "Input",
+ CellChangeTimes->{{3.7303948285736427`*^9, 3.7303948492747173`*^9}, {
+   3.730394919378104*^9, 3.730394928087263*^9}, {3.730409247426362*^9, 
+   3.730409253047325*^9}, {3.730424828086563*^9, 3.7304248308226523`*^9}, 
+   3.730424888251322*^9, 3.730424968473999*^9},
+ FontFamily->"Tahoma",
+ FontSize->16,
+ FontWeight->"Bold",ExpressionUUID->"2cce9459-21da-4ab3-ac4f-694b464724b4"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"(*", "Conclusion", "*)"}],
+   FontWeight->"Bold"], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"Framed", "[", 
+      RowBox[{"Style", "[", 
+       RowBox[{
+        RowBox[{"StringForm", "[", 
+         RowBox[{
+         "\"\<In conclusion, the general solution of the given differential \
+equation is: \\n \!\(\*SubscriptBox[\(y\), \(1\)]\)= `` \\n \
+\!\(\*SubscriptBox[\(y\), \(2\)]\)= `` \\n \!\(\*SubscriptBox[\(y\), \
+\(3\)]\)= `` \\n Where \!\(\*SubscriptBox[\(y\), \(\(1\)\(\\\ \)\)]\)= y, \
+\!\(\*SubscriptBox[\(y\), \(2\)]\) = y', & \!\(\*SubscriptBox[\(y\), \(3\)]\) \
+= y''\>\"", ",", 
+          RowBox[{"ySolutions", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{"ySolutions", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], ",", 
+          RowBox[{"ySolutions", "[", 
+           RowBox[{"[", "3", "]"}], "]"}]}], "]"}], ",", 
+        RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+        RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+        RowBox[{"TextAlignment", "\[Rule]", "Center"}]}], "]"}], "]"}], ",", 
+     RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+     RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.730409316078614*^9, 3.730409331180756*^9}, 
+   3.7304248915084066`*^9, {3.7304249218788834`*^9, 3.7304249632885337`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->16,
+ FontWeight->"Plain",ExpressionUUID->"d86fc016-d853-41f2-a23b-5af0fa99fc9a"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Problem 2",
+ FontWeight->"Plain"]], "Section",
+ CellChangeTimes->{{3.7300569889796753`*^9, 3.7300569905619154`*^9}, {
+  3.730253200010353*^9, 3.730253204942333*^9}},
+ FontFamily->"Tahoma",
+ FontSize->24,
+ FontWeight->"Bold",ExpressionUUID->"45d94c1b-2489-4ba9-bf84-b4ec271eda3a"],
+
+Cell["\<\
+\tA certain two capacitor electrical circuit can be described by the given \
+system of equations:\
+\>", "Text",
+ CellChangeTimes->{{3.730395224026475*^9, 3.7303952320507946`*^9}, 
+   3.730424985099272*^9},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"db787478-b723-4c85-a3be-9bca0e904d6b"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "1"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"01e62991-ee70-4403-8634-c43de46d10f8"],
+ StyleBox["\[CloseCurlyQuote](t) = ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"-", "1.5"}], 
+    SubscriptBox["x", "1"]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"ad5b3969-cae8-4516-9d0e-c1cf1247d9e7"],
+ StyleBox["(t) + ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"0.5", 
+    SubscriptBox["x", "2"]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"2295c265-6b75-4961-9aa5-c05ebb610d80"],
+ StyleBox["(t)\n",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "2"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"49e742c3-797e-4302-8a12-18fab2e40b5e"],
+ StyleBox["\[CloseCurlyQuote](t) = ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "1"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"599e281c-e7ca-48d0-b901-28ff20ec980e"],
+ StyleBox["(t) ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"-", 
+    SubscriptBox["x", "2"]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"ed7b8226-f061-40fe-a517-8e57f56f1674"],
+ StyleBox["(t)",
+  FontWeight->"Bold"]
+}], "Text",
+ CellChangeTimes->{{3.7303951713694534`*^9, 3.730395211506158*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"cbbd276a-5a91-4efe-98f4-33079461b833"],
+
+Cell[TextData[{
+ "\t\n\tWhere ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "1"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"a9017a44-bda7-4bcd-8614-4a2a3b9b3358"],
+ StyleBox["(t)",
+  FontWeight->"Bold"],
+ " is the voltage across the first capacitor at time t and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "2"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"2562500c-64aa-4180-a2ab-6723b2e2050d"],
+ StyleBox["(t)",
+  FontWeight->"Bold"],
+ " is the voltage across the second capacitor at time t. Find the general \
+solution ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    SubscriptBox["x", "1"]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"20a50310-2bd9-422c-9919-f302a25ed773"],
+ StyleBox["(t), ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "2"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"154b150a-f9fa-41ce-9aaa-125c466fda27"],
+ StyleBox["(t))",
+  FontWeight->"Bold"],
+ ". Your answer will have constants ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["c", "1"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"248f8a62-3d0a-4677-b0cc-4f2efb349db0"],
+ StyleBox[" ",
+  FontWeight->"Bold"],
+ "and ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SubscriptBox["c", "2"],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "b75465f9-bdd7-453a-9bc5-90d963cbd033"],
+ " in it. Normally, you\[CloseCurlyQuote]d find the values of these constants \
+by measuring the voltages at a fixed time and solving for the constants \
+(initial conditions). Rather than do that, generate a table of 30 possible \
+solutions using random values of ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SubscriptBox["c", "1"],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "162d6967-1e0a-4732-a529-9ea290fe3ff2"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    SubscriptBox["c", "2"],
+    FontWeight->"Bold"], TraditionalForm]],ExpressionUUID->
+  "080c66d1-4e1f-4f07-859d-6dc808bffab6"],
+ " between -5 and 5 (so, each constant gets assigned a random value; do this \
+30 times). The",
+ StyleBox[" phase portrait",
+  FontSlant->"Italic"],
+ " of the system is a plot of the various solution curves, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    SubscriptBox["x", "1"]}], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"f7e149dd-96ed-452c-b277-1fab81526bd0"],
+ StyleBox["(t), ",
+  FontWeight->"Bold"],
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "2"], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"ed83fad5-73d9-4962-910d-c90d28c82792"],
+ StyleBox["(t)) ",
+  FontWeight->"Bold"],
+ ", for various values of the constants. Plot all 30 solution curves on the \
+same set of axes using ",
+ StyleBox["ParametricPlot[] ",
+  FontWeight->"Bold"],
+ "for all values of ",
+ StyleBox["t ",
+  FontWeight->"Bold"],
+ "between -1 and 2. Since this doesn\[CloseCurlyQuote]t show how the system \
+evolves over time, use a ",
+ StyleBox["Manipulate[ ]",
+  FontWeight->"Bold"],
+ " command to animate the evolution of the system as ",
+ StyleBox["t",
+  FontWeight->"Bold"],
+ " starts at -1 and ends at 2. *Note: The origin for this system is called an \
+attractor or a ",
+ StyleBox["sink",
+  FontSlant->"Italic"],
+ ".\n"
+}], "Text",
+ CellChangeTimes->{{3.730395257234751*^9, 3.730395423292712*^9}, {
+  3.730395455030073*^9, 3.730395507035364*^9}, {3.730424979619521*^9, 
+  3.7304249833642983`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"79cf68b0-ea04-48f4-bca8-d8d8e9288b59"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Solution",
+ FontSize->20,
+ FontWeight->"Plain"]], "Subsection",
+ CellChangeTimes->{{3.7303958092580376`*^9, 3.730395810198531*^9}},
+ FontFamily->"Tahoma",
+ FontSize->24,
+ FontWeight->"Bold",ExpressionUUID->"0ed12f8f-e399-42d5-8217-aed3f1e84480"],
+
+Cell[TextData[{
+ "\tThis system is a first order linear differential equation of the form, ",
+ StyleBox["<x\[CloseCurlyQuote]> = B<x>",
+  FontWeight->"Bold"],
+ "; Where ",
+ StyleBox["B ",
+  FontWeight->"Bold"],
+ "is a matrix with constant coefficients. As ",
+ StyleBox["B",
+  FontWeight->"Bold"],
+ " is not a diagonal matrix, we can solve the system using Diagonalization. \
+We will use the same process as described in Problem 1."
+}], "Text",
+ CellChangeTimes->{{3.7303958136627707`*^9, 3.7303959197430444`*^9}, {
+   3.730395963597657*^9, 3.7303959756186285`*^9}, {3.730396515623594*^9, 
+   3.7303965205517006`*^9}, 3.730424987061309*^9},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"b7aeb746-ff29-43b9-9d61-df594780317f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Setting", " ", "up", " ", "problem"}], "*)"}], 
+  StyleBox["\[IndentingNewLine]",
+   FontWeight->"Plain"], 
+  RowBox[{
+   StyleBox[
+    RowBox[{
+     RowBox[{"B", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "1.5"}], ",", ".5"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", 
+          RowBox[{"-", "1"}]}], "}"}]}], "}"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"eigenVectorsB", " ", "=", " ", 
+      RowBox[{"Eigenvectors", "[", "B", "]"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"eigenValuesB", " ", "=", " ", 
+      RowBox[{"Eigenvalues", "[", "B", "]"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"PB", " ", "=", " ", 
+      RowBox[{"Transpose", "[", "eigenVectorsB", "]"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Framed", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"StringForm", "[", 
+          RowBox[{"\"\<B = `` \\n P =``\>\"", ",", 
+           RowBox[{"MatrixForm", "[", "B", "]"}], ",", 
+           RowBox[{"MatrixForm", "[", "PB", "]"}]}], "]"}], ",", 
+         RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+         RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+         RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}], "]"}], ",", 
+      RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+      RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Solving", " ", "for"}], " ", "<", "u", ">"}], ",", " ", 
+     RowBox[{
+     "essentially", " ", "the", " ", "eigenvalues", " ", "of", " ", "B"}]}], 
+    "*)"}], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"DMatrixB", " ", "=", "  ", 
+      RowBox[{
+       RowBox[{"Inverse", "[", "PB", "]"}], ".", "B", ".", "PB"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"uSolutionsB", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         SubscriptBox["c", "1"], "*", 
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"eigenValuesB", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "*", "x"}], "]"}]}], ",", 
+        RowBox[{
+         SubscriptBox["c", "2"], "*", 
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"eigenValuesB", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "*", "x"}], "]"}]}]}], "}"}]}], 
+     ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Framed", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"StringForm", "[", 
+          RowBox[{"\"\<Of the form: <u'>=D<u>\\n `` = ````\>\"", ",", 
+           RowBox[{"MatrixForm", "[", "uPrimeDisplay2", "]"}], ",", 
+           RowBox[{"MatrixForm", "[", "DMatrixB", "]"}], ",", 
+           RowBox[{"MatrixForm", "[", "uDisplay2", "]"}]}], "]"}], ",", 
+         RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+         RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}]}], "]"}], "]"}], 
+      ",", 
+      RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+      RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Framed", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{
+         "StringForm", "[", 
+          "\"\<Reading off solutions, given the general solution of \
+<y'>=A<y>; where A is a Diagonal constant coefficient matrix: \\n \
+\!\(\*SubscriptBox[\(u\), \(1\)]\)=\!\(\*SubscriptBox[\(c\), \
+\(1\)]\)\!\(\*SuperscriptBox[\(e\), \(\(-2\) x\)]\) \\n \
+\!\(\*SubscriptBox[\(u\), \(2\)]\)=\!\(\*SubscriptBox[\(c\), \
+\(2\)]\)\!\(\*SuperscriptBox[\(e\), \(\(-0.5\) x\)]\) \\n *These are also \
+just the eigenvalues of matrix B.*\>\"", "]"}], ",", 
+         RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+         RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}], "]"}], ",", 
+      RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+      RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   RowBox[{"(*", 
+    RowBox[{"Relating", " ", "<", "u", ">", " ", 
+     RowBox[{"back", " ", "to"}], " ", "<", "y", ">"}], "*)"}], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"ySolutionsB", "=", 
+      RowBox[{"PB", ".", "uSolutionsB"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Framed", "[", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{"\"\<Of the form: <y>=P<u> \\n`` = ````\>\"", ",", 
+         RowBox[{"MatrixForm", "[", "xDisplay", "]"}], ",", 
+         RowBox[{"MatrixForm", "[", "PB", "]"}], ",", 
+         RowBox[{"MatrixForm", "[", "uSolutionsB", "]"}]}], "]"}], "]"}], ",", 
+      RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+      RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+      RowBox[{"FontWeight", "\[Rule]", "Bold"}], ",", 
+      RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Framed", "[", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{
+        "\"\<Therefore: \\n \!\(\*SubscriptBox[\(x\), \(1\)]\)= `` \\n \
+\!\(\*SubscriptBox[\(x\), \(2\)]\)= `` \\n \>\"", ",", 
+         RowBox[{"ySolutionsB", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], ",", 
+         RowBox[{"ySolutionsB", "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], ",", 
+      RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+      RowBox[{"FontWeight", "\[Rule]", "Bold"}], ",", 
+      RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+      RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"]}]}]], "Input",
+ CellChangeTimes->{{3.7303959222587657`*^9, 3.7303964779574327`*^9}, 
+   3.730397078835512*^9, {3.7304250021479673`*^9, 3.730425035375733*^9}, {
+   3.7304269445115347`*^9, 3.730426983130638*^9}, {3.730427014433132*^9, 
+   3.7304271659243994`*^9}, {3.7304272044795465`*^9, 3.730427208978532*^9}, {
+   3.7304760346148415`*^9, 3.730476037999383*^9}, {3.730476190764636*^9, 
+   3.7304762153751984`*^9}, {3.7304765081325893`*^9, 3.7304765257430763`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->16,
+ FontWeight->"Bold",ExpressionUUID->"1f513bcc-470e-4495-aeff-ec48f293667b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Plotting", " ", "The", " ", "Phase", " ", "Portrait"}], ",", " ", 
+    RowBox[{
+    "by", " ", "picking", " ", "30", " ", "possible", " ", "solutions", " ", 
+     "using", " ", "random", " ", "variables", " ", "for", " ", 
+     SubscriptBox["c", "1"], " ", "and", " ", 
+     SubscriptBox["c", "2"]}]}], "*)"}], "\[IndentingNewLine]", 
+  StyleBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"randomSolutions", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ySolutionsB", "/.", 
+          RowBox[{
+           SubscriptBox["c", "1"], "\[Rule]", 
+           RowBox[{"RandomInteger", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "5"}], ",", "5"}], "}"}], "]"}]}]}], "/.", 
+         RowBox[{
+          SubscriptBox["c", "2"], "\[Rule]", 
+          RowBox[{"RandomInteger", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "5"}], ",", "5"}], "}"}], "]"}]}]}], ",", 
+        RowBox[{"{", "30", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"Manipulate", "[", 
+     RowBox[{
+      RowBox[{"ParametricPlot", "[", 
+       RowBox[{"randomSolutions", ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "1", ",", "t"}], "}"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", 
+        RowBox[{"-", "1"}], ",", "2"}], "}"}]}], "]"}], 
+    "\[IndentingNewLine]"}],
+   FontWeight->"Plain"]}]], "Input",
+ CellChangeTimes->{{3.7303966151562757`*^9, 3.7303968982904387`*^9}, {
+  3.730425063758586*^9, 3.7304251065321217`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->16,
+ FontWeight->"Bold",ExpressionUUID->"8a4e7fb5-28fa-4bcf-beba-a45aabc06141"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Problem 3",
+ FontWeight->"Plain"]], "Section",
+ CellChangeTimes->{{3.730056999465551*^9, 3.7300570008191867`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->24,
+ FontWeight->"Bold",ExpressionUUID->"27ff1cb3-b056-4edd-b2ed-39ac9d11c5aa"],
+
+Cell["\<\
+\tRepeat this, but for the given system below. Use only 20 curves.\
+\>", "Text",
+ CellChangeTimes->{{3.730253256840017*^9, 3.7302532974831753`*^9}, 
+   3.730253539424599*^9, 3.7303955937479506`*^9, {3.7303956439965715`*^9, 
+   3.7303956560195646`*^9}, {3.7304251131371846`*^9, 3.7304251149784994`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"e851853c-2938-4f70-a98a-c4d70550eea9"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "1"], TraditionalForm]],ExpressionUUID->
+  "d0f79ee1-cb73-42b2-a674-b6f2c2e1bdd4"],
+ "\[CloseCurlyQuote](t) = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"4", 
+    SubscriptBox["x", "1"]}], TraditionalForm]],ExpressionUUID->
+  "70fc3862-a57c-4c03-b4a4-779f924dfe6d"],
+ "(t) - ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"5", 
+    SubscriptBox["x", "2"]}], TraditionalForm]],ExpressionUUID->
+  "4acc194f-dac0-44a0-b948-d96a1f75291a"],
+ "(t)\n",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "2"], TraditionalForm]],ExpressionUUID->
+  "f612f39a-8244-406e-a1eb-606bab3ba52d"],
+ "\[CloseCurlyQuote](t) = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"-", "2"}], 
+    SubscriptBox["x", "1"]}], TraditionalForm]],ExpressionUUID->
+  "0ef1e390-7a95-4727-94a2-d78540112815"],
+ "(t) + ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "2"], TraditionalForm]],ExpressionUUID->
+  "36e4699f-f490-4ac2-aed8-8c01f6cb3796"],
+ "(t)"
+}], "Text",
+ CellChangeTimes->{{3.7303956043260775`*^9, 3.7303956397061887`*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontSize->18,
+ FontWeight->"Bold",ExpressionUUID->"13567a44-6c11-41e5-8336-73dbd452ea8c"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Solution",
+ FontSize->20,
+ FontWeight->"Plain"]], "Subsection",
+ CellChangeTimes->{{3.7303970069906406`*^9, 3.7303970078825026`*^9}, {
+  3.730476227555252*^9, 3.730476230578429*^9}},
+ FontFamily->"Tahoma",
+ FontSize->24,
+ FontWeight->"Bold",ExpressionUUID->"d5c8d156-cc3e-4c43-9de3-94cda61c2f06"],
+
+Cell[TextData[{
+ StyleBox["\t",
+  FontSize->20,
+  FontWeight->"Plain"],
+ StyleBox["This system is a first order linear differential equation of the \
+form, ",
+  FontFamily->"Tahoma",
+  FontSize->16,
+  FontWeight->"Plain"],
+ StyleBox["<x\[CloseCurlyQuote]> = S<x>",
+  FontFamily->"Tahoma",
+  FontSize->16,
+  FontWeight->"Bold"],
+ StyleBox["; Where ",
+  FontFamily->"Tahoma",
+  FontSize->16,
+  FontWeight->"Plain"],
+ StyleBox["S",
+  FontFamily->"Tahoma",
+  FontSize->16,
+  FontWeight->"Bold"],
+ StyleBox[" is a matrix with constant coefficients. As ",
+  FontFamily->"Tahoma",
+  FontSize->16,
+  FontWeight->"Plain"],
+ StyleBox["S ",
+  FontFamily->"Tahoma",
+  FontSize->16,
+  FontWeight->"Bold"],
+ StyleBox["is not a diagonal matrix, we can solve the system using \
+Diagonalization. We will use the same process as described in Problem 1.",
+  FontFamily->"Tahoma",
+  FontSize->16,
+  FontWeight->"Plain"]
+}], "Text",
+ CellChangeTimes->{{3.7304762328573313`*^9, 
+  3.730476245972191*^9}},ExpressionUUID->"e5938263-d740-4f10-8eab-\
+ccc598658d96"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Set", " ", "up", " ", "problem"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   StyleBox[
+    RowBox[{
+     RowBox[{"S", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"4", ",", 
+          RowBox[{"-", "5"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "2"}], ",", "1"}], "}"}]}], "}"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"eigenValuesS", " ", "=", " ", 
+      RowBox[{"Eigenvalues", "[", "S", "]"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"eigenVectorsS", " ", "=", " ", 
+      RowBox[{"Eigenvectors", "[", "S", "]"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"PS", " ", "=", " ", 
+      RowBox[{"Transpose", "[", "eigenVectorsS", "]"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Framed", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"StringForm", "[", 
+          RowBox[{"\"\<S =`` \\n P =``\>\"", ",", " ", 
+           RowBox[{"MatrixForm", "[", "S", "]"}], ",", 
+           RowBox[{"MatrixForm", "[", "PS", "]"}]}], "]"}], ",", 
+         RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+         RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+         RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}], "]"}], ",", 
+      RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+      RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}],
+    FontWeight->"Plain"], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Solving", " ", "for"}], " ", "<", "u", ">"}], ",", " ", 
+     RowBox[{
+     "essentially", " ", "the", " ", "eigenvalues", " ", "of", " ", "S"}]}], 
+    "*)"}], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"DMatrixS", " ", "=", "  ", 
+      RowBox[{
+       RowBox[{"Inverse", "[", "PS", "]"}], ".", "S", ".", "PS"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"uSolutionsS", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         SubscriptBox["c", "1"], "*", 
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"eigenValuesS", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "*", "x"}], "]"}]}], ",", 
+        RowBox[{
+         SubscriptBox["c", "2"], "*", 
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"eigenValuesS", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "*", "x"}], "]"}]}]}], "}"}]}], 
+     ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Framed", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"StringForm", "[", 
+          RowBox[{"\"\<Of the form: <u'>=D<u>\\n `` = ````\>\"", ",", 
+           RowBox[{"MatrixForm", "[", "uPrimeDisplay2", "]"}], ",", 
+           RowBox[{"MatrixForm", "[", "DMatrixS", "]"}], ",", 
+           RowBox[{"MatrixForm", "[", "uDisplay2", "]"}]}], "]"}], ",", 
+         RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+         RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}]}], "]"}], "]"}], 
+      ",", 
+      RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+      RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Framed", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{
+         "StringForm", "[", 
+          "\"\<Reading off solutions, given the general solution of \
+<y'>=A<y>; where A is a Diagonal constant coefficient matrix: \\n \
+\!\(\*SubscriptBox[\(u\), \(1\)]\)=\!\(\*SubscriptBox[\(c\), \
+\(1\)]\)\!\(\*SuperscriptBox[\(e\), \(6  x\)]\) \\n \!\(\*SubscriptBox[\(u\), \
+\(2\)]\)=\!\(\*SubscriptBox[\(c\), \(2\)]\)\!\(\*SuperscriptBox[\(e\), \
+\(-x\)]\) \\n *These are also just the eigenvalues of matrix S.*\>\"", "]"}], 
+         ",", 
+         RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+         RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}], "]"}], ",", 
+      RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+      RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}],
+    FontWeight->"Plain"], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Relating", " ", "<", "u", ">", " ", 
+     RowBox[{"back", " ", "to"}], " ", "<", "y", ">"}], "*)"}], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"ySolutionsS", "=", 
+      RowBox[{"PS", ".", "uSolutionsS"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Framed", "[", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{"\"\<Of the form: <y>=P<u> \\n`` = ````\>\"", ",", 
+         RowBox[{"MatrixForm", "[", "xDisplay", "]"}], ",", 
+         RowBox[{"MatrixForm", "[", "PS", "]"}], ",", 
+         RowBox[{"MatrixForm", "[", "uSolutionsS", "]"}]}], "]"}], "]"}], ",", 
+      RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+      RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+      RowBox[{"FontWeight", "\[Rule]", "Bold"}], ",", 
+      RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Framed", "[", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{
+        "\"\<Therefore: \\n \!\(\*SubscriptBox[\(x\), \(1\)]\)= `` \\n \
+\!\(\*SubscriptBox[\(x\), \(2\)]\)= `` \\n \>\"", ",", 
+         RowBox[{"ySolutionsS", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], ",", 
+         RowBox[{"ySolutionsS", "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], ",", 
+      RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+      RowBox[{"FontWeight", "\[Rule]", "Bold"}], ",", 
+      RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+      RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"]}]}]], "Input",
+ CellChangeTimes->{{3.7303970126825895`*^9, 3.7303971583012543`*^9}, {
+  3.730425141760848*^9, 3.730425155774101*^9}, {3.730475638317951*^9, 
+  3.73047570867701*^9}, {3.730475791733573*^9, 3.7304758110564165`*^9}, {
+  3.7304759980467987`*^9, 3.7304760010557027`*^9}, {3.7304761604386206`*^9, 
+  3.730476182950945*^9}, {3.730476552673354*^9, 3.730476552826871*^9}},
+ FontFamily->"Tahoma",
+ FontSize->16,
+ FontWeight->"Bold",ExpressionUUID->"db6c6e79-08ca-42b7-922c-95b8964559b1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Plotting", " ", "The", " ", "Phase", " ", "Portrait"}], ",", " ", 
+    RowBox[{
+    "by", " ", "picking", " ", "20", " ", "possible", " ", "solutions", " ", 
+     "using", " ", "random", " ", "variables", " ", "for", " ", 
+     SubscriptBox["c", "1"], " ", "and", " ", 
+     SubscriptBox["c", "2"]}]}], "*)"}], "\[IndentingNewLine]", 
+  StyleBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"randomSolutions2", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ySolutionsS", "/.", 
+          RowBox[{
+           SubscriptBox["c", "1"], "\[Rule]", 
+           RowBox[{"RandomInteger", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "5"}], ",", "5"}], "}"}], "]"}]}]}], "/.", 
+         RowBox[{
+          SubscriptBox["c", "2"], "\[Rule]", 
+          RowBox[{"RandomInteger", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "5"}], ",", "5"}], "}"}], "]"}]}]}], ",", 
+        RowBox[{"{", "20", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"Manipulate", "[", 
+     RowBox[{
+      RowBox[{"ParametricPlot", "[", 
+       RowBox[{"randomSolutions2", ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "1", ",", "t"}], "}"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", 
+        RowBox[{"-", "1"}], ",", "2"}], "}"}]}], "]"}], 
+    "\[IndentingNewLine]"}],
+   FontWeight->"Plain"]}]], "Input",
+ CellChangeTimes->{{3.730397171041641*^9, 3.730397189516342*^9}, {
+  3.730425170007292*^9, 3.7304251736083326`*^9}, {3.7304252645050635`*^9, 
+  3.7304252668711853`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->16,
+ FontWeight->"Bold",ExpressionUUID->"8a4cf13e-6a49-40b7-8e51-fe081d0303e8"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Problem 4",
+ FontWeight->"Plain"]], "Section",
+ CellChangeTimes->{{3.730057008417356*^9, 3.7300570100486965`*^9}, {
+  3.7303956268389482`*^9, 3.7303956281133327`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->24,
+ FontWeight->"Bold",ExpressionUUID->"5905b52b-737b-4fe4-afe9-f9929b81be89"],
+
+Cell["\<\
+\tRepeat again but for the given system below. Use only 10 curves.\:f35f\
+\>", "Text",
+ CellChangeTimes->{{3.7302532861367226`*^9, 3.7302532932777977`*^9}, {
+   3.7303956747022524`*^9, 3.7303957565408955`*^9}, 3.730425215587129*^9},
+ FontFamily->"Tahoma",
+ FontSize->18,ExpressionUUID->"49ea1b82-bba1-4038-93dd-9d738d115ed9"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "1"], TraditionalForm]],ExpressionUUID->
+  "c683aa4b-628c-49e3-9f81-25a8a8f35e86"],
+ "\[CloseCurlyQuote](t) = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"-", "2"}], 
+    SubscriptBox["x", "1"]}], TraditionalForm]],ExpressionUUID->
+  "1fc72cc8-9e11-4d4f-9e93-879cc25efc50"],
+ "(t) - ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"5", "/", "2"}], ")"}], 
+    RowBox[{
+     SubscriptBox["x", "2"], "(", "t", ")"}]}], TraditionalForm]],
+  ExpressionUUID->"7798a824-1b68-4dc6-960f-6b7aa598a06b"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "2"], TraditionalForm]],ExpressionUUID->
+  "71a404df-ffd0-4b9f-ba76-3d7688e14d3c"],
+ "\[CloseCurlyQuote](t) = ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"10", 
+    SubscriptBox["x", "1"]}], TraditionalForm]],ExpressionUUID->
+  "80c53773-123a-4bfd-85ed-3a298623f1d2"],
+ "(t) - ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"2", 
+    SubscriptBox["x", "2"]}], TraditionalForm]],ExpressionUUID->
+  "02b8fa60-530c-44d5-b200-5e87ff29680d"],
+ "(t)"
+}], "Text",
+ CellChangeTimes->{3.730395758015768*^9},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontSize->18,
+ FontWeight->"Bold",ExpressionUUID->"85ccfc74-363a-4a98-aeeb-623f8a15cd1a"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Solution",
+ FontSize->20,
+ FontWeight->"Plain"]], "Subsection",
+ CellChangeTimes->{{3.73039723121267*^9, 3.7303972374538865`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->24,
+ FontWeight->"Bold",ExpressionUUID->"ffa103ad-8c33-40fc-9fb2-f3636b9c7b8f"],
+
+Cell[TextData[{
+ StyleBox["\tThis system is a first order linear differential equation of the \
+form, ",
+  FontFamily->"Tahoma",
+  FontWeight->"Plain"],
+ StyleBox["<x\[CloseCurlyQuote]> = R<x>",
+  FontFamily->"Tahoma",
+  FontWeight->"Bold"],
+ StyleBox["; Where ",
+  FontFamily->"Tahoma",
+  FontWeight->"Plain"],
+ StyleBox["R",
+  FontFamily->"Tahoma",
+  FontWeight->"Bold"],
+ StyleBox[" is a matrix with constant coefficients. As ",
+  FontFamily->"Tahoma",
+  FontWeight->"Plain"],
+ StyleBox["R",
+  FontFamily->"Tahoma",
+  FontWeight->"Bold"],
+ StyleBox[" is not a diagonal matrix, we can solve the system using \
+Diagonalization. We will use the same process as described in Problem 1.",
+  FontFamily->"Tahoma",
+  FontWeight->"Plain"]
+}], "Text",
+ CellChangeTimes->{{3.730476252091896*^9, 3.7304762622983704`*^9}},
+ FontSize->16,ExpressionUUID->"9c0d89fd-4bac-4240-8a4a-cdd04e9af11f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Seting", " ", "up", " ", "problem"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   StyleBox[
+    RowBox[{
+     RowBox[{"R", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "2"}], ",", 
+          RowBox[{
+           RowBox[{"-", "5"}], "/", "2"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"10", ",", 
+          RowBox[{"-", "2"}]}], "}"}]}], "}"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"eigenValuesR", " ", "=", " ", 
+      RowBox[{"Eigenvalues", "[", "R", "]"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"eigenVectorsR", " ", "=", " ", 
+      RowBox[{"Eigenvectors", "[", "R", "]"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"PR", " ", "=", " ", 
+      RowBox[{"Transpose", "[", "eigenVectorsR", "]"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Framed", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"StringForm", "[", 
+          RowBox[{"\"\<R= `` \\n P =``\>\"", ",", 
+           RowBox[{"MatrixForm", "[", "R", "]"}], ",", 
+           RowBox[{"MatrixForm", "[", "PR", "]"}]}], "]"}], ",", 
+         RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+         RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+         RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}], "]"}], ",", 
+      RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+      RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}],
+    FontWeight->"Plain"], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Solving", " ", "for"}], " ", "<", "u", ">"}], ",", " ", 
+     RowBox[{
+     "essentially", " ", "the", " ", "eigenvalues", " ", "of", " ", "R"}]}], 
+    "*)"}], "\[IndentingNewLine]", 
+   StyleBox[
+    RowBox[{
+     RowBox[{"DMatrixR", " ", "=", "  ", 
+      RowBox[{
+       RowBox[{"Inverse", "[", "PR", "]"}], ".", "R", ".", "PR"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"uSolutionsR", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         SubscriptBox["c", "1"], "*", 
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"eigenValuesR", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "*", "x"}], "]"}]}], ",", 
+        RowBox[{
+         SubscriptBox["c", "2"], "*", 
+         RowBox[{"Exp", "[", 
+          RowBox[{
+           RowBox[{"eigenValuesR", "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "*", "x"}], "]"}]}]}], "}"}]}], 
+     ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Framed", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"StringForm", "[", 
+          RowBox[{"\"\<Of the form: <u'>=D<u>\\n `` = ````\>\"", ",", 
+           RowBox[{"MatrixForm", "[", "uPrimeDisplay2", "]"}], ",", 
+           RowBox[{"MatrixForm", "[", "DMatrixR", "]"}], ",", 
+           RowBox[{"MatrixForm", "[", "uDisplay2", "]"}]}], "]"}], ",", 
+         RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+         RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}]}], "]"}], "]"}], 
+      ",", 
+      RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+      RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Framed", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{
+         "StringForm", "[", 
+          "\"\<Reading off solutions, given the general solution of \
+<y'>=A<y>; where A is a Diagonal constant coefficient matrix: \\n \
+\!\(\*SubscriptBox[\(u\), \(1\)]\)=\!\(\*SubscriptBox[\(c\), \
+\(1\)]\)\!\(\*SuperscriptBox[\(e\), \(\((\(-2\) + 5  i)\) x\)]\) \\n \
+\!\(\*SubscriptBox[\(u\), \(2\)]\)=\!\(\*SubscriptBox[\(c\), \
+\(2\)]\)\!\(\*SuperscriptBox[\(e\), \(\((\(-2\) - 5  i)\) x\)]\) \\n *These \
+are also just the eigenvalues of matrix R.*\>\"", "]"}], ",", 
+         RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+         RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}], "]"}], ",", 
+      RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+      RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}],
+    FontWeight->"Plain"], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Relating", " ", "<", "u", ">", " ", 
+     RowBox[{"back", " ", "to"}], " ", "<", "y", ">"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   StyleBox[
+    RowBox[{
+     RowBox[{"ySolutionsR", "=", 
+      RowBox[{"PR", ".", "uSolutionsR"}]}], ";"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Framed", "[", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{"\"\<Of the form: <y>=P<u> \\n`` = ````\>\"", ",", 
+         RowBox[{"MatrixForm", "[", "xDisplay", "]"}], ",", 
+         RowBox[{"MatrixForm", "[", "PR", "]"}], ",", 
+         RowBox[{"MatrixForm", "[", "uSolutionsR", "]"}]}], "]"}], "]"}], ",", 
+      RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+      RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+      RowBox[{"FontWeight", "\[Rule]", "Bold"}], ",", 
+      RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}],
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"], 
+   StyleBox[
+    RowBox[{"Style", "[", 
+     RowBox[{
+      RowBox[{"Framed", "[", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{
+        "\"\<Therefore: \\n \!\(\*SubscriptBox[\(x\), \(1\)]\)= `` \\n \
+\!\(\*SubscriptBox[\(x\), \(2\)]\)= `` \\n \>\"", ",", 
+         RowBox[{"ySolutionsR", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], ",", 
+         RowBox[{"ySolutionsR", "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "]"}], ",", 
+      RowBox[{"TextAlignment", "\[Rule]", "Center"}], ",", 
+      RowBox[{"FontWeight", "\[Rule]", "Bold"}], ",", 
+      RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+      RowBox[{"FontSize", "\[Rule]", "18"}]}], "]"}],
+    FontWeight->"Plain"], "\[IndentingNewLine]", 
+   StyleBox["\[IndentingNewLine]",
+    FontWeight->"Plain"]}]}]], "Input",
+ CellChangeTimes->{{3.730397244086362*^9, 3.7303973165788965`*^9}, {
+  3.730425197468571*^9, 3.7304252003931546`*^9}, {3.730475837173394*^9, 
+  3.730475977116433*^9}, {3.7304761148832245`*^9, 3.730476129559394*^9}, {
+  3.730476329467414*^9, 3.7304763375637665`*^9}, {3.7304765600922976`*^9, 
+  3.730476560223759*^9}},
+ FontFamily->"Tahoma",
+ FontSize->16,
+ FontWeight->"Bold",ExpressionUUID->"fc10f6e4-33da-42eb-a913-aca3a28ebdc0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Plotting", " ", "The", " ", "Phase", " ", "Portrait"}], ",", " ", 
+    RowBox[{
+    "by", " ", "picking", " ", "10", " ", "possible", " ", "solutions", " ", 
+     "using", " ", "random", " ", "variables", " ", "for", " ", 
+     SubscriptBox["c", "1"], " ", "and", " ", 
+     SubscriptBox["c", "2"]}]}], "*)"}], "\[IndentingNewLine]", 
+  StyleBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"randomSolutions3", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ySolutionsR", "/.", 
+          RowBox[{
+           SubscriptBox["c", "1"], "\[Rule]", 
+           RowBox[{"RandomInteger", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "5"}], ",", "5"}], "}"}], "]"}]}]}], "/.", 
+         RowBox[{
+          SubscriptBox["c", "2"], "\[Rule]", 
+          RowBox[{"RandomInteger", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "5"}], ",", "5"}], "}"}], "]"}]}]}], ",", 
+        RowBox[{"{", "20", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"Manipulate", "[", 
+     RowBox[{
+      RowBox[{"ParametricPlot", "[", 
+       RowBox[{"randomSolutions3", ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", "1", ",", "t"}], "}"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", 
+        RowBox[{"-", "1"}], ",", "2"}], "}"}]}], "]"}], 
+    "\[IndentingNewLine]"}],
+   FontWeight->"Plain"]}]], "Input",
+ CellChangeTimes->{{3.730397338325364*^9, 3.7303973507074833`*^9}, {
+  3.73042522779427*^9, 3.7304252524384356`*^9}},
+ FontFamily->"Tahoma",
+ FontSize->16,
+ FontWeight->"Bold",ExpressionUUID->"a1722c9c-899c-490b-af1e-676e579bfece"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{927, 805},
+WindowMargins->{{-8, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->FrontEnd`FileName[{"Report"}, "StandardReport.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 376, 7, 93, "Title",ExpressionUUID->"2b5184a1-35f0-43f4-b6f4-af85fc92f881"],
+Cell[959, 31, 466, 11, 61, "Subtitle",ExpressionUUID->"78c6e15f-d95f-471c-846c-3746d857d6c6"],
+Cell[CellGroupData[{
+Cell[1450, 46, 250, 5, 62, "Section",ExpressionUUID->"864c9be7-b451-4175-adb5-c80a39212381"],
+Cell[1703, 53, 944, 15, 86, "Text",ExpressionUUID->"c0f42872-d8eb-4fcd-9cef-a38af772d3c2"],
+Cell[2650, 70, 399, 7, 36, "Text",ExpressionUUID->"076828a0-243f-48fd-9ef9-2f2b868d71d5"],
+Cell[3052, 79, 492, 11, 61, "Text",ExpressionUUID->"c9ab4d48-807c-410d-b6dd-8b127882a8ba"],
+Cell[CellGroupData[{
+Cell[3569, 94, 266, 6, 32, "Subsection",ExpressionUUID->"dfe7d6ee-25fe-4e88-b481-914f8c44ea30"],
+Cell[3838, 102, 269, 6, 36, "Text",ExpressionUUID->"ae35e40d-ad34-4ebd-933b-6b361efaf8ae"],
+Cell[4110, 110, 1474, 42, 138, "Text",ExpressionUUID->"cb5fbb9c-d409-4c4a-b435-eb979888df6c"],
+Cell[5587, 154, 254, 4, 36, "Text",ExpressionUUID->"18f5bf5f-298b-48cb-83aa-1cb1cb494459"],
+Cell[5844, 160, 323, 6, 36, "Text",ExpressionUUID->"f8acdb3a-cbff-42a3-a822-61d919ca40e2"],
+Cell[6170, 168, 900, 23, 136, "Text",ExpressionUUID->"66def1af-8d8b-4e02-8b73-0befc4c35445"],
+Cell[7073, 193, 229, 5, 36, "Text",ExpressionUUID->"ed5659dc-aa7a-45d3-9cb0-4ab4179601d6"],
+Cell[7305, 200, 417, 12, 86, "Text",ExpressionUUID->"f504a6f7-0ad5-423a-bc53-d507b9fd2de4"],
+Cell[7725, 214, 1994, 67, 194, "Text",ExpressionUUID->"f3dad1e3-9666-4acd-858b-2f2c17ec7c4c"],
+Cell[9722, 283, 506, 11, 36, "Text",ExpressionUUID->"a217d7c9-f374-483b-a1c3-9cfbf1a7d5b1"],
+Cell[10231, 296, 2915, 101, 332, "Text",ExpressionUUID->"e2367e0a-40da-4927-a038-e0e75fb8299f"],
+Cell[13149, 399, 518, 16, 36, "Text",ExpressionUUID->"9a7be0b9-0971-4641-b71f-279ec9b4ad76"],
+Cell[13670, 417, 2174, 52, 244, "Input",ExpressionUUID->"aa1dadbe-d143-4111-87d4-3c1096b0ffa5"],
+Cell[15847, 471, 836, 27, 65, "Text",ExpressionUUID->"b55499ee-a7dc-46f4-86c7-5c5ba826f3c6"],
+Cell[16686, 500, 4970, 125, 569, "Input",ExpressionUUID->"03ae02d2-4505-4e00-8171-e54e84846dfe"],
+Cell[21659, 627, 507, 16, 36, "Text",ExpressionUUID->"a3c2a8ad-2c8c-4cd3-9ccf-7f91e25c908b"],
+Cell[22169, 645, 2689, 60, 292, "Input",ExpressionUUID->"b4e35582-3178-4a8b-8e44-7009eb106d90"],
+Cell[24861, 707, 377, 9, 36, "Text",ExpressionUUID->"572b5f33-18b3-4dcc-a9b5-01b597ac62c1"],
+Cell[25241, 718, 347, 7, 36, "Text",ExpressionUUID->"068114f7-131b-4655-ab93-9ff31e44e828"],
+Cell[25591, 727, 1203, 31, 94, "Input",ExpressionUUID->"583d0071-fbeb-47c1-ab2a-c29b3123fd64"],
+Cell[26797, 760, 310, 9, 36, "Text",ExpressionUUID->"212289e7-4314-45a0-bfb1-0d77764da092"],
+Cell[27110, 771, 1946, 56, 144, "Input",ExpressionUUID->"2cce9459-21da-4ab3-ac4f-694b464724b4"],
+Cell[29059, 829, 1569, 35, 268, "Input",ExpressionUUID->"d86fc016-d853-41f2-a23b-5af0fa99fc9a"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30677, 870, 303, 6, 62, "Section",ExpressionUUID->"45d94c1b-2489-4ba9-bf84-b4ec271eda3a"],
+Cell[30983, 878, 308, 7, 36, "Text",ExpressionUUID->"db787478-b723-4c85-a3be-9bca0e904d6b"],
+Cell[31294, 887, 1483, 45, 61, "Text",ExpressionUUID->"cbbd276a-5a91-4efe-98f4-33079461b833"],
+Cell[32780, 934, 3491, 103, 336, "Text",ExpressionUUID->"79cf68b0-ea04-48f4-bca8-d8d8e9288b59"],
+Cell[CellGroupData[{
+Cell[36296, 1041, 269, 6, 32, "Subsection",ExpressionUUID->"0ed12f8f-e399-42d5-8217-aed3f1e84480"],
+Cell[36568, 1049, 732, 17, 86, "Text",ExpressionUUID->"b7aeb746-ff29-43b9-9d61-df594780317f"],
+Cell[37303, 1068, 7714, 206, 962, "Input",ExpressionUUID->"1f513bcc-470e-4495-aeff-ec48f293667b"],
+Cell[45020, 1276, 1770, 47, 144, "Input",ExpressionUUID->"8a4e7fb5-28fa-4bcf-beba-a45aabc06141"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[46839, 1329, 252, 5, 62, "Section",ExpressionUUID->"27ff1cb3-b056-4edd-b2ed-39ac9d11c5aa"],
+Cell[47094, 1336, 405, 7, 36, "Text",ExpressionUUID->"e851853c-2938-4f70-a98a-c4d70550eea9"],
+Cell[47502, 1345, 1198, 40, 61, "Text",ExpressionUUID->"13567a44-6c11-41e5-8336-73dbd452ea8c"],
+Cell[CellGroupData[{
+Cell[48725, 1389, 320, 7, 32, "Subsection",ExpressionUUID->"d5c8d156-cc3e-4c43-9de3-94cda61c2f06"],
+Cell[49048, 1398, 1039, 37, 83, "Text",ExpressionUUID->"e5938263-d740-4f10-8eab-ccc598658d96"],
+Cell[50090, 1437, 7305, 191, 914, "Input",ExpressionUUID->"db6c6e79-08ca-42b7-922c-95b8964559b1"],
+Cell[57398, 1630, 1821, 48, 144, "Input",ExpressionUUID->"8a4cf13e-6a49-40b7-8e51-fe081d0303e8"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[59268, 1684, 305, 6, 62, "Section",ExpressionUUID->"5905b52b-737b-4fe4-afe9-f9929b81be89"],
+Cell[59576, 1692, 335, 6, 36, "Text",ExpressionUUID->"49ea1b82-bba1-4038-93dd-9d738d115ed9"],
+Cell[59914, 1700, 1270, 44, 61, "Text",ExpressionUUID->"85ccfc74-363a-4a98-aeeb-623f8a15cd1a"],
+Cell[CellGroupData[{
+Cell[61209, 1748, 268, 6, 32, "Subsection",ExpressionUUID->"ffa103ad-8c33-40fc-9fb2-f3636b9c7b8f"],
+Cell[61480, 1756, 883, 26, 77, "Text",ExpressionUUID->"9c0d89fd-4bac-4240-8a4a-cdd04e9af11f"],
+Cell[62366, 1784, 7233, 189, 915, "Input",ExpressionUUID->"fc10f6e4-33da-42eb-a913-aca3a28ebdc0"],
+Cell[69602, 1975, 1769, 47, 144, "Input",ExpressionUUID->"a1722c9c-899c-490b-af1e-676e579bfece"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

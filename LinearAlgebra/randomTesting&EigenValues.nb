@@ -1,0 +1,566 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     22678,        558]
+NotebookOptionsPosition[     20944,        523]
+NotebookOutlinePosition[     21363,        539]
+CellTagsIndexPosition[     21320,        536]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Linear Algebra", "Title",
+ CellChangeTimes->{{3.729375306799968*^9, 3.7293753093485126`*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",
+ FontWeight->"Bold",
+ FontColor->RGBColor[
+  0.5019607843137255, 0., 
+   0.],ExpressionUUID->"25eee3fd-f5fd-4fce-85af-a3e9ffb3ea73"],
+
+Cell["\<\
+Random Testing and Eigenvalues
+\
+\>", "Subtitle",
+ CellChangeTimes->{{3.72937531512996*^9, 3.7293753216511555`*^9}, {
+  3.7295621869729795`*^9, 3.729562188598629*^9}},
+ TextAlignment->Center,
+ FontFamily->"Tahoma",ExpressionUUID->"601b4330-fc84-4cd2-bef3-c9756555aa23"],
+
+Cell[CellGroupData[{
+
+Cell["Problem 1", "Section",
+ CellChangeTimes->{{3.7293753327061005`*^9, 3.729375334471924*^9}},
+ FontFamily->"Tahoma",
+ FontWeight->"Bold",ExpressionUUID->"56daa2f0-1c8b-47ce-a5dc-7309302717ba"],
+
+Cell[TextData[{
+ "Sylvester\[CloseCurlyQuote]s inequality states that if A and B are  \
+matrices, then:\n",
+ StyleBox["rank(A) + rank (B) - n \[LessEqual] rank(AB) \[LessEqual] \
+Min(rank(A), rank(B))",
+  FontWeight->"Bold"],
+ "\:f35f\nCreate a block of code to test this. All random numbers must be \
+computer generated. Create a random integer for n between 1 and 20. Create \
+two random  matrices whose values are between two different random numbers. \
+Finally, test Sylvester\[CloseCurlyQuote]s inequality for the two matrices. "
+}], "Text",
+ CellChangeTimes->{{3.729375344832861*^9, 3.729375377483817*^9}, 
+   3.729375508813973*^9, {3.729559786589037*^9, 3.7295598081253796`*^9}, {
+   3.7295598494643245`*^9, 3.729559962761753*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"0ed22966-f912-4d3b-a716-8e802ad0d7a5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "Create", " ", "random", " ", "number", " ", "between", " ", "1"}], "  ",
+      "&"}], " ", "20"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"n", " ", "=", " ", 
+     RowBox[{"RandomInteger", "[", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "20"}], "}"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Create", " ", "two", " ", "random", " ", "matrices", " ", "that", " ", 
+     "are", " ", "n", " ", "x", " ", "n", " ", "with", " ", "random", " ", 
+     "entries", " ", "between", " ", "two", " ", "bounds"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"A", " ", "=", " ", 
+     RowBox[{"RandomReal", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "100"}], ",", "12"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"B", " ", "=", " ", 
+     RowBox[{"RandomReal", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"40", ",", "900"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"Sylvester", "'"}], "s", " ", "Inequality"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"leftSide", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"MatrixRank", "[", "A", "]"}], "+", 
+      RowBox[{"MatrixRank", "[", "B", "]"}], "-", "n"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"rightSide", "=", 
+     RowBox[{"Min", "[", 
+      RowBox[{
+       RowBox[{"MatrixRank", "[", "A", "]"}], ",", 
+       RowBox[{"MatrixRank", "[", "B", "]"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"leftSide", "\[LessEqual]", 
+    RowBox[{"MatrixRank", "[", 
+     RowBox[{"A", ".", "B"}], "]"}], "\[LessEqual]", 
+    "rightSide"}]}]}]], "Input",
+ CellChangeTimes->{{3.7293755768935676`*^9, 3.7293756503459473`*^9}, {
+  3.7293756856068563`*^9, 3.7293757925107427`*^9}, {3.7293760181689262`*^9, 
+  3.729376023013195*^9}, {3.729376063629161*^9, 3.7293760690478477`*^9}, {
+  3.729376530854422*^9, 3.729376531713086*^9}, {3.729376668730666*^9, 
+  3.7293766709168897`*^9}, {3.7293769131316104`*^9, 3.729376926432578*^9}, {
+  3.729377340245569*^9, 3.729377356915633*^9}, {3.7293773879335785`*^9, 
+  3.7293774065093875`*^9}, {3.729377622843747*^9, 3.7293776785719905`*^9}, {
+  3.729377745915693*^9, 3.7293777568066835`*^9}, {3.729378259790884*^9, 
+  3.7293782627902365`*^9}, {3.729383205835965*^9, 3.729383209437831*^9}, {
+  3.72952384350797*^9, 3.729523873887251*^9}, {3.729524367071395*^9, 
+  3.7295243865371375`*^9}, {3.729559985481557*^9, 3.729560034265905*^9}},
+ FontFamily->"Tahoma",
+ FontWeight->"Plain",ExpressionUUID->"d0f8ccda-0df0-4655-a5fa-1bf884937c2a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Problem 2", "Section",
+ CellChangeTimes->{{3.7293753961110606`*^9, 3.7293753994547553`*^9}},
+ FontFamily->"Tahoma",
+ FontWeight->"Bold",ExpressionUUID->"9dae4d81-67ab-47df-a715-6ef4db6efdf7"],
+
+Cell[TextData[{
+ "The Cayley-Hamilton theorem states that a matrix A must be a root of its \
+characteristic polynomial. That is, if the characteristic polynomial \
+is:\:f35f\n",
+ Cell[BoxData[
+  FormBox[
+   TagBox[
+    RowBox[{
+     SuperscriptBox["\[Lambda]", "n"], "+", 
+     RowBox[{
+      SubscriptBox["c", 
+       RowBox[{"n", "-", "1"}]], 
+      SuperscriptBox["\[Lambda]", 
+       RowBox[{"n", "-", "1"}]]}], "+", "\[Ellipsis]", "+", 
+     RowBox[{
+      SubscriptBox["c", "1"], "\[Lambda]"}], "+", 
+     SubscriptBox["c", "0"]}],
+    "MathMLPresentationTag",
+    AutoDelete->True], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"8793ff51-3c6c-423d-a968-2fe043f09533"],
+ "\nthen,\:f35f\n",
+ Cell[BoxData[
+  FormBox[
+   TagBox[
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["A", "n"], "+", 
+      RowBox[{
+       SubscriptBox["c", 
+        RowBox[{"n", "-", "1"}]], 
+       SuperscriptBox["A", 
+        RowBox[{"n", "-", "1"}]]}], "+", "\[Ellipsis]", "+", 
+      RowBox[{
+       SubscriptBox["c", "1"], "A"}], "+", 
+      RowBox[{
+       SubscriptBox["c", "0"], "I"}]}], "=", "0"}],
+    "MathMLPresentationTag",
+    AutoDelete->True], TraditionalForm]],
+  FontWeight->"Bold",ExpressionUUID->"4ccfa6f0-b265-4b68-b973-f2eff3724b54"],
+ "\nCreate a block of code to test this. All random numbers should be \
+integers and computer generated. The number n should be between 1 and 20. \
+Compute the characteristic polynomial using the definition rather than the \
+built in CharacteristicPolynomial[ ] function."
+}], "Text",
+ CellChangeTimes->{{3.7293754149795856`*^9, 3.7293754438692293`*^9}, {
+  3.729375843853093*^9, 3.7293758529809113`*^9}, {3.7295600479441767`*^9, 
+  3.7295601209506454`*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"26b80fa8-c67c-4b05-b159-ed4f56065967"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "For", " ", "a", " ", "random", " ", "n", " ", "x", " ", "n", " ", 
+     "matrix", " ", "A"}], ",", " ", 
+    RowBox[{
+    "compute", " ", "the", " ", "characteristic", " ", "polynomial"}]}], 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"lambaMatrix", "=", 
+     RowBox[{
+      RowBox[{"IdentityMatrix", "[", "n", "]"}], "*", "lambda"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"charPoly", "=", 
+     RowBox[{"Det", "[", 
+      RowBox[{"A", "-", "lambaMatrix"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eigenVals", "=", 
+     RowBox[{"Solve", "[", 
+      RowBox[{
+       RowBox[{"charPoly", "\[Equal]", "0"}], ",", "lambda"}], "]"}]}], ";"}],
+    "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Pull", " ", "coefficients", " ", "from", " ", "characteristic", " ", 
+     "polynomial"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"coefficients", "=", 
+     RowBox[{"CoefficientList", "[", 
+      RowBox[{"charPoly", ",", "lambda"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Set", " ", "up", " ", "equation"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"charPolyEqn", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"coefficients", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "*", 
+        RowBox[{"MatrixPower", "[", 
+         RowBox[{"A", ",", 
+          RowBox[{"i", "-", "1"}]}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Check", " ", "second", " ", "part", " ", "of", " ", "theorem"}], 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Total", "[", 
+     RowBox[{"charPolyEqn", "[", "]"}], "]"}], "\[Equal]", "0"}]}]}]], "Input",
+ CellChangeTimes->{{3.729375924948643*^9, 3.729375937077335*^9}, {
+   3.72937608108043*^9, 3.729376262019256*^9}, 3.7293763690718765`*^9, {
+   3.7293764224312143`*^9, 3.7293764357136984`*^9}, {3.729376478029217*^9, 
+   3.729376553197856*^9}, {3.7293766615274954`*^9, 3.7293766621199217`*^9}, {
+   3.7293767018542395`*^9, 3.7293767786858435`*^9}, {3.729376820932661*^9, 
+   3.7293768227920384`*^9}, {3.7293768921825066`*^9, 3.729376901116149*^9}, {
+   3.7293769463064184`*^9, 3.729377076431341*^9}, {3.729377135198366*^9, 
+   3.729377270494626*^9}, 3.7293777690180864`*^9, {3.7293778237283783`*^9, 
+   3.7293779128422422`*^9}, {3.7293779918219995`*^9, 3.72937801638503*^9}, {
+   3.7293780529175987`*^9, 3.7293782096205196`*^9}, {3.7293782505353994`*^9, 
+   3.7293782669160433`*^9}, {3.7293783813236094`*^9, 
+   3.7293784067123337`*^9}, {3.7293784551036463`*^9, 
+   3.7293784765258403`*^9}, {3.7293785204943438`*^9, 3.729378538917399*^9}, {
+   3.7293785804164295`*^9, 3.7293786243837442`*^9}, {3.729378698291577*^9, 
+   3.729378724150793*^9}, {3.729378759587388*^9, 3.7293787736976795`*^9}, {
+   3.72937886499431*^9, 3.729378993734112*^9}, {3.7293790735097036`*^9, 
+   3.7293790763898916`*^9}, {3.72937917871717*^9, 3.729379192701497*^9}, {
+   3.7293792448278418`*^9, 3.729379278369563*^9}, {3.7293793101346693`*^9, 
+   3.7293793907638426`*^9}, {3.729383100900835*^9, 3.72938318390769*^9}, {
+   3.7293832171726027`*^9, 3.7293832457029095`*^9}, {3.7293832858362927`*^9, 
+   3.729383327819159*^9}, {3.7293844667510576`*^9, 3.729384473244109*^9}, {
+   3.729384566382477*^9, 3.7293849097453194`*^9}, {3.7295228536078234`*^9, 
+   3.729523002364251*^9}, {3.7295230619517603`*^9, 3.729523079674689*^9}, {
+   3.7295238280644407`*^9, 3.7295238874894257`*^9}, {3.729524389902539*^9, 
+   3.729524446840558*^9}, {3.729524480021696*^9, 3.729524616378045*^9}, {
+   3.7295246745342116`*^9, 3.7295247090346794`*^9}, {3.7295247532994423`*^9, 
+   3.729524755651795*^9}, 3.7295600610946026`*^9, {3.7295601334557514`*^9, 
+   3.7295602682302847`*^9}, {3.7295609699948406`*^9, 3.7295609919014854`*^9}},
+ FontFamily->"Tahoma",
+ FontWeight->"Plain",ExpressionUUID->"9a1b8a01-54a9-4551-95a2-61189e56c89b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Problem 3", "Section",
+ CellChangeTimes->{{3.729375461323863*^9, 3.7293754644432893`*^9}},
+ FontFamily->"Tahoma",
+ FontWeight->"Bold",ExpressionUUID->"6d2037c5-f6aa-46e5-9df7-bdf31a77bd47"],
+
+Cell["Consider the matrix:", "Text",
+ CellChangeTimes->{{3.729375476540119*^9, 3.7293754909391456`*^9}, 
+   3.729377279494178*^9, {3.729560277577786*^9, 3.7295602818892965`*^9}, {
+   3.7295610178881364`*^9, 3.7295610223465652`*^9}, 3.7295622474622717`*^9, {
+   3.7295623369129667`*^9, 3.729562338649505*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"673324f7-29b7-471e-8fbb-78a722c40a40"],
+
+Cell[BoxData[
+ FormBox[
+  StyleBox[
+   RowBox[{
+    StyleBox["M",
+     FontSlant->"Plain"], "=", 
+    RowBox[{"(", GridBox[{
+       {
+        RowBox[{"-", "6"}], "28", "21"},
+       {"4", 
+        RowBox[{"-", "15"}], 
+        RowBox[{"-", "12"}]},
+       {
+        RowBox[{"-", "8"}], 
+        StyleBox["k",
+         FontSlant->"Plain"], "25"}
+      }], ")"}]}],
+   FontFamily->"Tahoma",
+   FontSize->18,
+   FontWeight->"Bold",
+   FontColor->GrayLevel[0]], TraditionalForm]], "Text",
+ CellChangeTimes->{3.7295622991349144`*^9},
+ TextAlignment->Center,ExpressionUUID->"c33f6b32-1f57-4057-9fcd-35b4317c14d9"],
+
+Cell[TextData[{
+ "\n\tFor each value of k in the set",
+ StyleBox[" {32, 31.9, 31.8, 32.1, 32.2} ",
+  FontWeight->"Bold"],
+ "compute the characteristic polynomial. Plot all five polynomials on the \
+same set of axes. You should have a legend for which plot corresponds to \
+which k value. You should have a title for your plot and you should label \
+your axes. Describe (verbally) how the changing values of the parameter k \
+affect the eigenvalues of the matrix. Find the eigenvalues for each k value \
+to confirm what you see graphically."
+}], "Text",
+ CellChangeTimes->{{3.7295623415538874`*^9, 3.729562344968139*^9}, {
+  3.7295627062231903`*^9, 3.729562707072217*^9}, {3.729569177299533*^9, 
+  3.729569177775425*^9}},
+ FontFamily->"Tahoma",ExpressionUUID->"89980c5a-456a-4846-988c-ca42c59ef455"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"For", " ", "the", " ", "given", " ", "matrix", " ", "m"}], ",", 
+    " ", 
+    RowBox[{
+     RowBox[{"@", "param"}], " ", "k", " ", "to", " ", "change", " ", 
+     "characteristic", " ", "polynomial"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"M", "[", "k_", "]"}], ":=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "6"}], ",", "28", ",", "21"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", 
+         RowBox[{"-", "15"}], ",", 
+         RowBox[{"-", "12"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "8"}], ",", "k", ",", "25"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"set", "=", 
+     RowBox[{"{", 
+      RowBox[{"32", ",", "31.9", ",", "31.8", ",", "32.1", ",", "32.2"}], 
+      "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Create", " ", "functions", " ", "to", " ", "graph", " ", "with", " ", 
+     "each", " ", "value", " ", "of", " ", "k", " ", "in", " ", "the", " ", 
+     "given", " ", "set"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "[", "k_", "]"}], ":=", 
+     RowBox[{"CharacteristicPolynomial", "[", " ", 
+      RowBox[{
+       RowBox[{"M", "[", 
+        RowBox[{"set", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], "]"}], ",", "x"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"equations", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"f", "[", "i", "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "5"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eigen", "[", "k_", "]"}], ":=", 
+    RowBox[{"Eigenvalues", "[", 
+     RowBox[{"M", "[", "k", "]"}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.729379521025367*^9, 3.729379545889899*^9}, {
+  3.729379593057989*^9, 3.729379776904343*^9}, {3.7293836274336863`*^9, 
+  3.7293836521591024`*^9}, {3.72938372361928*^9, 3.729383900544083*^9}, {
+  3.729383931518857*^9, 3.729383985891523*^9}, {3.729384018301834*^9, 
+  3.7293843406813393`*^9}, {3.729384490429099*^9, 3.7293845026780357`*^9}, {
+  3.7295604326556225`*^9, 3.729560439149295*^9}, {3.729560823410819*^9, 
+  3.7295608332349343`*^9}, {3.729562013496385*^9, 3.729562133404439*^9}, {
+  3.7295628804825644`*^9, 3.729562939666201*^9}, {3.7295671963501797`*^9, 
+  3.7295672352553034`*^9}, {3.7295672737227025`*^9, 3.7295681059019213`*^9}, {
+  3.7295682896191845`*^9, 3.7295683415103483`*^9}, {3.729568471847814*^9, 
+  3.7295685142856655`*^9}, {3.729568574343362*^9, 3.729568574725031*^9}, {
+  3.7295690745616856`*^9, 3.729569075469468*^9}},
+ FontFamily->"Tahoma",
+ FontWeight->"Plain",ExpressionUUID->"d61ed133-7495-4427-9918-8874f07cc6bf"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "Display", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"display", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"StringForm", "[", 
+        RowBox[{"\"\<f(x) = ``\\n k = ``\>\"", ",", 
+         RowBox[{"f", "[", "i", "]"}], ",", 
+         RowBox[{"set", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "5"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"Framed", "[", 
+      RowBox[{"Plot", "[", 
+       RowBox[{"equations", ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", 
+          RowBox[{"-", "2"}], ",", "4"}], "}"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "10"}], ",", "15"}], "}"}]}], ",", 
+        RowBox[{"PlotLabel", "\[Rule]", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+          "\"\<Characteristic  Polynomial of Matrix M with different k-Values\
+\>\"", ",", 
+           RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+           RowBox[{"FontSize", "\[Rule]", "18"}], ",", 
+           RowBox[{"FontColor", "\[Rule]", "Black"}], ",", 
+           RowBox[{"FontWeight", "\[Rule]", "Bold"}]}], "]"}]}], ",", " ", 
+        RowBox[{"AxesStyle", "->", "Gray"}], ",", " ", 
+        RowBox[{"AxesLabel", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<x\>\"", ",", 
+             RowBox[{"FontSize", "\[Rule]", "14"}], ",", 
+             RowBox[{"FontWeight", "->", "Bold"}], ",", 
+             RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+             RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}], ",", 
+           RowBox[{"Style", "[", 
+            RowBox[{"\"\<f(x)\>\"", ",", 
+             RowBox[{"FontSize", "\[Rule]", "14"}], ",", 
+             RowBox[{"FontWeight", "\[Rule]", "Bold"}], ",", 
+             RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+             RowBox[{"FontColor", "\[Rule]", "Black"}]}], "]"}]}], "}"}]}], 
+        ",", 
+        RowBox[{"PlotLegends", "\[Rule]", 
+         RowBox[{"{", "display", "}"}]}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}], "]"}], ",", 
+     RowBox[{"FontFamily", "\[Rule]", "\"\<Tahoma\>\""}], ",", 
+     RowBox[{"FontSize", "\[Rule]", "16"}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"Framed", "[", 
+    RowBox[{"StringForm", "[", 
+     RowBox[{
+     "\"\<Eigenvalues for each equation: \\n k Matrix: `` --> Equations:`` \
+--> Eigenvalues:``\>\"", ",", 
+      RowBox[{"MatrixForm", "[", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"set", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "5"}], "}"}]}], "]"}], "]"}], ",", 
+      RowBox[{"MatrixForm", "[", "equations", "]"}], ",", 
+      RowBox[{"MatrixForm", "[", 
+       RowBox[{"eigenvals", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"eigen", "[", 
+           RowBox[{"set", "[", 
+            RowBox[{"[", "j", "]"}], "]"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"j", ",", "1", ",", "5"}], "}"}]}], "]"}]}], "]"}]}], 
+     "]"}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"Framed", "[", 
+    RowBox[{"StringForm", "[", 
+     RowBox[{
+     "\"\<By inspection, all of the characteristic polynomials appear to have \
+a zero at x=1 based on the graph.  As k increases, the graph stretches and as \
+k decreases, the graph widens (based on k=32 being the first function \
+graphed). By analyzing the eigenvalues, the values of k=32.1 and k=32.2 have \
+imagionary solutions and the rest of the values in the set yield solution \
+sets with only real numbers. The reason for this could be due to the zero of \
+the determinant of the matrix M which is `` (about 32). Therefore, if k were \
+larger than 32 we would expect to have complex solutions for our eigen values \
+and if k were smaller than 32 we would expect to have real solutions for our \
+eigen values.\>\"", ",", 
+      RowBox[{"Solve", "[", 
+       RowBox[{
+        RowBox[{"Det", "[", 
+         RowBox[{"M", "[", "k", "]"}], "]"}], "\[Equal]", "0"}], "]"}]}], 
+     "]"}], "]"}]}]}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBmIQ7RG9tdjm5GvHZOX6GhA9baLofRDNom7DZwuk1yzm
+ypwEpDU+yWaDaKG3HwpAtMqL+koQ7SBvXAeiF3Cq9IDoC59OTATRP2Y9nQOi
+K7i4F4LomBDzlSCa573THhC9pOLGUxCtlK7xFkSnTAnnmwykVQVqhEF0VYiU
+EYhWn2fvDKLlRTaD6Q1SOtUgWutiAJjWfLlkDYgW803dCqIvbV9pMA1I33oU
+agSiTT4yWIBotr1f3EH0kRndASB6T2NsJIj+NHt+JoieNm8TmLZbubUORD8X
+fNQF1lcnMwVE+6j4rALRAHh7pPw=
+  "],
+ FontFamily->"Tahoma",
+ FontWeight->"Plain",ExpressionUUID->"24ca1927-acde-4b10-bea1-4282af9defca"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 821},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->FrontEnd`FileName[{"Report"}, "StandardReport.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 279, 7, 93, "Title",ExpressionUUID->"25eee3fd-f5fd-4fce-85af-a3e9ffb3ea73"],
+Cell[862, 31, 279, 7, 61, "Subtitle",ExpressionUUID->"601b4330-fc84-4cd2-bef3-c9756555aa23"],
+Cell[CellGroupData[{
+Cell[1166, 42, 195, 3, 67, "Section",ExpressionUUID->"56daa2f0-1c8b-47ce-a5dc-7309302717ba"],
+Cell[1364, 47, 816, 14, 95, "Text",ExpressionUUID->"0ed22966-f912-4d3b-a716-8e802ad0d7a5"],
+Cell[2183, 63, 2891, 72, 201, "Input",ExpressionUUID->"d0f8ccda-0df0-4655-a5fa-1bf884937c2a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5111, 140, 197, 3, 67, "Section",ExpressionUUID->"9dae4d81-67ab-47df-a715-6ef4db6efdf7"],
+Cell[5311, 145, 1786, 47, 131, "Text",ExpressionUUID->"26b80fa8-c67c-4b05-b159-ed4f56065967"],
+Cell[7100, 194, 4103, 87, 221, "Input",ExpressionUUID->"9a1b8a01-54a9-4551-95a2-61189e56c89b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11240, 286, 195, 3, 67, "Section",ExpressionUUID->"6d2037c5-f6aa-46e5-9df7-bdf31a77bd47"],
+Cell[11438, 291, 386, 5, 32, "Text",ExpressionUUID->"673324f7-29b7-471e-8fbb-78a722c40a40"],
+Cell[11827, 298, 607, 22, 84, "Text",ExpressionUUID->"c33f6b32-1f57-4057-9fcd-35b4317c14d9"],
+Cell[12437, 322, 798, 14, 95, "Text",ExpressionUUID->"89980c5a-456a-4846-988c-ca42c59ef455"],
+Cell[13238, 338, 2865, 70, 161, "Input",ExpressionUUID->"d61ed133-7495-4427-9918-8874f07cc6bf"],
+Cell[16106, 410, 4810, 109, 261, "Input",ExpressionUUID->"24ca1927-acde-4b10-bea1-4282af9defca"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
